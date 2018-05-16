@@ -1,6 +1,6 @@
 # Human Computer Interaction
 
 
-### About Application
+### App/Schedule for organization courses in computer center 
 
-App/Schedule for tracking courses organisation in computer center 
+

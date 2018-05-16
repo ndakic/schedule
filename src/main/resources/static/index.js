@@ -10,7 +10,8 @@
         'ngStorage',
         'ui.bootstrap',
         'Alertify',
-        'authentication'
+        'authentication',
+        'dndLists'
     ]);
 
     app.config(['$qProvider', function ($qProvider) {
