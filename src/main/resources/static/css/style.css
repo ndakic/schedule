@@ -74,13 +74,13 @@
  */
 .typesDemo ul[dnd-list] li.background-SIIT {
     background-color: #8daefc;
-    padding: 35px;
+    padding: 25px;
     margin: 5px;
 }
 
 .typesDemo ul[dnd-list] li.background-E2 {
     background-color: #6cff61;
-    padding: 35px;
+    padding: 25px;
     margin: 5px;
 }
 

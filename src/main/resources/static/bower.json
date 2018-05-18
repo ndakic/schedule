@@ -12,7 +12,8 @@
     "angular-bootstrap": "^2.4.0",
     "angular-animate": "^1.6.1",
     "ng-alertify": "^1.0.2",
-    "angular-drag-and-drop-lists" : "latest"
+    "angular-drag-and-drop-lists" : "latest",
+    "components-font-awesome": "latest"
   },
   "devDependencies": {},
   "appPath": "client"

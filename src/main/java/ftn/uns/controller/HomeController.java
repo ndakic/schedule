@@ -33,11 +33,11 @@ public class HomeController {
         if(classroomList.isEmpty()){
             System.out.println("Populate Classroom");
 
-            Classroom classroom1 = new Classroom("classroom1", "Neki Opis 1", 7, OS.linux);
-            Classroom classroom2 = new Classroom("classroom2", "Neki Opis 2", 10, OS.windows);
-            Classroom classroom3 = new Classroom("classroom3", "Neki Opis 3", 9, OS.linux);
-            Classroom classroom4 = new Classroom("classroom4", "Neki Opis 4", 10, OS.windows);
-            Classroom classroom5 = new Classroom("classroom5", "Neki Opis 5", 21, OS.linux);
+            Classroom classroom1 = new Classroom("A1", "Neki Opis 1", 7, OS.linux);
+            Classroom classroom2 = new Classroom("A2", "Neki Opis 2", 10, OS.windows);
+            Classroom classroom3 = new Classroom("A3", "Neki Opis 3", 9, OS.linux);
+            Classroom classroom4 = new Classroom("A4", "Neki Opis 4", 10, OS.windows);
+            Classroom classroom5 = new Classroom("A5", "Neki Opis 5", 21, OS.linux);
 
             classroomRepository.save(classroom1);
             classroomRepository.save(classroom2);
@@ -61,15 +61,23 @@ public class HomeController {
 
         if(courseList.isEmpty()){
             System.out.println("Populate Course");
-            Course course1 = new Course("course1", "HCI", "SIIT");
-            Course course2 = new Course("course2", "PP", "E2");
-            Course course3 = new Course("course3", "BSEP", "SIIT");
-            Course course4 = new Course("course4", "NTP", "E2");
+            Course course1 = new Course("HCI", "Iterakcija Covek Racunar", "SIIT");
+            Course course2 = new Course("PP", "Programski Prevodioci", "E2");
+            Course course3 = new Course("BSEP", "Bezbednost Sistema u Elektronskom Poslovanju", "SIIT");
+            Course course4 = new Course("NTP", "Napredne Tehnike Programiranja", "E2");
+
+            Course course5 = new Course("OS", "Operativni Sistemi", "E2");
+            Course course6 = new Course("OP", "Organizacija Podataka", "SIIT");
+            Course course7 = new Course("WEB", "Web Programiranje", "E2");
 
             courseRepository.save(course1);
             courseRepository.save(course2);
             courseRepository.save(course3);
             courseRepository.save(course4);
+
+            courseRepository.save(course5);
+            courseRepository.save(course6);
+            courseRepository.save(course7);
 
         }
 

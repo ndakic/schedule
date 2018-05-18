@@ -39,7 +39,7 @@
                             allowedTypes: ['SIIT'],
                             max: 1,
                             course: [
-                                {name: "HCI", type: "SIIT"},
+
                             ]
                         },
                         {
@@ -47,7 +47,7 @@
                             allowedTypes: ['SIIT'],
                             max: 1,
                             course: [
-                                {name: "PP", type: "SIIT"},
+
                             ]
                         },
                         {
@@ -55,7 +55,7 @@
                             allowedTypes: ['SIIT'],
                             max: 1,
                             course: [
-                                {name: "BSEP", type: "SIIT"},
+
                             ]
                         },
                         {
@@ -63,7 +63,7 @@
                             allowedTypes: ['SIIT'],
                             max: 1,
                             course: [
-                                {name: "NTP", type: "SIIT"},
+
                             ]
                         },
                         {
@@ -84,7 +84,7 @@
                             allowedTypes: ['SIIT'],
                             max: 1,
                             course: [
-                                {name: "HCI", type: "SIIT"},
+
                             ]
                         },
                         {
@@ -92,7 +92,7 @@
                             allowedTypes: ['SIIT'],
                             max: 1,
                             course: [
-                                {name: "PP", type: "SIIT"},
+
                             ]
                         },
                         {
@@ -100,7 +100,7 @@
                             allowedTypes: ['E2'],
                             max: 1,
                             course: [
-                                {name: "BSEP", type: "E2"},
+
                             ]
                         },
                         {
@@ -108,7 +108,7 @@
                             allowedTypes: ['SIIT'],
                             max: 1,
                             course: [
-                                {name: "NTP", type: "SIIT"},
+
                             ]
                         },
                         {
@@ -137,7 +137,7 @@
                             allowedTypes: ['E2'],
                             max: 1,
                             course: [
-                                {name: "PP", type: "E2"},
+
                             ]
                         },
                         {
@@ -152,7 +152,93 @@
                             allowedTypes: ['SIIT'],
                             max: 1,
                             course: [
-                                {name: "NTP", type: "SIIT"},
+
+                            ]
+                        },
+                        {
+                            label: "A5",
+                            allowedTypes: ['SIIT'],
+                            max: 1,
+                            course: [
+                            ]
+                        }
+                    ]
+                },
+                {
+                    label: "10:00",
+                    max: 5,
+                    classrooms: [
+                        {
+                            label: "A1",
+                            allowedTypes: ['SIIT'],
+                            max: 1,
+                            course: [
+                            ]
+                        },
+                        {
+                            label: "A2",
+                            allowedTypes: ['E2'],
+                            max: 1,
+                            course: [
+
+                            ]
+                        },
+                        {
+                            label: "A3",
+                            allowedTypes: ['E2'],
+                            max: 1,
+                            course: [
+                            ]
+                        },
+                        {
+                            label: "A4",
+                            allowedTypes: ['SIIT'],
+                            max: 1,
+                            course: [
+
+                            ]
+                        },
+                        {
+                            label: "A5",
+                            allowedTypes: ['SIIT'],
+                            max: 1,
+                            course: [
+                            ]
+                        }
+                    ]
+                },
+                {
+                    label: "11:00",
+                    max: 5,
+                    classrooms: [
+                        {
+                            label: "A1",
+                            allowedTypes: ['SIIT'],
+                            max: 1,
+                            course: [
+                            ]
+                        },
+                        {
+                            label: "A2",
+                            allowedTypes: ['E2'],
+                            max: 1,
+                            course: [
+
+                            ]
+                        },
+                        {
+                            label: "A3",
+                            allowedTypes: ['SIIT'],
+                            max: 1,
+                            course: [
+                            ]
+                        },
+                        {
+                            label: "A4",
+                            allowedTypes: ['E2'],
+                            max: 1,
+                            course: [
+
                             ]
                         },
                         {
@@ -164,6 +250,8 @@
                         }
                     ]
                 }
+
+
 
 
 
