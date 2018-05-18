@@ -27,121 +27,155 @@
 
             loadCourses();
 
-            $scope.models = {
-                selected: null,
-                templates: [
-                    {type: "item", id: 2},
-                    {type: "container", id: 1, columns: [[], []]}
-                ],
-                dropzones: {
-                    "A": [
+            $scope.selected = {};
+
+            $scope.lists = [
+                {
+                    label: "7:00",
+                    max: 5,
+                    classrooms: [
                         {
-                            "type": "container",
-                            "id": 1,
-                            "columns": [
-                                [
-                                    {
-                                        "type": "item",
-                                        "id": "1"
-                                    },
-                                    {
-                                        "type": "item",
-                                        "id": "2"
-                                    }
-                                ],
-                                [
-                                    {
-                                        "type": "item",
-                                        "id": "3"
-                                    }
-                                ]
+                            label: "A1",
+                            allowedTypes: ['SIIT'],
+                            max: 1,
+                            course: [
+                                {name: "HCI", type: "SIIT"},
                             ]
                         },
                         {
-                            "type": "item",
-                            "id": "4"
+                            label: "A2",
+                            allowedTypes: ['SIIT'],
+                            max: 1,
+                            course: [
+                                {name: "PP", type: "SIIT"},
+                            ]
                         },
                         {
-                            "type": "item",
-                            "id": "5"
+                            label: "A3",
+                            allowedTypes: ['SIIT'],
+                            max: 1,
+                            course: [
+                                {name: "BSEP", type: "SIIT"},
+                            ]
                         },
                         {
-                            "type": "item",
-                            "id": "6"
+                            label: "A4",
+                            allowedTypes: ['SIIT'],
+                            max: 1,
+                            course: [
+                                {name: "NTP", type: "SIIT"},
+                            ]
+                        },
+                        {
+                            label: "A5",
+                            allowedTypes: ['E2'],
+                            max: 1,
+                            course: [
+                            ]
                         }
-                    ],
-                    "B": [
+                    ]
+                },
+                {
+                    label: "8:00",
+                    max: 5,
+                    classrooms: [
                         {
-                            "type": "item",
-                            "id": 7
-                        },
-                        {
-                            "type": "item",
-                            "id": "8"
-                        },
-                        {
-                            "type": "container",
-                            "id": "2",
-                            "columns": [
-                                [
-                                    {
-                                        "type": "item",
-                                        "id": "9"
-                                    },
-                                    {
-                                        "type": "item",
-                                        "id": "10"
-                                    },
-                                    {
-                                        "type": "item",
-                                        "id": "11"
-                                    }
-                                ],
-                                [
-                                    {
-                                        "type": "item",
-                                        "id": "12"
-                                    },
-                                    {
-                                        "type": "container",
-                                        "id": "3",
-                                        "columns": [
-                                            [
-                                                {
-                                                    "type": "item",
-                                                    "id": "13"
-                                                }
-                                            ],
-                                            [
-                                                {
-                                                    "type": "item",
-                                                    "id": "14"
-                                                }
-                                            ]
-                                        ]
-                                    },
-                                    {
-                                        "type": "item",
-                                        "id": "15"
-                                    },
-                                    {
-                                        "type": "item",
-                                        "id": "16"
-                                    }
-                                ]
+                            label: "A1",
+                            allowedTypes: ['SIIT'],
+                            max: 1,
+                            course: [
+                                {name: "HCI", type: "SIIT"},
                             ]
                         },
                         {
-                            "type": "item",
-                            "id": 16
+                            label: "A2",
+                            allowedTypes: ['SIIT'],
+                            max: 1,
+                            course: [
+                                {name: "PP", type: "SIIT"},
+                            ]
+                        },
+                        {
+                            label: "A3",
+                            allowedTypes: ['E2'],
+                            max: 1,
+                            course: [
+                                {name: "BSEP", type: "E2"},
+                            ]
+                        },
+                        {
+                            label: "A4",
+                            allowedTypes: ['SIIT'],
+                            max: 1,
+                            course: [
+                                {name: "NTP", type: "SIIT"},
+                            ]
+                        },
+                        {
+                            label: "A5",
+                            allowedTypes: ['E2'],
+                            max: 1,
+                            course: [
+                            ]
+                        }
+                    ]
+                },
+
+                {
+                    label: "9:00",
+                    max: 5,
+                    classrooms: [
+                        {
+                            label: "A1",
+                            allowedTypes: ['E2'],
+                            max: 1,
+                            course: [
+                            ]
+                        },
+                        {
+                            label: "A2",
+                            allowedTypes: ['E2'],
+                            max: 1,
+                            course: [
+                                {name: "PP", type: "E2"},
+                            ]
+                        },
+                        {
+                            label: "A3",
+                            allowedTypes: ['SIIT'],
+                            max: 1,
+                            course: [
+                            ]
+                        },
+                        {
+                            label: "A4",
+                            allowedTypes: ['SIIT'],
+                            max: 1,
+                            course: [
+                                {name: "NTP", type: "SIIT"},
+                            ]
+                        },
+                        {
+                            label: "A5",
+                            allowedTypes: ['SIIT'],
+                            max: 1,
+                            course: [
+                            ]
                         }
                     ]
                 }
-            };
 
-            $scope.$watch('models.dropzones', function(model) {
-                $scope.modelAsJson = angular.toJson(model, true);
+
+
+
+
+            ];
+
+            // Model to JSON for demo purpose
+            $scope.$watch('lists', function(lists) {
+                $scope.modelAsJson = angular.toJson(lists, true);
             }, true);
+
 
         });
 }(angular));

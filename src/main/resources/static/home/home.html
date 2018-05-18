@@ -1,10 +1,56 @@
-<!--<h1>Demo: Nested Containers</h1>-->
+<p> 18.05.2018. </p>
 
-<!--<div class="alert alert-success">-->
-    <!--<strong>Instructions:</strong>-->
-    <!--In this demo you can not only drag &amp; drop list items, but also containers, which-->
-    <!--can contain list items or other containers themselves. To create new elements, use the toolbar on the right.-->
-    <!--If this is more than you need, check out the <a href="#/simple">simple list demo</a>-->
-<!--</div>-->
 
-<div class="nestedDemo row" ng-include="'home/nested.html'"></div>
+<div class="typesDemo row">
+    <div ng-repeat="item in lists" class="col-lg-8">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h3 class="panel-title">{{item.label}}</h3>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div ng-repeat="classroom in item.classrooms" style="display: inline-block; width: 20%; text-align: center ">
+
+                        <span ng-if="classroom.allowedTypes[0] == 'SIIT'" style="color: #8daefc"> {{classroom.label}} </span>
+
+                        <span ng-if="classroom.allowedTypes[0] == 'E2'" style="color: #6cff61"> {{classroom.label}} </span>
+
+
+                        <ul dnd-list="classroom.course"
+                            dnd-disable-if="classroom.course.length >= classroom.max"
+                            dnd-allowed-types="classroom.allowedTypes">
+
+                            <li ng-repeat="course in classroom.course"
+                                dnd-draggable="course"
+                                dnd-type="course.type"
+                                dnd-disable-if="course.type == 'unknown'"
+                                dnd-moved="classroom.course.splice($index, 1)"
+                                dnd-selected="selected = course"
+                                class="background-{{course.type}}">
+
+                                <div class="name">
+                                    <div class="item">{{course.name}}</div>
+                                </div>
+
+                            </li>
+
+                            <li class="dndPlaceholder">
+                                Drop any <strong>{{classroom.allowedTypes.join(' or ')}}</strong> here
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-4">
+
+        <!--<span> bla </span>-->
+
+    </div>
+
+</div>
