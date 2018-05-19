@@ -1,42 +1,45 @@
 <h2>18.05.2018.</h2>
-
+<hr>
 
 <div class="typesDemo row">
             <div class="col-lg-8">
                 <div ng-repeat="item in lists">
                     <div class="panel panel-info">
                         <div class="panel-heading">
-                            <h3 class="panel-title">{{item.label}}</h3>
+                            <h3 class="panel-title">{{item.time}}</h3>
                         </div>
                         <div class="panel-body">
                             <div class="row">
-                                <div ng-repeat="classroom in item.classrooms" style="display: inline-block; width: 20%; text-align: center ">
+                                <div ng-repeat="class in item.classrooms" style="display: inline-block; width: 20%; text-align: center ">
 
-                                    <span ng-if="classroom.allowedTypes[0] == 'SIIT'" style="color: #8daefc"> {{classroom.label}} </span>
+                                    <span ng-if="class.allowedTypes[0] == 'linux'" style="color: #8daefc"> {{class.classroom}} </span>
 
-                                    <span ng-if="classroom.allowedTypes[0] == 'E2'" style="color: #6cff61"> {{classroom.label}} </span>
+                                    <span ng-if="class.allowedTypes[0] == 'windows'" style="color: #6cff61"> {{class.classroom}} </span>
 
-                                    <ul dnd-list="classroom.course"
-                                        dnd-disable-if="classroom.course.length >= classroom.max"
-                                        dnd-allowed-types="classroom.allowedTypes">
+                                    <span ng-if="class.allowedTypes[0] == 'cross'" style="color: #ff6e09"> {{class.classroom}} </span>
 
-                                        <li ng-repeat="course in classroom.course"
+                                    <ul dnd-list="class.course"
+                                        dnd-disable-if="class.course.length >= class.max"
+                                        dnd-allowed-types="class.allowedTypes">
+
+                                        <li ng-repeat="course in class.course"
                                             dnd-draggable="course"
-                                            dnd-type="course.department"
-                                            dnd-disable-if="course.department == 'unknown'"
-                                            dnd-moved="classroom.course.splice($index, 1)"
+                                            dnd-type="course.os"
+                                            dnd-disable-if="course.os == 'unknown'"
+                                            dnd-moved="class.course.splice($index, 1)"
                                             dnd-selected="selected = course"
-                                            class="background-{{course.department}}">
+                                            class="background-{{course.os}}">
 
                                             <div class="name">
-                                                <div class="item">{{course.id}}</div>
-                                                <span class="pull-right text-muted small"><em>{{course.department}}</em> </span>
+                                                <div class="item">{{course.label}}</div>
+                                                <span class="pull-left text-muted small"><em>{{course.department.id}}</em> </span>
+                                                <span class="pull-right text-muted small"><em>{{course.os}}</em> </span>
                                             </div>
 
                                         </li>
 
                                         <li class="dndPlaceholder">
-                                            Drop any <strong>{{classroom.allowedTypes.join(' or ')}}</strong> here
+                                            Drop any <strong>{{class.allowedTypes.join(' or ')}}</strong> here
                                         </li>
                                     </ul>
 
@@ -50,6 +53,18 @@
 
 
         <div class="col-lg-4">
+            <div class='my-legend'>
+                <div class='legend-title'>Colors indicate types of classroom based on supported OS</div>
+                <div class='legend-scale'>
+                    <ul class='legend-labels'>
+                        <li><span style='background:#8daefc;'></span>linux</li>
+                        <li><span style='background:#6cff61;'></span>windows</li>
+                        <li><span style='background:#ff6e09;'></span>cross-platform</li>
+                    </ul>
+                </div>
+                <!--<div class='legend-source'></div>-->
+            </div>
+
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <i class="fa fa-tasks fa-fw"></i> Choose Course
@@ -58,7 +73,7 @@
                 <div class="panel-body">
                     <div class="list-group">
                         <div class="input-group custom-search-form">
-                            <input type="text" class="form-control" placeholder="Search by name.." ng-model="course.title">
+                            <input type="text" class="form-control" placeholder="Search by title.." ng-model="course.title">
                             <span class="input-group-btn">
                                 <button class="btn btn-default" type="button">
                                     <i class="fa fa-search"></i>
@@ -67,22 +82,20 @@
                         </div>
 
                         <br>
-                        <!--<i class="fas fa-chart-line"></i>-->
-                        <!--<div ng-repeat="course in courseList | filter:course track by $index ">-->
-
                             <ul dnd-list="courseList">
-                                <li ng-repeat="course in courseList | filter:course"
+                                <li ng-repeat="course in courseList | filter:course track by $index"
                                     dnd-draggable="course"
-                                    dnd-type="course.department"
-                                    dnd-disable-if="course.department == 'unknown'"
+                                    dnd-type="course.os"
+                                    dnd-disable-if="course.os == 'unknown'"
                                     dnd-moved="courseList.splice($index, 1)"
                                     dnd-selected="selected = course"
-                                    class="background-{{course.department}}">
+                                    class="background-{{course.os}}" ng-show="$index < show">
 
                                     <div class="name">
-                                        <div class="item">{{course.title}}</div>
-                                        <span class="pull-right text-muted small"><em>{{course.department}}</em> </span>
+                                        <div class="item">{{course.title}} <em>({{course.department.id}})</em></div>
+                                        <span class="pull-right text-muted small"><em>{{course.os}}</em></span>
                                     </div>
+
                                 </li>
 
                                 <li class="dndPlaceholder">
@@ -90,22 +103,28 @@
                                 </li>
                             </ul>
 
-
                         <span class="pull-right text-muted small"><em>{{course.department}}</em> </span>
 
                         </div>
                     </div>
                     <!-- /.list-group -->
-                    <a href="" ng-click="stock_view = stock_view + 5;" class="btn btn-default btn-block">View More</a>
+                    <a href="" ng-click="show = show + 5;" class="btn btn-default btn-block">View More</a>
                 </div>
+
+                <!--<button class="btn btn-lg btn-primary btn-block" ng-submit="vm.newUser()" type="submit">Save</button> <hr>-->
+
                 <!-- /.panel-body -->
             </div>
         </div>
-
     </div>
 </div>
 
 
-<!--<div class="panel-body">-->
-    <!--<pre class="code">{{modelAsJson}}</pre>-->
-<!--</div>-->
+<div class="panel-body">
+    <pre class="code">{{modelAsJson}}</pre>
+</div>
+
+
+<style type='text/css'>
+
+</style>

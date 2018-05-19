@@ -28,47 +28,48 @@
             loadCourses();
 
             $scope.selected = {};
+            $scope.show = 5;
 
             $scope.lists = [
                 {
-                    label: "7:00",
+                    time: "7:00",
                     max: 5,
                     classrooms: [
                         {
-                            label: "A1",
-                            allowedTypes: ['SIIT'],
+                            classroom: "A1",
+                            allowedTypes: ['linux', 'cross'],
                             max: 1,
                             course: [
 
                             ]
                         },
                         {
-                            label: "A2",
-                            allowedTypes: ['SIIT'],
+                            classroom: "A2",
+                            allowedTypes: ['linux', 'cross'],
                             max: 1,
                             course: [
 
                             ]
                         },
                         {
-                            label: "A3",
-                            allowedTypes: ['SIIT'],
+                            classroom: "A3",
+                            allowedTypes: ['linux', 'cross'],
                             max: 1,
                             course: [
 
                             ]
                         },
                         {
-                            label: "A4",
-                            allowedTypes: ['SIIT'],
+                            classroom: "A4",
+                            allowedTypes: ['windows', 'cross'],
                             max: 1,
                             course: [
 
                             ]
                         },
                         {
-                            label: "A5",
-                            allowedTypes: ['E2'],
+                            classroom: "A5",
+                            allowedTypes: ['windows', 'cross'],
                             max: 1,
                             course: [
                             ]
@@ -76,44 +77,44 @@
                     ]
                 },
                 {
-                    label: "8:00",
+                    time: "8:00",
                     max: 5,
                     classrooms: [
                         {
-                            label: "A1",
-                            allowedTypes: ['SIIT'],
+                            classroom: "A1",
+                            allowedTypes: ['linux', 'cross'],
                             max: 1,
                             course: [
 
                             ]
                         },
                         {
-                            label: "A2",
-                            allowedTypes: ['SIIT'],
+                            classroom: "A2",
+                            allowedTypes: ['cross', 'linux', 'windows'],
                             max: 1,
                             course: [
 
                             ]
                         },
                         {
-                            label: "A3",
-                            allowedTypes: ['E2'],
+                            classroom: "A3",
+                            allowedTypes: ['linux', 'cross'],
                             max: 1,
                             course: [
 
                             ]
                         },
                         {
-                            label: "A4",
-                            allowedTypes: ['SIIT'],
+                            classroom: "A4",
+                            allowedTypes: ['cross', 'linux', 'windows'],
                             max: 1,
                             course: [
 
                             ]
                         },
                         {
-                            label: "A5",
-                            allowedTypes: ['E2'],
+                            classroom: "A5",
+                            allowedTypes: ['linux', 'cross'],
                             max: 1,
                             course: [
                             ]
@@ -122,42 +123,42 @@
                 },
 
                 {
-                    label: "9:00",
+                    time: "9:00",
                     max: 5,
                     classrooms: [
                         {
-                            label: "A1",
-                            allowedTypes: ['E2'],
+                            classroom: "A1",
+                            allowedTypes: ['windows', 'cross'],
                             max: 1,
                             course: [
                             ]
                         },
                         {
-                            label: "A2",
-                            allowedTypes: ['E2'],
-                            max: 1,
-                            course: [
-
-                            ]
-                        },
-                        {
-                            label: "A3",
-                            allowedTypes: ['SIIT'],
-                            max: 1,
-                            course: [
-                            ]
-                        },
-                        {
-                            label: "A4",
-                            allowedTypes: ['SIIT'],
+                            classroom: "A2",
+                            allowedTypes: ['windows', 'cross'],
                             max: 1,
                             course: [
 
                             ]
                         },
                         {
-                            label: "A5",
-                            allowedTypes: ['SIIT'],
+                            classroom: "A3",
+                            allowedTypes: ['windows', 'cross'],
+                            max: 1,
+                            course: [
+                            ]
+                        },
+                        {
+                            classroom: "A4",
+                            allowedTypes: ['linux', 'cross'],
+                            max: 1,
+                            course: [
+
+                            ]
+                        },
+                        {
+                            classroom: "A5",
+                            allowedTypes: ['linux', 'cross'],
                             max: 1,
                             course: [
                             ]
@@ -165,42 +166,42 @@
                     ]
                 },
                 {
-                    label: "10:00",
+                    time: "10:00",
                     max: 5,
                     classrooms: [
                         {
-                            label: "A1",
-                            allowedTypes: ['SIIT'],
+                            classroom: "A1",
+                            allowedTypes: ['linux', 'cross'],
                             max: 1,
                             course: [
                             ]
                         },
                         {
-                            label: "A2",
-                            allowedTypes: ['E2'],
-                            max: 1,
-                            course: [
-
-                            ]
-                        },
-                        {
-                            label: "A3",
-                            allowedTypes: ['E2'],
-                            max: 1,
-                            course: [
-                            ]
-                        },
-                        {
-                            label: "A4",
-                            allowedTypes: ['SIIT'],
+                            classroom: "A2",
+                            allowedTypes: ['linux', 'cross'],
                             max: 1,
                             course: [
 
                             ]
                         },
                         {
-                            label: "A5",
-                            allowedTypes: ['SIIT'],
+                            classroom: "A3",
+                            allowedTypes: ['cross', 'linux', 'windows'],
+                            max: 1,
+                            course: [
+                            ]
+                        },
+                        {
+                            classroom: "A4",
+                            allowedTypes: ['cross', 'linux', 'windows'],
+                            max: 1,
+                            course: [
+
+                            ]
+                        },
+                        {
+                            classroom: "A5",
+                            allowedTypes: ['windows', 'cross'],
                             max: 1,
                             course: [
                             ]
@@ -208,60 +209,72 @@
                     ]
                 },
                 {
-                    label: "11:00",
+                    time: "11:00",
                     max: 5,
                     classrooms: [
                         {
-                            label: "A1",
-                            allowedTypes: ['SIIT'],
+                            classroom: "A1",
+                            allowedTypes: ['windows', 'cross'],
                             max: 1,
                             course: [
                             ]
                         },
                         {
-                            label: "A2",
-                            allowedTypes: ['E2'],
-                            max: 1,
-                            course: [
-
-                            ]
-                        },
-                        {
-                            label: "A3",
-                            allowedTypes: ['SIIT'],
-                            max: 1,
-                            course: [
-                            ]
-                        },
-                        {
-                            label: "A4",
-                            allowedTypes: ['E2'],
+                            classroom: "A2",
+                            allowedTypes: ['windows', 'cross'],
                             max: 1,
                             course: [
 
                             ]
                         },
                         {
-                            label: "A5",
-                            allowedTypes: ['SIIT'],
+                            classroom: "A3",
+                            allowedTypes: ['windows', 'cross'],
+                            max: 1,
+                            course: [
+                            ]
+                        },
+                        {
+                            classroom: "A4",
+                            allowedTypes: ['linux', 'cross'],
+                            max: 1,
+                            course: [
+
+                            ]
+                        },
+                        {
+                            classroom: "A5",
+                            allowedTypes: ['linux', 'cross'],
                             max: 1,
                             course: [
                             ]
                         }
                     ]
                 }
-
-
-
-
-
-
-
             ];
 
+            $scope.items = []
+
+            $scope.count = 0;
             // Model to JSON for demo purpose
             $scope.$watch('lists', function(lists) {
                 $scope.modelAsJson = angular.toJson(lists, true);
+
+                // console.log("===============================================");
+                // for(var time in $scope.lists){
+                //     var t = $scope.lists[time]["time"];
+                //     console.log(t);
+                //     for(var classroom in $scope.lists[time]["classrooms"]){
+                //         var room = $scope.lists[time]["classrooms"][classroom]["classroom"];
+                //         console.log(room);
+                //         for(var course in $scope.lists[time]["classrooms"][classroom]["course"]){
+                //             console.log($scope.lists[time]["classrooms"][classroom]["course"][course]);
+                //         }
+                //     }
+                // }
+                // console.log("===============================================");
+
+
             }, true);
 
 

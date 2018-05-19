@@ -2,10 +2,7 @@ package ftn.uns.model;
 
 import ftn.uns.model.enums.OS;
 
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 
 /**
@@ -25,15 +22,19 @@ public class Classroom implements Serializable {
     @Enumerated(EnumType.STRING)
     private OS os;
 
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Software software;
+
 
     public Classroom() {
     }
 
-    public Classroom(String id, String description, Integer capacity, OS os) {
+    public Classroom(String id, String description, Integer capacity, OS os, Software software) {
         this.id = id;
         this.description = description;
         this.capacity = capacity;
         this.os = os;
+        this.software = software;
     }
 
     public String getId() {
@@ -68,6 +69,14 @@ public class Classroom implements Serializable {
         this.os = os;
     }
 
+    public Software getSoftware() {
+        return software;
+    }
+
+    public void setSoftware(Software software) {
+        this.software = software;
+    }
+
     @Override
     public String toString() {
         return "Classroom{" +
@@ -75,6 +84,7 @@ public class Classroom implements Serializable {
                 ", description='" + description + '\'' +
                 ", capacity=" + capacity +
                 ", os=" + os +
+                ", software=" + software +
                 '}';
     }
 }

@@ -13,7 +13,8 @@
     "angular-animate": "^1.6.1",
     "ng-alertify": "^1.0.2",
     "angular-drag-and-drop-lists" : "latest",
-    "components-font-awesome": "latest"
+    "components-font-awesome": "latest",
+    "angular-moment": "latest"
   },
   "devDependencies": {},
   "appPath": "client"

@@ -35,7 +35,7 @@
  */
 .typesDemo ul[dnd-list] .dndPlaceholder {
     display: block;
-    background-color: rgba(204, 202, 91, 0.51);
+    background-color: #ddd;
     padding: 25px;
     min-height: 42px;
 }
@@ -72,14 +72,20 @@
 /**
  * Gender-specifc background
  */
-.typesDemo ul[dnd-list] li.background-SIIT {
+.typesDemo ul[dnd-list] li.background-linux {
     background-color: #8daefc;
     padding: 25px;
     margin: 5px;
 }
 
-.typesDemo ul[dnd-list] li.background-E2 {
+.typesDemo ul[dnd-list] li.background-windows {
     background-color: #6cff61;
+    padding: 25px;
+    margin: 5px;
+}
+
+.typesDemo ul[dnd-list] li.background-cross{
+    background-color: #ff6e09;
     padding: 25px;
     margin: 5px;
 }
@@ -99,3 +105,45 @@
 
 }
 
+.my-legend{
+    padding-bottom: 70px;
+}
+
+
+.my-legend .legend-title {
+    text-align: left;
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-size: 80%;
+}
+.my-legend .legend-scale ul {
+    margin: 0;
+    margin-bottom: 5px;
+    padding: 0;
+    float: left;
+    list-style: none;
+}
+.my-legend .legend-scale ul li {
+    font-size: 80%;
+    list-style: none;
+    margin-left: 0;
+    line-height: 18px;
+    margin-bottom: 2px;
+}
+.my-legend ul.legend-labels li span {
+    display: block;
+    float: left;
+    height: 16px;
+    width: 30px;
+    margin-right: 5px;
+    margin-left: 0;
+    border: 1px solid #999;
+}
+.my-legend .legend-source {
+    font-size: 70%;
+    color: #999;
+    clear: both;
+}
+.my-legend a {
+    color: #777;
+}
