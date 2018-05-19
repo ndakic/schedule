@@ -3,6 +3,8 @@ package ftn.uns.model;
 import ftn.uns.model.enums.OS;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.io.Serializable;
 
@@ -12,7 +14,11 @@ import java.io.Serializable;
 @Entity
 public class Software implements Serializable{
 
+
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long long_id;
+
     private String id;
 
     private String title;

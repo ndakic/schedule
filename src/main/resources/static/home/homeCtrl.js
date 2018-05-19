@@ -7,6 +7,8 @@
         .controller('homeCtrl', function($scope, $http){
             var vm = this;
 
+            $scope.datum = "18.05.2018.";
+
 
             var loadClassrooms = function () {
                 var promise = $http.get("/api/home/classroomList");
@@ -26,6 +28,10 @@
             };
 
             loadCourses();
+
+
+
+
 
             $scope.selected = {};
             $scope.show = 5;
@@ -253,6 +259,25 @@
                 }
             ];
 
+
+            var loadSchedule = function () {
+                console.log("Load");
+                var promise = $http.get("/api/home/schedule/" + $scope.datum);
+                promise.then(function (response) {
+                    if(response.data != null){
+                        console.log("Uslo");
+                        $scope.lists = [];
+                        for(var time in response.data["timePeriodList"]){
+                            $scope.lists.push(response.data["timePeriodList"][time]);
+                            console.log("ubaceno", response.data["timePeriodList"][time]);
+                        };
+                    };
+                });
+            };
+
+            loadSchedule();
+
+
             $scope.items = []
 
             $scope.count = 0;
@@ -260,23 +285,25 @@
             $scope.$watch('lists', function(lists) {
                 $scope.modelAsJson = angular.toJson(lists, true);
 
-                // console.log("===============================================");
-                // for(var time in $scope.lists){
-                //     var t = $scope.lists[time]["time"];
-                //     console.log(t);
-                //     for(var classroom in $scope.lists[time]["classrooms"]){
-                //         var room = $scope.lists[time]["classrooms"][classroom]["classroom"];
-                //         console.log(room);
-                //         for(var course in $scope.lists[time]["classrooms"][classroom]["course"]){
-                //             console.log($scope.lists[time]["classrooms"][classroom]["course"][course]);
-                //         }
-                //     }
-                // }
-                // console.log("===============================================");
-
+                schedule();
 
             }, true);
 
+            function schedule() {
+                console.log("Save");
+
+                $scope.data = {
+                    "realdate": $scope.datum,
+                    "timePeriodList": $scope.lists
+                };
+
+                var promise = $http.post("/api/home/schedule", $scope.data);
+                promise.then(function (response) {
+                    console.log("Sacuvano!");
+
+                });
+
+            };
 
         });
 }(angular));

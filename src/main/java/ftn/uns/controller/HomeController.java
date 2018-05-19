@@ -5,11 +5,14 @@ import ftn.uns.model.Course;
 import ftn.uns.model.Department;
 import ftn.uns.model.Software;
 import ftn.uns.model.enums.OS;
+import ftn.uns.model.json.Schedule;
+import ftn.uns.model.json.TimePeriod;
 import ftn.uns.repository.ClassroomRepository;
 import ftn.uns.repository.CourseRepository;
+import ftn.uns.repository.ScheduleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -26,6 +29,9 @@ public class HomeController {
 
     @Autowired
     CourseRepository courseRepository;
+
+    @Autowired
+    ScheduleRepository scheduleRepository;
 
     @RequestMapping("/classroomList")
     public List<Classroom> classroomList() throws Exception{
@@ -58,7 +64,6 @@ public class HomeController {
 
     @RequestMapping("/courseList")
     public List<Course> courseList() throws Exception{
-
 
         List<Course> courseList = courseRepository.findAll();
 
@@ -100,6 +105,17 @@ public class HomeController {
         }
 
         return courseList;
+    }
+
+    @RequestMapping("/schedule")
+    public Schedule saveSchedule(@RequestBody Schedule schedule) throws Exception{
+        return scheduleRepository.save(schedule);
+    }
+
+    @GetMapping("/schedule/{id}")
+    public Schedule getSchedule(@PathVariable String id) throws Exception{
+        return scheduleRepository.findOneByRealdate(id);
+
     }
 
 }

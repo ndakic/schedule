@@ -1,6 +1,8 @@
 package ftn.uns.model;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.io.Serializable;
 
@@ -12,6 +14,9 @@ import java.io.Serializable;
 public class Department implements Serializable {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long long_id;
+
     private String id;
 
     private String title;
