@@ -24,8 +24,9 @@ public class Classrooms {
 
     private String[] allowedTypes;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, targetEntity = Course.class)
     private List<Course> course;
+
 
     public Classrooms() {
     }
@@ -35,6 +36,14 @@ public class Classrooms {
         this.max = max;
         this.allowedTypes = allowedTypes;
         this.course = course;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getClassroom() {
@@ -72,7 +81,8 @@ public class Classrooms {
     @Override
     public String toString() {
         return "Classrooms{" +
-                "classroom='" + classroom + '\'' +
+                "id=" + id +
+                ", classroom='" + classroom + '\'' +
                 ", max='" + max + '\'' +
                 ", allowedTypes=" + Arrays.toString(allowedTypes) +
                 ", course=" + course +

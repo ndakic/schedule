@@ -13,16 +13,12 @@ import java.io.Serializable;
 public class Course implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long long_id;
-
     private String id;
 
     private String label;
 
     private String title;
 
-    @ManyToOne(cascade = CascadeType.ALL)
     private Department department;
 
     @Enumerated(EnumType.STRING)

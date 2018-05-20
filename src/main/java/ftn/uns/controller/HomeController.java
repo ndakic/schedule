@@ -5,6 +5,7 @@ import ftn.uns.model.Course;
 import ftn.uns.model.Department;
 import ftn.uns.model.Software;
 import ftn.uns.model.enums.OS;
+import ftn.uns.model.json.Classrooms;
 import ftn.uns.model.json.Schedule;
 import ftn.uns.model.json.TimePeriod;
 import ftn.uns.repository.ClassroomRepository;
@@ -109,6 +110,10 @@ public class HomeController {
 
     @RequestMapping("/schedule")
     public Schedule saveSchedule(@RequestBody Schedule schedule) throws Exception{
+
+        System.out.println(schedule.toString());
+
+        //return null;
         return scheduleRepository.save(schedule);
     }
 

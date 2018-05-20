@@ -15,10 +15,8 @@ import java.io.Serializable;
 public class Software implements Serializable{
 
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long long_id;
 
+    @Id
     private String id;
 
     private String title;

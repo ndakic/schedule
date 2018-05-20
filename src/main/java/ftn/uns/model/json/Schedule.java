@@ -17,8 +17,8 @@ public class Schedule implements Serializable{
     @Id
     private String realdate;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, targetEntity = TimePeriod.class)
-    @OrderBy(value = "id ASC")
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, targetEntity = TimePeriod.class)
+    @OrderBy(value = "ordertime ASC")
     private List<TimePeriod> timePeriodList;
 
     public Schedule() {

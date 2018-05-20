@@ -8,52 +8,24 @@
             var vm = this;
 
             $scope.datum = "18.05.2018.";
-
-
-            var loadClassrooms = function () {
-                var promise = $http.get("/api/home/classroomList");
-                promise.then(function (response) {
-                    $scope.classroomList = response.data;
-                });
-            };
-
-            loadClassrooms();
-
-
-            var loadCourses = function () {
-                var promise = $http.get("/api/home/courseList");
-                promise.then(function (response) {
-                    $scope.courseList = response.data;
-                });
-            };
-
-            loadCourses();
-
-
             $scope.selected = {};
             $scope.show = 5;
-
-
-
             $scope.loaded = false;
-
 
             var loadSchedule = function () {
                 console.log("Load");
                 var promise = $http.get("/api/home/schedule/" + $scope.datum);
                 promise.then(function (response) {
-                    console.log("response1:", response.data);
                     if(response.data){
-                        console.log("Uslo");
                         $scope.lists = [];
                         $scope.loaded = true;
                         for(var time in response.data["timePeriodList"]){
                             $scope.lists.push(response.data["timePeriodList"][time]);
-                            console.log("ubaceno", response.data["timePeriodList"][time]);
                         };
                     }else{
                         $scope.lists = [
                             {
+                                ordertime: 1,
                                 time: "7:00",
                                 max: 5,
                                 classrooms: [
@@ -98,7 +70,7 @@
                                     }
                                 ]
                             },
-                            {
+                            {   ordertime: 2,
                                 time: "8:00",
                                 max: 5,
                                 classrooms: [
@@ -144,7 +116,7 @@
                                 ]
                             },
 
-                            {
+                            {   ordertime: 3,
                                 time: "9:00",
                                 max: 5,
                                 classrooms: [
@@ -188,6 +160,7 @@
                                 ]
                             },
                             {
+                                ordertime: 4,
                                 time: "10:00",
                                 max: 5,
                                 classrooms: [
@@ -230,7 +203,7 @@
                                     }
                                 ]
                             },
-                            {
+                            {   ordertime: 5,
                                 time: "11:00",
                                 max: 5,
                                 classrooms: [
@@ -275,14 +248,14 @@
                             }
                         ];
                     };
+
+                    loadCourses();
                 });
             };
 
             loadSchedule();
 
-
-            $scope.items = []
-
+            $scope.items = [];
             $scope.count = 0;
 
             $scope.$watch('lists', function(lists) {
@@ -312,6 +285,42 @@
 
 
             };
+
+            $scope.courseList = [];
+
+            var loadCourses = function () {
+                var promise = $http.get("/api/home/courseList");
+                promise.then(function (response) {
+
+                    $scope.courseList = [];
+
+                    for(var course in response.data){
+                        var exist = checkCourse($scope.lists, response.data[course]["id"]);
+                        if(exist == false){
+                            $scope.courseList.push(response.data[course]);
+                        };
+                    };
+                });
+            };
+
+
+
+             function checkCourse(lists, course_id) {
+                var status = false;
+                for(var time in lists){
+                    for(var classroom in lists[time]["classrooms"]){
+                        for(var course in lists[time]["classrooms"][classroom]["course"]){
+                            if((lists[time]["classrooms"][classroom]["course"][course]["id"]).trim() === course_id.trim()){
+                                status = true;
+                            };
+                        };
+                    };
+                };
+
+                return status;
+            };
+
+
 
         });
 }(angular));
