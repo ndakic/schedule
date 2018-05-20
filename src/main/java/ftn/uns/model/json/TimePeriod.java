@@ -4,6 +4,7 @@ import org.hibernate.annotations.NotFound;
 import org.hibernate.annotations.NotFoundAction;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -11,16 +12,20 @@ import java.util.List;
  */
 
 @Entity
-public class TimePeriod {
+public class TimePeriod implements Serializable {
+
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+
     private String time;
 
     private Integer ordertime;
 
     private String max;
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, targetEntity = Classrooms.class)
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, targetEntity = Classrooms.class)
     @OrderBy(value = "classroom ASC")
     private List<Classrooms> classrooms;
 

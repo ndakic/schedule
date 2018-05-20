@@ -3,20 +3,41 @@
  */
 
 (function (angular) {
-    angular.module('HCIApp')
-        .controller('homeCtrl', function($scope, $http){
-            var vm = this;
+    'use strict';
+    angular
+        .module('HCIApp')
+        .controller('homeCtrl', homeCtrl);
 
-            $scope.datum = "18.05.2018.";
+        homeCtrl.$inject = ['$scope', '$http','$location'];
+
+         function homeCtrl($scope, $http, $location) {
+            var vm = this;
+            console.log("homeCtrl1");
+
+            var loc = $location.url();
+            var realdate =  loc.substr(loc.length - 11);
+
+            $scope.datum = realdate;
             $scope.selected = {};
             $scope.show = 5;
             $scope.loaded = false;
+            $scope.courseList = [];
+
+             var loadAllSchedules = function () {
+                 var promise = $http.get("/api/home/schedules");
+                 promise.then(function (response) {
+                     $scope.schedules = response.data;
+                     console.log("All Schedules loaded",response.data);
+                     loadCourses();
+                 });
+             };
 
             var loadSchedule = function () {
-                console.log("Load");
+
                 var promise = $http.get("/api/home/schedule/" + $scope.datum);
                 promise.then(function (response) {
                     if(response.data){
+                        console.log("Schedule was found!");
                         $scope.lists = [];
                         $scope.loaded = true;
                         for(var time in response.data["timePeriodList"]){
@@ -249,7 +270,8 @@
                         ];
                     };
 
-                    loadCourses();
+                    loadAllSchedules();
+
                 });
             };
 
@@ -261,66 +283,62 @@
             $scope.$watch('lists', function(lists) {
                 $scope.modelAsJson = angular.toJson(lists, true);
 
-                schedule();
+                saveSchedule();
 
             }, true);
 
-            function schedule() {
-                console.log("Save");
+            function saveSchedule() {
 
                 $scope.data = {
                     "realdate": $scope.datum,
                     "timePeriodList": $scope.lists
                 };
                 if($scope.loaded){
-                    console.log();
                     var promise = $http.post("/api/home/schedule", $scope.data);
                     promise.then(function (response) {
-                        console.log("Sacuvano!");
+                        //console.log("Sacuvano!");
                     });
                 }else{
                     $scope.loaded = true;
-
-                }
-
-
+                };
             };
 
-            $scope.courseList = [];
+
 
             var loadCourses = function () {
                 var promise = $http.get("/api/home/courseList");
                 promise.then(function (response) {
 
-                    $scope.courseList = [];
+                     for(var course in response.data){
+                         var exist = checkCourse(response.data[course]["id"]);
+                         if(exist == false){
+                             $scope.courseList.push(response.data[course]);
+                         };
+                     };
 
-                    for(var course in response.data){
-                        var exist = checkCourse($scope.lists, response.data[course]["id"]);
-                        if(exist == false){
-                            $scope.courseList.push(response.data[course]);
-                        };
-                    };
                 });
             };
 
-
-
-             function checkCourse(lists, course_id) {
+            function checkCourse(course_id) {
                 var status = false;
-                for(var time in lists){
-                    for(var classroom in lists[time]["classrooms"]){
-                        for(var course in lists[time]["classrooms"][classroom]["course"]){
-                            if((lists[time]["classrooms"][classroom]["course"][course]["id"]).trim() === course_id.trim()){
-                                status = true;
-                            };
-                        };
-                    };
-                };
+
+                 for(var schedule in $scope.schedules) {
+                     for (var time in $scope.schedules[schedule]["timePeriodList"]) {
+                         for (var classroom in $scope.schedules[schedule]["timePeriodList"][time]["classrooms"]) {
+                             for (var course in $scope.schedules[schedule]["timePeriodList"][time]["classrooms"][classroom]["course"]) {
+                                 if (($scope.schedules[schedule]["timePeriodList"][time]["classrooms"][classroom]["course"][course]["id"]) === course_id) {
+                                     console.log(course_id);
+                                     status = true;
+                                 };
+                             };
+                         };
+                     };
+                 };
 
                 return status;
             };
 
 
 
-        });
+        };
 }(angular));

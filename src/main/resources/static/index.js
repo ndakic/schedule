@@ -11,8 +11,10 @@
         'ui.bootstrap',
         'Alertify',
         'authentication',
-        'dndLists'
+        'dndLists',
     ]);
+
+
 
     app.config(['$qProvider', function ($qProvider) {
         $qProvider.errorOnUnhandledRejections(false);

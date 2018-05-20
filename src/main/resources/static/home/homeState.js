@@ -11,9 +11,9 @@
     stateConfig.$inject = ['$stateProvider'];
 
     function stateConfig($stateProvider) {
-        $stateProvider.state('home', {
+        $stateProvider.state('day', {
             parent: 'app',
-            url: '/',
+            url: '/calendar/{id}',
             data: {
                 authorities: []
             },

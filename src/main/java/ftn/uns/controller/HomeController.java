@@ -123,4 +123,10 @@ public class HomeController {
 
     }
 
+    @GetMapping("/schedules")
+    public List<Schedule> getAllSchedules() throws Exception{
+        return scheduleRepository.findAll();
+
+    }
+
 }

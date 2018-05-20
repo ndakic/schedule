@@ -14,7 +14,7 @@
     function stateConfig($stateProvider) {
         $stateProvider.state('calendar', {
             parent: 'app',
-            url: '/calendar',
+            url: '/',
             data: {
                 authorities: []
             },

@@ -3,6 +3,7 @@ package ftn.uns.model.json;
 import ftn.uns.model.Course;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Arrays;
 import java.util.List;
 
@@ -12,7 +13,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "classroom_table")
-public class Classrooms {
+public class Classrooms implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -24,7 +25,7 @@ public class Classrooms {
 
     private String[] allowedTypes;
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, targetEntity = Course.class)
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, targetEntity = Course.class)
     private List<Course> course;
 
 
