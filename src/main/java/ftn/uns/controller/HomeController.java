@@ -129,4 +129,10 @@ public class HomeController {
 
     }
 
+    @GetMapping(value = "/course/search/{title}")
+    public List<Course> search_articles(@PathVariable String title) throws Exception{
+
+        return courseRepository.findAllByTitleIgnoreCaseContaining(title);
+    }
+
 }

@@ -21,7 +21,8 @@
             $scope.selected = {};
             $scope.show = 5;
             $scope.loaded = false;
-            $scope.courseList = [];
+
+            $scope.searchedTerm = "";
 
              var loadAllSchedules = function () {
                  var promise = $http.get("/api/home/schedules");
@@ -266,6 +267,501 @@
                                         ]
                                     }
                                 ]
+                            },
+                            {   ordertime: 6,
+                                time: "12:00",
+                                max: 5,
+                                classrooms: [
+                                    {
+                                        classroom: "A1",
+                                        allowedTypes: ['linux', 'cross'],
+                                        max: 1,
+                                        course: [
+
+                                        ]
+                                    },
+                                    {
+                                        classroom: "A2",
+                                        allowedTypes: ['cross', 'linux', 'windows'],
+                                        max: 1,
+                                        course: [
+
+                                        ]
+                                    },
+                                    {
+                                        classroom: "A3",
+                                        allowedTypes: ['linux', 'cross'],
+                                        max: 1,
+                                        course: [
+
+                                        ]
+                                    },
+                                    {
+                                        classroom: "A4",
+                                        allowedTypes: ['cross', 'linux', 'windows'],
+                                        max: 1,
+                                        course: [
+
+                                        ]
+                                    },
+                                    {
+                                        classroom: "A5",
+                                        allowedTypes: ['linux', 'cross'],
+                                        max: 1,
+                                        course: [
+                                        ]
+                                    }
+                                ]
+                            },
+                            {   ordertime: 7,
+                                time: "13:00",
+                                max: 5,
+                                classrooms: [
+                                    {
+                                        classroom: "A1",
+                                        allowedTypes: ['linux', 'cross'],
+                                        max: 1,
+                                        course: [
+
+                                        ]
+                                    },
+                                    {
+                                        classroom: "A2",
+                                        allowedTypes: ['cross', 'linux', 'windows'],
+                                        max: 1,
+                                        course: [
+
+                                        ]
+                                    },
+                                    {
+                                        classroom: "A3",
+                                        allowedTypes: ['linux', 'cross'],
+                                        max: 1,
+                                        course: [
+
+                                        ]
+                                    },
+                                    {
+                                        classroom: "A4",
+                                        allowedTypes: ['cross', 'linux', 'windows'],
+                                        max: 1,
+                                        course: [
+
+                                        ]
+                                    },
+                                    {
+                                        classroom: "A5",
+                                        allowedTypes: ['linux', 'cross'],
+                                        max: 1,
+                                        course: [
+                                        ]
+                                    }
+                                ]
+                            },
+                            {   ordertime: 8,
+                                time: "14:00",
+                                max: 5,
+                                classrooms: [
+                                    {
+                                        classroom: "A1",
+                                        allowedTypes: ['linux', 'cross'],
+                                        max: 1,
+                                        course: [
+
+                                        ]
+                                    },
+                                    {
+                                        classroom: "A2",
+                                        allowedTypes: ['cross', 'linux', 'windows'],
+                                        max: 1,
+                                        course: [
+
+                                        ]
+                                    },
+                                    {
+                                        classroom: "A3",
+                                        allowedTypes: ['linux', 'cross'],
+                                        max: 1,
+                                        course: [
+
+                                        ]
+                                    },
+                                    {
+                                        classroom: "A4",
+                                        allowedTypes: ['cross', 'linux', 'windows'],
+                                        max: 1,
+                                        course: [
+
+                                        ]
+                                    },
+                                    {
+                                        classroom: "A5",
+                                        allowedTypes: ['linux', 'cross'],
+                                        max: 1,
+                                        course: [
+                                        ]
+                                    }
+                                ]
+                            },
+                            {   ordertime: 9,
+                                time: "15:00",
+                                max: 5,
+                                classrooms: [
+                                    {
+                                        classroom: "A1",
+                                        allowedTypes: ['linux', 'cross'],
+                                        max: 1,
+                                        course: [
+
+                                        ]
+                                    },
+                                    {
+                                        classroom: "A2",
+                                        allowedTypes: ['cross', 'linux', 'windows'],
+                                        max: 1,
+                                        course: [
+
+                                        ]
+                                    },
+                                    {
+                                        classroom: "A3",
+                                        allowedTypes: ['linux', 'cross'],
+                                        max: 1,
+                                        course: [
+
+                                        ]
+                                    },
+                                    {
+                                        classroom: "A4",
+                                        allowedTypes: ['cross', 'linux', 'windows'],
+                                        max: 1,
+                                        course: [
+
+                                        ]
+                                    },
+                                    {
+                                        classroom: "A5",
+                                        allowedTypes: ['linux', 'cross'],
+                                        max: 1,
+                                        course: [
+                                        ]
+                                    }
+                                ]
+                            },
+                            {   ordertime: 10,
+                                time: "16:00",
+                                max: 5,
+                                classrooms: [
+                                    {
+                                        classroom: "A1",
+                                        allowedTypes: ['linux', 'cross'],
+                                        max: 1,
+                                        course: [
+
+                                        ]
+                                    },
+                                    {
+                                        classroom: "A2",
+                                        allowedTypes: ['cross', 'linux', 'windows'],
+                                        max: 1,
+                                        course: [
+
+                                        ]
+                                    },
+                                    {
+                                        classroom: "A3",
+                                        allowedTypes: ['linux', 'cross'],
+                                        max: 1,
+                                        course: [
+
+                                        ]
+                                    },
+                                    {
+                                        classroom: "A4",
+                                        allowedTypes: ['cross', 'linux', 'windows'],
+                                        max: 1,
+                                        course: [
+
+                                        ]
+                                    },
+                                    {
+                                        classroom: "A5",
+                                        allowedTypes: ['linux', 'cross'],
+                                        max: 1,
+                                        course: [
+                                        ]
+                                    }
+                                ]
+                            },
+                            {   ordertime: 11,
+                                time: "17:00",
+                                max: 5,
+                                classrooms: [
+                                    {
+                                        classroom: "A1",
+                                        allowedTypes: ['linux', 'cross'],
+                                        max: 1,
+                                        course: [
+
+                                        ]
+                                    },
+                                    {
+                                        classroom: "A2",
+                                        allowedTypes: ['cross', 'linux', 'windows'],
+                                        max: 1,
+                                        course: [
+
+                                        ]
+                                    },
+                                    {
+                                        classroom: "A3",
+                                        allowedTypes: ['linux', 'cross'],
+                                        max: 1,
+                                        course: [
+
+                                        ]
+                                    },
+                                    {
+                                        classroom: "A4",
+                                        allowedTypes: ['cross', 'linux', 'windows'],
+                                        max: 1,
+                                        course: [
+
+                                        ]
+                                    },
+                                    {
+                                        classroom: "A5",
+                                        allowedTypes: ['linux', 'cross'],
+                                        max: 1,
+                                        course: [
+                                        ]
+                                    }
+                                ]
+                            },
+                            {   ordertime: 12,
+                                time: "18:00",
+                                max: 5,
+                                classrooms: [
+                                    {
+                                        classroom: "A1",
+                                        allowedTypes: ['linux', 'cross'],
+                                        max: 1,
+                                        course: [
+
+                                        ]
+                                    },
+                                    {
+                                        classroom: "A2",
+                                        allowedTypes: ['cross', 'linux', 'windows'],
+                                        max: 1,
+                                        course: [
+
+                                        ]
+                                    },
+                                    {
+                                        classroom: "A3",
+                                        allowedTypes: ['linux', 'cross'],
+                                        max: 1,
+                                        course: [
+
+                                        ]
+                                    },
+                                    {
+                                        classroom: "A4",
+                                        allowedTypes: ['cross', 'linux', 'windows'],
+                                        max: 1,
+                                        course: [
+
+                                        ]
+                                    },
+                                    {
+                                        classroom: "A5",
+                                        allowedTypes: ['linux', 'cross'],
+                                        max: 1,
+                                        course: [
+                                        ]
+                                    }
+                                ]
+                            },
+                            {   ordertime: 13,
+                                time: "19:00",
+                                max: 5,
+                                classrooms: [
+                                    {
+                                        classroom: "A1",
+                                        allowedTypes: ['linux', 'cross'],
+                                        max: 1,
+                                        course: [
+
+                                        ]
+                                    },
+                                    {
+                                        classroom: "A2",
+                                        allowedTypes: ['cross', 'linux', 'windows'],
+                                        max: 1,
+                                        course: [
+
+                                        ]
+                                    },
+                                    {
+                                        classroom: "A3",
+                                        allowedTypes: ['linux', 'cross'],
+                                        max: 1,
+                                        course: [
+
+                                        ]
+                                    },
+                                    {
+                                        classroom: "A4",
+                                        allowedTypes: ['cross', 'linux', 'windows'],
+                                        max: 1,
+                                        course: [
+
+                                        ]
+                                    },
+                                    {
+                                        classroom: "A5",
+                                        allowedTypes: ['linux', 'cross'],
+                                        max: 1,
+                                        course: [
+                                        ]
+                                    }
+                                ]
+                            },
+                            {   ordertime: 14,
+                                time: "20:00",
+                                max: 5,
+                                classrooms: [
+                                    {
+                                        classroom: "A1",
+                                        allowedTypes: ['linux', 'cross'],
+                                        max: 1,
+                                        course: [
+
+                                        ]
+                                    },
+                                    {
+                                        classroom: "A2",
+                                        allowedTypes: ['cross', 'linux', 'windows'],
+                                        max: 1,
+                                        course: [
+
+                                        ]
+                                    },
+                                    {
+                                        classroom: "A3",
+                                        allowedTypes: ['linux', 'cross'],
+                                        max: 1,
+                                        course: [
+
+                                        ]
+                                    },
+                                    {
+                                        classroom: "A4",
+                                        allowedTypes: ['cross', 'linux', 'windows'],
+                                        max: 1,
+                                        course: [
+
+                                        ]
+                                    },
+                                    {
+                                        classroom: "A5",
+                                        allowedTypes: ['linux', 'cross'],
+                                        max: 1,
+                                        course: [
+                                        ]
+                                    }
+                                ]
+                            },
+                            {   ordertime: 15,
+                                time: "21:00",
+                                max: 5,
+                                classrooms: [
+                                    {
+                                        classroom: "A1",
+                                        allowedTypes: ['linux', 'cross'],
+                                        max: 1,
+                                        course: [
+
+                                        ]
+                                    },
+                                    {
+                                        classroom: "A2",
+                                        allowedTypes: ['cross', 'linux', 'windows'],
+                                        max: 1,
+                                        course: [
+
+                                        ]
+                                    },
+                                    {
+                                        classroom: "A3",
+                                        allowedTypes: ['linux', 'cross'],
+                                        max: 1,
+                                        course: [
+
+                                        ]
+                                    },
+                                    {
+                                        classroom: "A4",
+                                        allowedTypes: ['cross', 'linux', 'windows'],
+                                        max: 1,
+                                        course: [
+
+                                        ]
+                                    },
+                                    {
+                                        classroom: "A5",
+                                        allowedTypes: ['linux', 'cross'],
+                                        max: 1,
+                                        course: [
+                                        ]
+                                    }
+                                ]
+                            },
+                            {   ordertime: 16,
+                                time: "22:00",
+                                max: 5,
+                                classrooms: [
+                                    {
+                                        classroom: "A1",
+                                        allowedTypes: ['linux', 'cross'],
+                                        max: 1,
+                                        course: [
+
+                                        ]
+                                    },
+                                    {
+                                        classroom: "A2",
+                                        allowedTypes: ['cross', 'linux', 'windows'],
+                                        max: 1,
+                                        course: [
+
+                                        ]
+                                    },
+                                    {
+                                        classroom: "A3",
+                                        allowedTypes: ['linux', 'cross'],
+                                        max: 1,
+                                        course: [
+
+                                        ]
+                                    },
+                                    {
+                                        classroom: "A4",
+                                        allowedTypes: ['cross', 'linux', 'windows'],
+                                        max: 1,
+                                        course: [
+
+                                        ]
+                                    },
+                                    {
+                                        classroom: "A5",
+                                        allowedTypes: ['linux', 'cross'],
+                                        max: 1,
+                                        course: [
+                                        ]
+                                    }
+                                ]
                             }
                         ];
                     };
@@ -306,6 +802,7 @@
 
 
             var loadCourses = function () {
+                $scope.courseList = [];
                 var promise = $http.get("/api/home/courseList");
                 promise.then(function (response) {
 
@@ -337,8 +834,6 @@
 
                 return status;
             };
-
-
 
         };
 }(angular));
