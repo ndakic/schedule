@@ -12,39 +12,30 @@ import java.util.List;
  */
 
 @Entity
-@Table(name = "classroom_table")
 public class Classrooms implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+
     private String classroom;
 
-    private String max;
+    private Integer max;
 
     private String[] allowedTypes;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, targetEntity = Course.class)
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Course> course;
-
 
     public Classrooms() {
     }
 
-    public Classrooms(String classroom, String max, String[] allowedTypes, List<Course> course) {
+    public Classrooms(String classroom, Integer max, String[] allowedTypes, List<Course> course) {
         this.classroom = classroom;
         this.max = max;
         this.allowedTypes = allowedTypes;
         this.course = course;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getClassroom() {
@@ -55,11 +46,11 @@ public class Classrooms implements Serializable {
         this.classroom = classroom;
     }
 
-    public String getMax() {
+    public Integer getMax() {
         return max;
     }
 
-    public void setMax(String max) {
+    public void setMax(Integer max) {
         this.max = max;
     }
 
@@ -82,7 +73,6 @@ public class Classrooms implements Serializable {
     @Override
     public String toString() {
         return "Classrooms{" +
-                "id=" + id +
                 ", classroom='" + classroom + '\'' +
                 ", max='" + max + '\'' +
                 ", allowedTypes=" + Arrays.toString(allowedTypes) +

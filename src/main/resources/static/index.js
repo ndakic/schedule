@@ -105,6 +105,7 @@
             },
             link: function(scope) {
                 scope.selected = _removeTime(scope.selected || moment());
+                console.log("bla: ",scope.selected);
                 scope.month = scope.selected.clone();
 
                 var start = scope.selected.clone();

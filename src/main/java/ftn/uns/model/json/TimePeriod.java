@@ -17,22 +17,22 @@ public class TimePeriod implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Long id; // za svaki schedule/datum se moraju izgenerisati jedinstveni termini da ne bi dolazilo do preklapanja istih tih termina
 
     private String time;
 
     private Integer ordertime;
 
-    private String max;
+    private Integer max;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, targetEntity = Classrooms.class)
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @OrderBy(value = "classroom ASC")
     private List<Classrooms> classrooms;
 
     public TimePeriod() {
     }
 
-    public TimePeriod(String time, Integer ordertime, String max, List<Classrooms> classrooms) {
+    public TimePeriod(String time, Integer ordertime, Integer max, List<Classrooms> classrooms) {
         this.time = time;
         this.ordertime = ordertime;
         this.max = max;
@@ -55,11 +55,11 @@ public class TimePeriod implements Serializable {
         this.ordertime = ordertime;
     }
 
-    public String getMax() {
+    public Integer getMax() {
         return max;
     }
 
-    public void setMax(String max) {
+    public void setMax(Integer max) {
         this.max = max;
     }
 

@@ -36,8 +36,8 @@
 .typesDemo ul[dnd-list] .dndPlaceholder {
     display: block;
     background-color: #ddd;
-    padding: 25px;
-    min-height: 42px;
+    padding: 15px;
+    min-height: 25px;
 }
 
 /**
@@ -74,20 +74,20 @@
  */
 .typesDemo ul[dnd-list] li.background-linux {
     background-color: #8daefc;
-    padding: 25px;
-    margin: 5px;
+    padding: 18px;
+    margin: 2px;
 }
 
 .typesDemo ul[dnd-list] li.background-windows {
     background-color: #6cff61;
-    padding: 25px;
-    margin: 5px;
+    padding: 18px;
+    margin: 2px;
 }
 
 .typesDemo ul[dnd-list] li.background-cross{
     background-color: #ff6e09;
-    padding: 25px;
-    margin: 5px;
+    padding: 18px;
+    margin: 2px;
 }
 
 
@@ -192,3 +192,59 @@
     opacity: 0;
     cursor: pointer;
 }
+
+#fiks{
+    /*position:fixed;*/
+    /*top: 0px;*/
+    /*width:100%;*/
+    /*z-index:100;*/
+}
+
+.row{
+    margin-bottom: -35px;
+    margin-top: -10px;
+}
+
+.fixedElement {
+    /*background-color: #c0c0c0;*/
+    position:fixed;
+    /*top:0;*/
+    /*width:100%;*/
+    /*z-index:100;*/
+}
+
+
+
+
+.panel-heading{
+    padding: 3px 5px;
+}
+
+.panel-title{
+
+    font-size: 14px;
+}
+
+.nestedDemo .trashcan ul {
+    list-style: none;
+    padding-left: 0px;
+}
+
+.nestedDemo .trashcan img {
+    /*width: 100%;*/
+    /*-webkit-filter: grayscale(100%);*/
+    /*-moz-filter: grayscale(100%);*/
+    /*filter: grayscale(100%);*/
+}
+
+.nestedDemo .trashcan .dndDragover img {
+    /*width: 100%;*/
+    -webkit-filter: none;
+    -moz-filter: none;
+    filter: none;
+}
+
+.nestedDemo .trashcan .dndPlaceholder {
+    display: none;
+}
+

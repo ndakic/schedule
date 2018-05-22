@@ -18,15 +18,15 @@
             <span class="day">Sat</span>
         </div>
             <div class="week" ng-repeat="week in weeks">
-                <span class="day" ng-class="{ today: day.isToday, 'different-month': !day.isCurrentMonth, selected: day.date.isSame(selected) }" ng-click="select(day)" ng-repeat="day in week.days">{{day.number}}</span>
+                    <span class="day" ng-class="{ today: day.isToday, 'different-month': !day.isCurrentMonth, selected: day.date.isSame(selected) }" ng-click="select(day)" ng-repeat="day in week.days">{{day.number}}</span>
             </div>
     </script>
 
 
-    <div class="col-lg-10 col-lg-offset-1 text-center">
+    <div class="col-lg-8 col-lg-offset-2 text-center">
 
-        <calendar selected="day" ></calendar>
-
+        <calendar selected="day"></calendar>
+        <!--<calendar></calendar>-->
 
         <!--<span>Selected date: <b>{{day.format('DD.MM.YYYY.')}}</b></label> </span>-->
     </div>
@@ -129,7 +129,7 @@
         border-left: solid 1px #cccccc;
         /*font-size: 0.75em;*/
         text-align: center;
-        height: 50px;
+        height: 40px;
         line-height: 30px !important;
         display: inline-block;
         vertical-align: middle;

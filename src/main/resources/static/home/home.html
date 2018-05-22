@@ -1,4 +1,5 @@
 <h2>{{datum}}</h2>
+<!--<button class="btn btn-danger" ng-click="vm.deleteAll()" type="submit">Delete</button>1-->
 <hr>
 
 <div class="typesDemo row">
@@ -20,7 +21,8 @@
 
                                     <ul dnd-list="class.course"
                                         dnd-disable-if="class.course.length >= class.max"
-                                        dnd-allowed-types="class.allowedTypes">
+                                        dnd-allowed-types="class.allowedTypes"
+                                        dnd-inserted="logListEvent('inserted1 at', index, external, type, class.classroom, $parent.item.time, $parent.item.ordertime)">
 
                                         <li ng-repeat="course in class.course"
                                             dnd-draggable="course"
@@ -28,6 +30,8 @@
                                             dnd-disable-if="course.os == 'unknown'"
                                             dnd-moved="class.course.splice($index, 1)"
                                             dnd-selected="selected = course"
+                                            dnd-dragstart="logEvent('Started to drag an item', course)"
+
                                             class="background-{{course.os}}">
 
                                             <div class="name">
@@ -53,63 +57,74 @@
 
 
         <div class="col-lg-4">
-            <div class='my-legend'>
-                <div class='legend-title'>Colors indicate types of classroom based on supported OS</div>
-                <div class='legend-scale'>
-                    <ul class='legend-labels'>
-                        <li><span style='background:#8daefc;'></span>linux</li>
-                        <li><span style='background:#6cff61;'></span>windows</li>
-                        <li><span style='background:#ff6e09;'></span>cross-platform</li>
+            <div class="fixedElement">
+
+                <div class="trashcan box box-grey box-padding">
+                    <!-- If you use [] as referenced list, the dropped elements will be lost -->
+                    <h3>Trashcan</h3>
+                    <ul dnd-list="[]"
+                        dnd-inserted="logListEvent('inserted1 at', index, external, type, class.classroom, $parent.item.time, $parent.item.ordertime)">
+                        <li><img src="images/trash3.png"> Throw trash here..</li>
                     </ul>
+                </div>
+
+
+                <div class='my-legend'>
+                    <div class='legend-title'>Colors indicate types of classroom based on supported OS</div>
+                    <div class='legend-scale'>
+                        <ul class='legend-labels'>
+                            <li><span style='background:#8daefc;'></span>linux</li>
+                            <li><span style='background:#6cff61;'></span>windows</li>
+                            <li><span style='background:#ff6e09;'></span>cross-platform</li>
+                        </ul>
                 </div>
                 <!--<div class='legend-source'></div>-->
             </div>
 
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <i class="fa fa-tasks fa-fw"></i> Choose Course
-                </div>
-                <!-- /.panel-heading -->
-                <div class="panel-body">
-                    <div class="list-group">
-                        <div class="input-group custom-search-form">
-                            <input type="text" class="form-control" placeholder="Search by title.." ng-model="course.title">
-                            <span class="input-group-btn">
-                                <button class="btn btn-default" type="button">
-                                    <i class="fa fa-search"></i>
-                                </button>
-                            </span>
-                        </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <i class="fa fa-tasks fa-fw"></i> Choose Course
+                    </div>
+                    <!-- /.panel-heading -->
+                    <div class="panel-body">
+                        <div class="list-group">
+                            <div class="input-group custom-search-form">
+                                <input type="text" class="form-control" placeholder="Search by title.." ng-model="course.title">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                </span>
+                            </div>
 
-                        <br>
-                            <ul dnd-list="courseList">
-                                <li ng-repeat="course in courseList | filter:course track by $index"
-                                    dnd-draggable="course"
-                                    dnd-type="course.os"
-                                    dnd-disable-if="course.os == 'unknown'"
-                                    dnd-moved="courseList.splice($index, 1)"
-                                    dnd-selected="selected = course"
-                                    class="background-{{course.os}}" ng-show="$index < show">
+                            <br>
+                                <ul dnd-list="courseList"
+                                    dnd-dragover="false">
+                                    <li ng-repeat="course in courseList | filter:course track by $index"
+                                        dnd-draggable="course"
+                                        dnd-type="course.os"
+                                        dnd-disable-if="course.os == 'unknown'"
+                                        dnd-selected="selected = course"
+                                        dnd-dragstart="logEvent('Started to drag an item', course)"
+                                        class="background-{{course.os}}" ng-show="$index < show">
 
-                                    <div class="name">
-                                        <div class="item">{{course.title}}  <em>({{course.department.id}})</em></div>
-                                        <span class="pull-right text-muted small"><em>{{course.os}}</em></span>
-                                        <span class="pull-left text-muted small"><em>{{$index}}</em></span>
-                                    </div>
+                                        <div class="name">
+                                            <div class="item">{{course.title}}  <em>({{course.department.id}})</em></div>
+                                            <span class="pull-right text-muted small"><em>{{course.os}}</em></span>
+                                        </div>
 
-                                </li>
+                                    </li>
 
-                                <li class="dndPlaceholder">
-                                    Drop any here
-                                </li>
-                            </ul>
+                                    <li class="dndPlaceholder">
+                                        Drop any here
+                                    </li>
+                                </ul>
 
-                        <span class="pull-right text-muted small"><em>{{course.department}}</em> </span>
+                            <span class="pull-right text-muted small"><em>{{course.department}}</em> </span>
 
+                            </div>
                         </div>
                     </div>
-                    <!-- /.list-group -->
-                    <a href="" ng-click="show = show + 5;" class="btn btn-default btn-block">View More</a>
                 </div>
 
                 <!--<button class="btn btn-lg btn-primary btn-block" ng-submit="vm.newUser()" type="submit">Save</button> <hr>-->
@@ -125,7 +140,19 @@
     <!--<pre class="code">{{modelAsJson}}</pre>-->
 <!--</div>-->
 
+<script>
 
-<style type='text/css'>
+    $(window).scroll(function(e){
+        var $el = $('.fixedElement');
+        var isPositionFixed = ($el.css('position') == 'fixed');
+        if ($(this).scrollTop() > 200 && !isPositionFixed){
+            $('.fixedElement').css({'position': 'fixed', 'top': '0px'});
 
-</style>
+        }
+        if ($(this).scrollTop() < 200 && isPositionFixed)
+        {
+            $('.fixedElement').css({'position': 'static', 'top': '0px'});
+        }
+    });
+
+</script>
