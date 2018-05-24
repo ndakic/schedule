@@ -15,28 +15,37 @@ import java.util.List;
 public class Schedule implements Serializable{
 
     @Id
-    private String realdate;
+    private String day;
+
+    private Integer dayorder;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @OrderBy(value = "ordertime ASC")
     private List<TimePeriod> timePeriodList;
 
-
-
     public Schedule() {
     }
 
-    public Schedule(String realdate, List<TimePeriod> timePeriodList) {
-        this.realdate = realdate;
+    public Schedule(String day, Integer dayorder, List<TimePeriod> timePeriodList) {
+        this.day = day;
+        this.dayorder = dayorder;
         this.timePeriodList = timePeriodList;
     }
 
-    public String getRealdate() {
-        return realdate;
+    public String getDay() {
+        return day;
     }
 
-    public void setRealdate(String realdate) {
-        this.realdate = realdate;
+    public void setDay(String day) {
+        this.day = day;
+    }
+
+    public Integer getDayorder() {
+        return dayorder;
+    }
+
+    public void setDayorder(Integer dayorder) {
+        this.dayorder = dayorder;
     }
 
     public List<TimePeriod> getTimePeriodList() {
@@ -50,7 +59,8 @@ public class Schedule implements Serializable{
     @Override
     public String toString() {
         return "Schedule{" +
-                ", realdate='" + realdate + '\'' +
+                "day='" + day + '\'' +
+                ", dayorder=" + dayorder +
                 ", timePeriodList=" + timePeriodList +
                 '}';
     }

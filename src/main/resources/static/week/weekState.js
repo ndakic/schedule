@@ -1,7 +1,6 @@
 /**
- * Created by daka on 5/19/18.
+ * Created by daka on 5/24/18.
  */
-
 
 (function() {
     'use strict';
@@ -12,7 +11,7 @@
     stateConfig.$inject = ['$stateProvider'];
 
     function stateConfig($stateProvider) {
-        $stateProvider.state('calendar', {
+        $stateProvider.state('week', {
             parent: 'app',
             url: '/',
             data: {
@@ -20,8 +19,8 @@
             },
             views: {
                 'content@': {
-                    templateUrl: 'calendar/calendar.html',
-                    controller: 'calendarCtrl',
+                    templateUrl: 'week/week.html',
+                    controller: 'weekCtrl',
                     controllerAs: 'vm'
                 }
             }

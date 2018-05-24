@@ -1,8 +1,8 @@
-<h2>{{datum}}</h2>
-<!--<button class="btn btn-danger" ng-click="vm.deleteAll()" type="submit">Delete</button>1-->
-<hr>
 
-<div class="typesDemo row">
+<div class="container">
+    <h2>{{entity.day}}</h2>
+    <hr>
+    <div class="typesDemo row">
             <div class="col-lg-8">
                 <div ng-repeat="item in lists">
                     <div class="panel panel-info">
@@ -81,55 +81,50 @@
                 <!--<div class='legend-source'></div>-->
             </div>
 
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <i class="fa fa-tasks fa-fw"></i> Choose Course
-                    </div>
-                    <!-- /.panel-heading -->
-                    <div class="panel-body">
-                        <div class="list-group">
-                            <div class="input-group custom-search-form">
-                                <input type="text" class="form-control" placeholder="Search by title.." ng-model="course.title">
-                                <span class="input-group-btn">
-                                    <button class="btn btn-default" type="button">
-                                        <i class="fa fa-search"></i>
-                                    </button>
-                                </span>
-                            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <i class="fa fa-tasks fa-fw"></i> Choose Course
+                </div>
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+                    <div class="list-group">
+                        <div class="input-group custom-search-form">
+                            <input type="text" class="form-control" placeholder="Search by title.." ng-model="course.title">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="button">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </span>
+                        </div>
 
-                            <br>
-                                <ul dnd-list="courseList"
-                                    dnd-dragover="false">
-                                    <li ng-repeat="course in courseList | filter:course track by $index"
-                                        dnd-draggable="course"
-                                        dnd-type="course.os"
-                                        dnd-disable-if="course.os == 'unknown'"
-                                        dnd-selected="selected = course"
-                                        dnd-dragstart="logEvent('Started to drag an item', course)"
-                                        class="background-{{course.os}}" ng-show="$index < show">
+                        <br>
+                            <ul dnd-list="courseList"
+                                dnd-dragover="false">
+                                <li ng-repeat="course in courseList | filter:course track by $index"
+                                    dnd-draggable="course"
+                                    dnd-type="course.os"
+                                    dnd-disable-if="course.os == 'unknown'"
+                                    dnd-selected="selected = course"
+                                    dnd-dragstart="logEvent('Started to drag an item', course)"
+                                    class="background-{{course.os}}" ng-show="$index < show">
 
-                                        <div class="name">
-                                            <div class="item">{{course.title}}  <em>({{course.department.id}})</em></div>
-                                            <span class="pull-right text-muted small"><em>{{course.os}}</em></span>
-                                        </div>
+                                    <div class="name">
+                                        <div class="item">{{course.title}}  <em>({{course.department.id}})</em></div>
+                                        <span class="pull-right text-muted small"><em>{{course.os}}</em></span>
+                                    </div>
 
-                                    </li>
+                                </li>
 
-                                    <li class="dndPlaceholder">
-                                        Drop any here
-                                    </li>
-                                </ul>
+                                <li class="dndPlaceholder">
+                                    Drop any here
+                                </li>
+                            </ul>
 
-                            <span class="pull-right text-muted small"><em>{{course.department}}</em> </span>
+                        <span class="pull-right text-muted small"><em>{{course.department}}</em> </span>
 
-                            </div>
                         </div>
                     </div>
                 </div>
-
-                <!--<button class="btn btn-lg btn-primary btn-block" ng-submit="vm.newUser()" type="submit">Save</button> <hr>-->
-
-                <!-- /.panel-body -->
             </div>
         </div>
     </div>

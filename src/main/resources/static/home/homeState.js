@@ -11,9 +11,9 @@
     stateConfig.$inject = ['$stateProvider'];
 
     function stateConfig($stateProvider) {
-        $stateProvider.state('day', {
+        $stateProvider.state('schedule', {
             parent: 'app',
-            url: '/calendar/{id}',
+            url: '/schedule/{id}',
             data: {
                 authorities: []
             },
@@ -23,6 +23,11 @@
                     controller: 'homeCtrl',
                     controllerAs: 'vm'
                 }
+            },
+            resolve: {
+                entity: ['$stateParams', 'Schedule', function($stateParams, Schedule) {
+                    return Schedule.get({id : $stateParams.id}).$promise;
+                }]
             }
         });
     }

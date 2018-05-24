@@ -13,6 +13,7 @@ import ftn.uns.repository.CourseRepository;
 import ftn.uns.repository.ScheduleRepository;
 import ftn.uns.repository.TimePeriodRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -159,14 +160,20 @@ public class HomeController {
     }
 
     @GetMapping("/schedule/{id}")
-    public Schedule getSchedule(@PathVariable String id) throws Exception{
-        return scheduleRepository.findOneByRealdate(id);
+    public ResponseEntity getSchedule(@PathVariable String id) throws Exception{
+
+        Schedule schedule = scheduleRepository.findOneByDay(id);
+
+        if(schedule == null)
+            return new ResponseEntity<Schedule>(schedule, HttpStatus.NO_CONTENT);
+
+        return new ResponseEntity<Schedule>(schedule, HttpStatus.OK);
 
     }
 
     @GetMapping("/schedules")
     public List<Schedule> getAllSchedules() throws Exception{
-        return scheduleRepository.findAll();
+        return scheduleRepository.findAllByOrderByDayorderAsc();
 
     }
 

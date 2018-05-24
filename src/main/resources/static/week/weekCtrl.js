@@ -1,0 +1,820 @@
+/**
+ * Created by daka on 5/24/18.
+ */
+
+
+(function (angular) {
+    angular.module('HCIApp')
+        .controller('weekCtrl', function($scope, $http, $state){
+            var vm = this;
+
+            var loadAllSchedules = function () {
+                var promise = $http.get("/api/home/schedules");
+                promise.then(function (response) {
+                    $scope.schedules = response.data;
+                    console.log("All Schedules loaded", response.data);
+                    if(response.data.length == 0){
+                        var order = 0;
+                        var days = ['Monday', "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
+                        for(var day in days){
+                            saveSchedule(days[day], order);
+                            order++;
+                        }
+                    }
+                });
+            };
+
+            loadAllSchedules();
+
+
+            function saveSchedule(day, order) {
+                console.log("Save started!");
+                $scope.data = {
+                    "day": day,
+                    "dayorder": order,
+                    "timePeriodList": $scope.lists
+                };
+
+                var promise = $http.post("/api/home/schedule", $scope.data);
+                promise.then(function (response) {
+                    console.log("Week schedule created!");
+                });
+
+            };
+
+
+            $scope.lists = [
+                {
+                    ordertime: 1,
+                    time: "7:00",
+                    max: 5,
+                    classrooms: [
+                        {
+                            classroom: "A1",
+                            allowedTypes: ['linux', 'cross'],
+                            max: 1,
+                            course: [
+
+                            ]
+                        },
+                        {
+                            classroom: "A2",
+                            allowedTypes: ['linux', 'cross'],
+                            max: 1,
+                            course: [
+
+                            ]
+                        },
+                        {
+                            classroom: "A3",
+                            allowedTypes: ['windows', 'cross'],
+                            max: 1,
+                            course: [
+
+                            ]
+                        },
+                        {
+                            classroom: "A4",
+                            allowedTypes: ['windows', 'cross'],
+                            max: 1,
+                            course: [
+
+                            ]
+                        },
+                        {
+                            classroom: "A5",
+                            allowedTypes: ['cross', 'linux', 'windows'],
+                            max: 1,
+                            course: [
+                            ]
+                        }
+                    ]
+                },
+                {   ordertime: 2,
+                    time: "7:15",
+                    max: 5,
+                    classrooms: [
+                        {
+                            classroom: "A1",
+                            allowedTypes: ['linux', 'cross'],
+                            max: 1,
+                            course: [
+
+                            ]
+                        },
+                        {
+                            classroom: "A2",
+                            allowedTypes: ['linux', 'cross'],
+                            max: 1,
+                            course: [
+
+                            ]
+                        },
+                        {
+                            classroom: "A3",
+                            allowedTypes: ['windows', 'cross'],
+                            max: 1,
+                            course: [
+
+                            ]
+                        },
+                        {
+                            classroom: "A4",
+                            allowedTypes: ['windows', 'cross'],
+                            max: 1,
+                            course: [
+
+                            ]
+                        },
+                        {
+                            classroom: "A5",
+                            allowedTypes: ['cross', 'linux', 'windows'],
+                            max: 1,
+                            course: [
+                            ]
+                        }
+                    ]
+                },
+
+                {   ordertime: 3,
+                    time: "7:30",
+                    max: 5,
+                    classrooms: [
+                        {
+                            classroom: "A1",
+                            allowedTypes: ['linux', 'cross'],
+                            max: 1,
+                            course: [
+
+                            ]
+                        },
+                        {
+                            classroom: "A2",
+                            allowedTypes: ['linux', 'cross'],
+                            max: 1,
+                            course: [
+
+                            ]
+                        },
+                        {
+                            classroom: "A3",
+                            allowedTypes: ['windows', 'cross'],
+                            max: 1,
+                            course: [
+
+                            ]
+                        },
+                        {
+                            classroom: "A4",
+                            allowedTypes: ['windows', 'cross'],
+                            max: 1,
+                            course: [
+
+                            ]
+                        },
+                        {
+                            classroom: "A5",
+                            allowedTypes: ['cross', 'linux', 'windows'],
+                            max: 1,
+                            course: [
+                            ]
+                        }
+                    ]
+                },
+                {
+                    ordertime: 4,
+                    time: "07:45",
+                    max: 5,
+                    classrooms: [
+                        {
+                            classroom: "A1",
+                            allowedTypes: ['linux', 'cross'],
+                            max: 1,
+                            course: [
+
+                            ]
+                        },
+                        {
+                            classroom: "A2",
+                            allowedTypes: ['linux', 'cross'],
+                            max: 1,
+                            course: [
+
+                            ]
+                        },
+                        {
+                            classroom: "A3",
+                            allowedTypes: ['windows', 'cross'],
+                            max: 1,
+                            course: [
+
+                            ]
+                        },
+                        {
+                            classroom: "A4",
+                            allowedTypes: ['windows', 'cross'],
+                            max: 1,
+                            course: [
+
+                            ]
+                        },
+                        {
+                            classroom: "A5",
+                            allowedTypes: ['cross', 'linux', 'windows'],
+                            max: 1,
+                            course: [
+                            ]
+                        }
+                    ]
+                },
+                {   ordertime: 5,
+                    time: "08:00",
+                    max: 5,
+                    classrooms: [
+                        {
+                            classroom: "A1",
+                            allowedTypes: ['linux', 'cross'],
+                            max: 1,
+                            course: [
+
+                            ]
+                        },
+                        {
+                            classroom: "A2",
+                            allowedTypes: ['linux', 'cross'],
+                            max: 1,
+                            course: [
+
+                            ]
+                        },
+                        {
+                            classroom: "A3",
+                            allowedTypes: ['windows', 'cross'],
+                            max: 1,
+                            course: [
+
+                            ]
+                        },
+                        {
+                            classroom: "A4",
+                            allowedTypes: ['windows', 'cross'],
+                            max: 1,
+                            course: [
+
+                            ]
+                        },
+                        {
+                            classroom: "A5",
+                            allowedTypes: ['cross', 'linux', 'windows'],
+                            max: 1,
+                            course: [
+                            ]
+                        }
+                    ]
+                },
+                {   ordertime: 6,
+                    time: "08:15",
+                    max: 5,
+                    classrooms: [
+                        {
+                            classroom: "A1",
+                            allowedTypes: ['linux', 'cross'],
+                            max: 1,
+                            course: [
+
+                            ]
+                        },
+                        {
+                            classroom: "A2",
+                            allowedTypes: ['linux', 'cross'],
+                            max: 1,
+                            course: [
+
+                            ]
+                        },
+                        {
+                            classroom: "A3",
+                            allowedTypes: ['windows', 'cross'],
+                            max: 1,
+                            course: [
+
+                            ]
+                        },
+                        {
+                            classroom: "A4",
+                            allowedTypes: ['windows', 'cross'],
+                            max: 1,
+                            course: [
+
+                            ]
+                        },
+                        {
+                            classroom: "A5",
+                            allowedTypes: ['cross', 'linux', 'windows'],
+                            max: 1,
+                            course: [
+                            ]
+                        }
+                    ]
+                },
+                {   ordertime: 7,
+                    time: "08:30",
+                    max: 5,
+                    classrooms: [
+                        {
+                            classroom: "A1",
+                            allowedTypes: ['linux', 'cross'],
+                            max: 1,
+                            course: [
+
+                            ]
+                        },
+                        {
+                            classroom: "A2",
+                            allowedTypes: ['linux', 'cross'],
+                            max: 1,
+                            course: [
+
+                            ]
+                        },
+                        {
+                            classroom: "A3",
+                            allowedTypes: ['windows', 'cross'],
+                            max: 1,
+                            course: [
+
+                            ]
+                        },
+                        {
+                            classroom: "A4",
+                            allowedTypes: ['windows', 'cross'],
+                            max: 1,
+                            course: [
+
+                            ]
+                        },
+                        {
+                            classroom: "A5",
+                            allowedTypes: ['cross', 'linux', 'windows'],
+                            max: 1,
+                            course: [
+                            ]
+                        }
+                    ]
+                },
+                {   ordertime: 8,
+                    time: "08:45",
+                    max: 5,
+                    classrooms: [
+                        {
+                            classroom: "A1",
+                            allowedTypes: ['linux', 'cross'],
+                            max: 1,
+                            course: [
+
+                            ]
+                        },
+                        {
+                            classroom: "A2",
+                            allowedTypes: ['linux', 'cross'],
+                            max: 1,
+                            course: [
+
+                            ]
+                        },
+                        {
+                            classroom: "A3",
+                            allowedTypes: ['windows', 'cross'],
+                            max: 1,
+                            course: [
+
+                            ]
+                        },
+                        {
+                            classroom: "A4",
+                            allowedTypes: ['windows', 'cross'],
+                            max: 1,
+                            course: [
+
+                            ]
+                        },
+                        {
+                            classroom: "A5",
+                            allowedTypes: ['cross', 'linux', 'windows'],
+                            max: 1,
+                            course: [
+                            ]
+                        }
+                    ]
+                },
+                {   ordertime: 9,
+                    time: "09:00",
+                    max: 5,
+                    classrooms: [
+                        {
+                            classroom: "A1",
+                            allowedTypes: ['linux', 'cross'],
+                            max: 1,
+                            course: [
+
+                            ]
+                        },
+                        {
+                            classroom: "A2",
+                            allowedTypes: ['linux', 'cross'],
+                            max: 1,
+                            course: [
+
+                            ]
+                        },
+                        {
+                            classroom: "A3",
+                            allowedTypes: ['windows', 'cross'],
+                            max: 1,
+                            course: [
+
+                            ]
+                        },
+                        {
+                            classroom: "A4",
+                            allowedTypes: ['windows', 'cross'],
+                            max: 1,
+                            course: [
+
+                            ]
+                        },
+                        {
+                            classroom: "A5",
+                            allowedTypes: ['cross', 'linux', 'windows'],
+                            max: 1,
+                            course: [
+                            ]
+                        }
+                    ]
+                },
+                {   ordertime: 10,
+                    time: "09:15",
+                    max: 5,
+                    classrooms: [
+                        {
+                            classroom: "A1",
+                            allowedTypes: ['linux', 'cross'],
+                            max: 1,
+                            course: [
+
+                            ]
+                        },
+                        {
+                            classroom: "A2",
+                            allowedTypes: ['linux', 'cross'],
+                            max: 1,
+                            course: [
+
+                            ]
+                        },
+                        {
+                            classroom: "A3",
+                            allowedTypes: ['windows', 'cross'],
+                            max: 1,
+                            course: [
+
+                            ]
+                        },
+                        {
+                            classroom: "A4",
+                            allowedTypes: ['windows', 'cross'],
+                            max: 1,
+                            course: [
+
+                            ]
+                        },
+                        {
+                            classroom: "A5",
+                            allowedTypes: ['cross', 'linux', 'windows'],
+                            max: 1,
+                            course: [
+                            ]
+                        }
+                    ]
+                },
+                {   ordertime: 11,
+                    time: "09:30",
+                    max: 5,
+                    classrooms: [
+                        {
+                            classroom: "A1",
+                            allowedTypes: ['linux', 'cross'],
+                            max: 1,
+                            course: [
+
+                            ]
+                        },
+                        {
+                            classroom: "A2",
+                            allowedTypes: ['linux', 'cross'],
+                            max: 1,
+                            course: [
+
+                            ]
+                        },
+                        {
+                            classroom: "A3",
+                            allowedTypes: ['windows', 'cross'],
+                            max: 1,
+                            course: [
+
+                            ]
+                        },
+                        {
+                            classroom: "A4",
+                            allowedTypes: ['windows', 'cross'],
+                            max: 1,
+                            course: [
+
+                            ]
+                        },
+                        {
+                            classroom: "A5",
+                            allowedTypes: ['cross', 'linux', 'windows'],
+                            max: 1,
+                            course: [
+                            ]
+                        }
+                    ]
+                },
+                {   ordertime: 12,
+                    time: "09:45",
+                    max: 5,
+                    classrooms: [
+                        {
+                            classroom: "A1",
+                            allowedTypes: ['linux', 'cross'],
+                            max: 1,
+                            course: [
+
+                            ]
+                        },
+                        {
+                            classroom: "A2",
+                            allowedTypes: ['linux', 'cross'],
+                            max: 1,
+                            course: [
+
+                            ]
+                        },
+                        {
+                            classroom: "A3",
+                            allowedTypes: ['windows', 'cross'],
+                            max: 1,
+                            course: [
+
+                            ]
+                        },
+                        {
+                            classroom: "A4",
+                            allowedTypes: ['windows', 'cross'],
+                            max: 1,
+                            course: [
+
+                            ]
+                        },
+                        {
+                            classroom: "A5",
+                            allowedTypes: ['cross', 'linux', 'windows'],
+                            max: 1,
+                            course: [
+                            ]
+                        }
+                    ]
+                },
+                {   ordertime: 13,
+                    time: "10:00",
+                    max: 5,
+                    classrooms: [
+                        {
+                            classroom: "A1",
+                            allowedTypes: ['linux', 'cross'],
+                            max: 1,
+                            course: [
+
+                            ]
+                        },
+                        {
+                            classroom: "A2",
+                            allowedTypes: ['linux', 'cross'],
+                            max: 1,
+                            course: [
+
+                            ]
+                        },
+                        {
+                            classroom: "A3",
+                            allowedTypes: ['windows', 'cross'],
+                            max: 1,
+                            course: [
+
+                            ]
+                        },
+                        {
+                            classroom: "A4",
+                            allowedTypes: ['windows', 'cross'],
+                            max: 1,
+                            course: [
+
+                            ]
+                        },
+                        {
+                            classroom: "A5",
+                            allowedTypes: ['cross', 'linux', 'windows'],
+                            max: 1,
+                            course: [
+                            ]
+                        }
+                    ]
+                },
+                {   ordertime: 14,
+                    time: "10:15",
+                    max: 5,
+                    classrooms: [
+                        {
+                            classroom: "A1",
+                            allowedTypes: ['linux', 'cross'],
+                            max: 1,
+                            course: [
+
+                            ]
+                        },
+                        {
+                            classroom: "A2",
+                            allowedTypes: ['linux', 'cross'],
+                            max: 1,
+                            course: [
+
+                            ]
+                        },
+                        {
+                            classroom: "A3",
+                            allowedTypes: ['windows', 'cross'],
+                            max: 1,
+                            course: [
+
+                            ]
+                        },
+                        {
+                            classroom: "A4",
+                            allowedTypes: ['windows', 'cross'],
+                            max: 1,
+                            course: [
+
+                            ]
+                        },
+                        {
+                            classroom: "A5",
+                            allowedTypes: ['cross', 'linux', 'windows'],
+                            max: 1,
+                            course: [
+                            ]
+                        }
+                    ]
+                },
+                {   ordertime: 15,
+                    time: "10:30",
+                    max: 5,
+                    classrooms: [
+                        {
+                            classroom: "A1",
+                            allowedTypes: ['linux', 'cross'],
+                            max: 1,
+                            course: [
+
+                            ]
+                        },
+                        {
+                            classroom: "A2",
+                            allowedTypes: ['linux', 'cross'],
+                            max: 1,
+                            course: [
+
+                            ]
+                        },
+                        {
+                            classroom: "A3",
+                            allowedTypes: ['windows', 'cross'],
+                            max: 1,
+                            course: [
+
+                            ]
+                        },
+                        {
+                            classroom: "A4",
+                            allowedTypes: ['windows', 'cross'],
+                            max: 1,
+                            course: [
+
+                            ]
+                        },
+                        {
+                            classroom: "A5",
+                            allowedTypes: ['cross', 'linux', 'windows'],
+                            max: 1,
+                            course: [
+                            ]
+                        }
+                    ]
+                },
+                {   ordertime: 16,
+                    time: "10:45",
+                    max: 5,
+                    classrooms: [
+                        {
+                            classroom: "A1",
+                            allowedTypes: ['linux', 'cross'],
+                            max: 1,
+                            course: [
+
+                            ]
+                        },
+                        {
+                            classroom: "A2",
+                            allowedTypes: ['linux', 'cross'],
+                            max: 1,
+                            course: [
+
+                            ]
+                        },
+                        {
+                            classroom: "A3",
+                            allowedTypes: ['windows', 'cross'],
+                            max: 1,
+                            course: [
+
+                            ]
+                        },
+                        {
+                            classroom: "A4",
+                            allowedTypes: ['windows', 'cross'],
+                            max: 1,
+                            course: [
+
+                            ]
+                        },
+                        {
+                            classroom: "A5",
+                            allowedTypes: ['cross', 'linux', 'windows'],
+                            max: 1,
+                            course: [
+                            ]
+                        }
+                    ]
+                },
+                {   ordertime: 17,
+                    time: "11:00",
+                    max: 5,
+                    classrooms: [
+                        {
+                            classroom: "A1",
+                            allowedTypes: ['linux', 'cross'],
+                            max: 1,
+                            course: [
+
+                            ]
+                        },
+                        {
+                            classroom: "A2",
+                            allowedTypes: ['linux', 'cross'],
+                            max: 1,
+                            course: [
+
+                            ]
+                        },
+                        {
+                            classroom: "A3",
+                            allowedTypes: ['windows', 'cross'],
+                            max: 1,
+                            course: [
+
+                            ]
+                        },
+                        {
+                            classroom: "A4",
+                            allowedTypes: ['windows', 'cross'],
+                            max: 1,
+                            course: [
+
+                            ]
+                        },
+                        {
+                            classroom: "A5",
+                            allowedTypes: ['cross', 'linux', 'windows'],
+                            max: 1,
+                            course: [
+                            ]
+                        }
+                    ]
+                }
+            ];
+
+
+        });
+}(angular));

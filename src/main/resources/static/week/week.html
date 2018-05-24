@@ -1,1 +1,55 @@
-<p> test </p>
+
+<div class="typesDemo row">
+    <div class="col-lg-12">
+
+        <div ng-repeat="day in schedules" style="display: inline-block; width: 16%; text-align: center; margin: 0.2%; vertical-align: top;">
+            <h4> <a ui-sref="schedule({id:day.day})"> {{ day.day }} </a> </h4>
+            <div ng-repeat="item in day.timePeriodList">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h3 class="panel-title" style="margin-top: 8px;">{{item.time}}</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row" style="margin-bottom: -55px; margin-top: -15px;" >
+                            <div ng-repeat="class in item.classrooms" style="display: inline-block; width: 20%; text-align: center; ">
+
+                                <!--<span ng-if="class.allowedTypes[0] == 'linux'" style="color: #8daefc"> {{class.classroom}} </span>-->
+
+                                <!--<span ng-if="class.allowedTypes[0] == 'windows'" style="color: #6cff61"> {{class.classroom}} </span>-->
+
+                                <!--<span ng-if="class.allowedTypes[0] == 'cross'" style="color: #ff6e09"> {{class.classroom}} </span>-->
+
+
+                                <span ng-if="class.allowedTypes[0] == 'linux'" > {{class.classroom}} </span>
+
+                                <span ng-if="class.allowedTypes[0] == 'windows'" > {{class.classroom}} </span>
+
+                                <span ng-if="class.allowedTypes[0] == 'cross'" > {{class.classroom}} </span>
+
+                                <ul dnd-list="class.course">
+
+                                    <li ng-repeat="course in class.course"
+
+                                        class="background-{{course.os}}-week">
+
+                                        <div class="name">
+                                            <div class="item">{{course.label}}</div>
+                                            <span class="pull-center text-muted small"><em>{{course.department.id}}</em> </span>
+                                        </div>
+
+                                    </li>
+
+                                    <li class="dndPlaceholder">
+                                        Drop any <strong>{{class.allowedTypes.join(' or ')}}</strong> here
+                                    </li>
+                                </ul>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

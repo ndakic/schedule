@@ -91,6 +91,22 @@
 }
 
 
+.typesDemo ul[dnd-list] li.background-linux-week {
+    background-color: #8daefc;
+
+}
+
+.typesDemo ul[dnd-list] li.background-windows-week {
+    background-color: #6cff61;
+
+}
+
+.typesDemo ul[dnd-list] li.background-cross-week {
+    background-color: #ff6e09;
+}
+
+
+
 /**
  * Handle positioning
  */
