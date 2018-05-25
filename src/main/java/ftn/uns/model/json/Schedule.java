@@ -1,5 +1,7 @@
 package ftn.uns.model.json;
 
+import lombok.Data;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
@@ -11,7 +13,7 @@ import java.util.List;
  */
 
 @Entity
-@Table(name = "schedule")
+@Data
 public class Schedule implements Serializable{
 
     @Id
@@ -19,7 +21,7 @@ public class Schedule implements Serializable{
 
     private Integer dayorder;
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.ALL)
     @OrderBy(value = "ordertime ASC")
     private List<TimePeriod> timePeriodList;
 
@@ -30,38 +32,5 @@ public class Schedule implements Serializable{
         this.day = day;
         this.dayorder = dayorder;
         this.timePeriodList = timePeriodList;
-    }
-
-    public String getDay() {
-        return day;
-    }
-
-    public void setDay(String day) {
-        this.day = day;
-    }
-
-    public Integer getDayorder() {
-        return dayorder;
-    }
-
-    public void setDayorder(Integer dayorder) {
-        this.dayorder = dayorder;
-    }
-
-    public List<TimePeriod> getTimePeriodList() {
-        return timePeriodList;
-    }
-
-    public void setTimePeriodList(List<TimePeriod> timePeriodList) {
-        this.timePeriodList = timePeriodList;
-    }
-
-    @Override
-    public String toString() {
-        return "Schedule{" +
-                "day='" + day + '\'' +
-                ", dayorder=" + dayorder +
-                ", timePeriodList=" + timePeriodList +
-                '}';
     }
 }

@@ -1,5 +1,6 @@
 package ftn.uns.model.json;
 
+import lombok.Data;
 import org.hibernate.annotations.NotFound;
 import org.hibernate.annotations.NotFoundAction;
 
@@ -12,20 +13,21 @@ import java.util.List;
  */
 
 @Entity
+@Data
 public class TimePeriod implements Serializable {
-
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id; // za svaki schedule/datum se moraju izgenerisati jedinstveni termini da ne bi dolazilo do preklapanja istih tih termina
+    private Long id;
 
+    //@Id
     private String time;
 
     private Integer ordertime;
 
     private Integer max;
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.ALL)
     @OrderBy(value = "classroom ASC")
     private List<Classrooms> classrooms;
 
@@ -37,47 +39,5 @@ public class TimePeriod implements Serializable {
         this.ordertime = ordertime;
         this.max = max;
         this.classrooms = classrooms;
-    }
-
-    public String getTime() {
-        return time;
-    }
-
-    public void setTime(String time) {
-        this.time = time;
-    }
-
-    public Integer getOrdertime() {
-        return ordertime;
-    }
-
-    public void setOrdertime(Integer ordertime) {
-        this.ordertime = ordertime;
-    }
-
-    public Integer getMax() {
-        return max;
-    }
-
-    public void setMax(Integer max) {
-        this.max = max;
-    }
-
-    public List<Classrooms> getClassrooms() {
-        return classrooms;
-    }
-
-    public void setClassrooms(List<Classrooms> classrooms) {
-        this.classrooms = classrooms;
-    }
-
-    @Override
-    public String toString() {
-        return "TimePeriod{" +
-                "time='" + time + '\'' +
-                ", ordertime=" + ordertime +
-                ", max='" + max + '\'' +
-                ", classrooms=" + classrooms +
-                '}';
     }
 }

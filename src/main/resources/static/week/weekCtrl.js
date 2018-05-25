@@ -8,6 +8,18 @@
         .controller('weekCtrl', function($scope, $http, $state){
             var vm = this;
 
+
+            var insertData = function () {
+                var promise = $http.get("/api/home/insertData");
+                promise.then(function (response) {
+                    console.log("Data inserted.");
+                    loadAllSchedules();
+                });
+            };
+
+            insertData();
+
+
             var loadAllSchedules = function () {
                 var promise = $http.get("/api/home/schedules");
                 promise.then(function (response) {
@@ -25,8 +37,6 @@
                 });
             };
 
-            loadAllSchedules();
-
 
             function saveSchedule(day, order) {
                 console.log("Save started!");
@@ -40,7 +50,6 @@
                 promise.then(function (response) {
                     console.log("Week schedule created!");
                 });
-
             };
 
 
@@ -184,7 +193,7 @@
                 },
                 {
                     ordertime: 4,
-                    time: "07:45",
+                    time: "7:45",
                     max: 5,
                     classrooms: [
                         {
@@ -229,7 +238,7 @@
                     ]
                 },
                 {   ordertime: 5,
-                    time: "08:00",
+                    time: "8:00",
                     max: 5,
                     classrooms: [
                         {
@@ -274,7 +283,7 @@
                     ]
                 },
                 {   ordertime: 6,
-                    time: "08:15",
+                    time: "8:15",
                     max: 5,
                     classrooms: [
                         {
@@ -319,7 +328,7 @@
                     ]
                 },
                 {   ordertime: 7,
-                    time: "08:30",
+                    time: "8:30",
                     max: 5,
                     classrooms: [
                         {
@@ -364,7 +373,7 @@
                     ]
                 },
                 {   ordertime: 8,
-                    time: "08:45",
+                    time: "8:45",
                     max: 5,
                     classrooms: [
                         {
@@ -409,7 +418,7 @@
                     ]
                 },
                 {   ordertime: 9,
-                    time: "09:00",
+                    time: "9:00",
                     max: 5,
                     classrooms: [
                         {
@@ -454,7 +463,7 @@
                     ]
                 },
                 {   ordertime: 10,
-                    time: "09:15",
+                    time: "9:15",
                     max: 5,
                     classrooms: [
                         {
@@ -499,7 +508,7 @@
                     ]
                 },
                 {   ordertime: 11,
-                    time: "09:30",
+                    time: "9:30",
                     max: 5,
                     classrooms: [
                         {
@@ -544,7 +553,7 @@
                     ]
                 },
                 {   ordertime: 12,
-                    time: "09:45",
+                    time: "9:45",
                     max: 5,
                     classrooms: [
                         {

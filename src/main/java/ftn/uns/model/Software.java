@@ -1,6 +1,7 @@
 package ftn.uns.model;
 
 import ftn.uns.model.enums.OS;
+import lombok.Data;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,9 +13,8 @@ import java.io.Serializable;
  * Created by daka on 5/19/18.
  */
 @Entity
+@Data
 public class Software implements Serializable{
-
-
 
     @Id
     private String id;
@@ -30,39 +30,5 @@ public class Software implements Serializable{
         this.id = id;
         this.title = title;
         this.os = os;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public OS getOs() {
-        return os;
-    }
-
-    public void setOs(OS os) {
-        this.os = os;
-    }
-
-
-    @Override
-    public String toString() {
-        return "Software{" +
-                "id='" + id + '\'' +
-                ", title='" + title + '\'' +
-                ", os=" + os +
-                '}';
     }
 }

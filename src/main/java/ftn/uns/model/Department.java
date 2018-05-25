@@ -1,5 +1,7 @@
 package ftn.uns.model;
 
+import lombok.Data;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,6 +13,7 @@ import java.io.Serializable;
  */
 
 @Entity
+@Data
 public class Department implements Serializable {
 
     @Id
@@ -26,27 +29,4 @@ public class Department implements Serializable {
         this.title = title;
     }
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    @Override
-    public String toString() {
-        return "Department{" +
-                "id='" + id + '\'' +
-                ", title='" + title + '\'' +
-                '}';
-    }
 }

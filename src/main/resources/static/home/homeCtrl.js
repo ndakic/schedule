@@ -20,6 +20,9 @@
             $scope.show = 5;
             $scope.searchedTerm = "";
             $scope.lists = entity.timePeriodList;
+            $scope.autocompleteOptions = ["ON", "OFF"];
+            $scope.autocomplete = "OFF";
+            $scope.followMe = "OFF";
 
             function saveSchedule() {
                 console.log("Save started!");
@@ -108,22 +111,26 @@
                  var calc_addition = ($scope.draggedCourse.duration - 15)/15;
                  console.log("Treba dodati: " + calc_addition);
 
-                 // for(var time in $scope.lists){
-                 //    if($scope.lists[time]["ordertime"] > order && $scope.lists[time]["ordertime"] <= order + calc_addition){
-                 //        console.log($scope.lists[time]["ordertime"]);
-                 //        for(var room in $scope.lists[time]["classrooms"]){
-                 //            if($scope.lists[time]["classrooms"][room]["classroom"] == classroom){
-                 //                console.log("room: ", $scope.lists[time]["classrooms"][room]);
-                 //                if($scope.lists[time]["classrooms"][room]["course"].length == 0)
-                 //                    $scope.lists[time]["classrooms"][room]["course"].push($scope.draggedCourse);
-                 //                else{
-                 //                    //Alertify.error("Ne moze!");
-                 //                    break;
-                 //                }
-                 //            }
-                 //        }
-                 //    };
-                 // };
+                 if($scope.autocomplete === "ON"){
+                     for(var time in $scope.lists){
+                         if($scope.lists[time]["ordertime"] > order && $scope.lists[time]["ordertime"] <= order + calc_addition){
+                             console.log($scope.lists[time]["ordertime"]);
+                             for(var room in $scope.lists[time]["classrooms"]){
+                                 if($scope.lists[time]["classrooms"][room]["classroom"] == classroom){
+                                     console.log("room: ", $scope.lists[time]["classrooms"][room]);
+                                     if($scope.lists[time]["classrooms"][room]["course"].length == 0)
+                                         $scope.lists[time]["classrooms"][room]["course"].push($scope.draggedCourse);
+                                     else{
+                                         //Alertify.error("Ne moze!");
+                                         break;
+                                     }
+                                 }
+                             }
+                         };
+                     };
+                 };
+
+
 
                  saveSchedule();
 
