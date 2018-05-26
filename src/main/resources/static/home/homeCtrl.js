@@ -111,6 +111,8 @@
                  var calc_addition = ($scope.draggedCourse.duration - 15)/15;
                  console.log("Treba dodati: " + calc_addition);
 
+                 var count = 0;
+
                  if($scope.autocomplete === "ON"){
                      for(var time in $scope.lists){
                          if($scope.lists[time]["ordertime"] > order && $scope.lists[time]["ordertime"] <= order + calc_addition){
@@ -118,12 +120,21 @@
                              for(var room in $scope.lists[time]["classrooms"]){
                                  if($scope.lists[time]["classrooms"][room]["classroom"] == classroom){
                                      console.log("room: ", $scope.lists[time]["classrooms"][room]);
-                                     if($scope.lists[time]["classrooms"][room]["course"].length == 0)
-                                         $scope.lists[time]["classrooms"][room]["course"].push($scope.draggedCourse);
-                                     else{
-                                         //Alertify.error("Ne moze!");
+
+                                     if($scope.lists[time]["classrooms"][room]["course"].length == 0){
+                                         if(count != 2)
+                                             $scope.lists[time]["classrooms"][room]["course"].push($scope.draggedCourse);
+
+                                         count++;
+                                         if(count == 2)
+                                             calc_addition++;
+                                     }else{
                                          break;
                                      }
+
+
+
+
                                  }
                              }
                          };
