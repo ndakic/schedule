@@ -1,11 +1,9 @@
-package ftn.uns.model.json;
+package ftn.uns.model;
 
 import lombok.Data;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -14,10 +12,10 @@ import java.util.List;
 
 @Entity
 @Data
-public class Schedule implements Serializable{
+public class Day implements Serializable{
 
     @Id
-    private String day;
+    private String id;
 
     private Integer dayorder;
 
@@ -25,11 +23,11 @@ public class Schedule implements Serializable{
     @OrderBy(value = "ordertime ASC")
     private List<TimePeriod> timePeriodList;
 
-    public Schedule() {
+    public Day() {
     }
 
-    public Schedule(String day, Integer dayorder, List<TimePeriod> timePeriodList) {
-        this.day = day;
+    public Day(String id, Integer dayorder, List<TimePeriod> timePeriodList) {
+        this.id = id;
         this.dayorder = dayorder;
         this.timePeriodList = timePeriodList;
     }

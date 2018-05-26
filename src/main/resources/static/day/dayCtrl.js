@@ -6,13 +6,12 @@
     'use strict';
     angular
         .module('HCIApp')
-        .controller('homeCtrl', homeCtrl);
+        .controller('dayCtrl', homeCtrl);
 
         homeCtrl.$inject = ['$scope', '$http','$location', 'Alertify', 'entity'];
 
          function homeCtrl($scope, $http, $location, Alertify, entity) {
             var vm = this;
-            console.log("entity", entity);
             $scope.entity = entity;
 
             $scope.selected = {};
@@ -24,15 +23,14 @@
             $scope.autocomplete = "OFF";
             $scope.followMe = "OFF";
 
-            function saveSchedule() {
-                console.log("Save started!");
+            function saveDay() {
                 $scope.data = {
-                    "day": entity.day,
+                    "id": entity.id,
                     "dayorder": entity.dayorder,
                     "timePeriodList": $scope.lists
                 };
 
-                var promise = $http.post("/api/home/schedule", $scope.data);
+                var promise = $http.post("/api/day/saveDay", $scope.data);
                 promise.then(function (response) {
                     console.log("Sacuvano!");
                 });
@@ -44,36 +42,15 @@
                 promise.then(function (response) {
                      for(var course in response.data){
                          if(checkExist(response.data[course]) == false){
-                             console.log(response.data[course]);
                              $scope.courseList.push(response.data[course]);
                          }
                      };
-
-                    console.log("lista", $scope.courseList);
                 });
             };
 
             loadCourses();
 
-            // function checkCourse(course_id) {
-            //     var status = false;
-            //
-            //      for(var schedule in $scope.schedules) {
-            //          for (var time in $scope.schedules[schedule]["timePeriodList"]) {
-            //              for (var classroom in $scope.schedules[schedule]["timePeriodList"][time]["classrooms"]) {
-            //                  for (var course in $scope.schedules[schedule]["timePeriodList"][time]["classrooms"][classroom]["course"]) {
-            //                      if (($scope.schedules[schedule]["timePeriodList"][time]["classrooms"][classroom]["course"][course]["id"]) === course_id) {
-            //                          status = true;
-            //                      };
-            //                  };
-            //              };
-            //          };
-            //      };
-            //
-            //     return status;
-            // };
-            
-             function checkExist(course) {
+            function checkExist(course) {
                  var status = false;
                  for(var co in $scope.courseList)
                      if($scope.courseList[co].id == course.id)
@@ -83,34 +60,15 @@
 
              }
 
-             $scope.dragoverCallback = function(index, external, type, callback) {
-                 $scope.logListEvent('dragged over', index, external, type);
-                 // Invoke callback to origin for container types.
-                 if (type == 'container' && !external) {
-                     console.log('Container being dragged contains ' + callback() + ' items');
-                 }
-                 return index < 10; // Disallow dropping in the third row.
-             };
 
-             $scope.dropCallback = function(index, item, external, type) {
-                 $scope.logListEvent('dropped at', index, external, type);
-                 // Return false here to cancel drop. Return true if you insert the item yourself.
-                 return item;
-             };
 
-             $scope.logEvent = function(message, course) {
+            $scope.logEvent = function(message, course) {
                  $scope.draggedCourse = course;
-                 console.log(message, course);
              };
 
-             $scope.logListEvent = function(action, index, external, type, classroom, time, order) {
-                 var message = external ? 'External ' : '';
-                 message += 'course ' + $scope.draggedCourse.id + ' duration ' + $scope.draggedCourse.duration + ' type ' + type + ' element was ' + action + ' position ' + index + ' classroom ' + classroom + ' time ' + time + ' dan ' + $scope.datum + ' ordertime ' + order;
-                 console.log(message);
+            $scope.logListEvent = function(action, index, external, type, classroom, time, order) {
 
                  var calc_addition = ($scope.draggedCourse.duration - 15)/15;
-                 console.log("Treba dodati: " + calc_addition);
-
                  var count = 0;
 
                  if($scope.autocomplete === "ON"){
@@ -131,20 +89,13 @@
                                      }else{
                                          break;
                                      }
-
-
-
-
-                                 }
-                             }
+                                 };
+                             };
                          };
                      };
                  };
 
-
-
-                 saveSchedule();
-
+                 saveDay();
              };
 
         };

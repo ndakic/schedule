@@ -11,22 +11,22 @@
     stateConfig.$inject = ['$stateProvider'];
 
     function stateConfig($stateProvider) {
-        $stateProvider.state('schedule', {
+        $stateProvider.state('day', {
             parent: 'app',
-            url: '/schedule/{id}',
+            url: '/day/{id}',
             data: {
                 authorities: []
             },
             views: {
                 'content@': {
-                    templateUrl: 'home/home.html',
-                    controller: 'homeCtrl',
+                    templateUrl: 'day/day.html',
+                    controller: 'dayCtrl',
                     controllerAs: 'vm'
                 }
             },
             resolve: {
-                entity: ['$stateParams', 'Schedule', function($stateParams, Schedule) {
-                    return Schedule.get({id : $stateParams.id}).$promise;
+                entity: ['$stateParams', 'Day', function($stateParams, Day) {
+                    return Day.get({id : $stateParams.id}).$promise;
                 }]
             }
         });

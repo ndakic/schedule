@@ -1,23 +1,17 @@
 package ftn.uns.controller;
 
 
-import ftn.uns.model.Course;
-import ftn.uns.model.Department;
-import ftn.uns.model.Software;
+import ftn.uns.model.*;
 import ftn.uns.model.enums.OS;
-import ftn.uns.model.json.Classrooms;
-import ftn.uns.model.json.Schedule;
-import ftn.uns.model.json.TimePeriod;
 import ftn.uns.repository.ClassroomsRepository;
 import ftn.uns.repository.CourseRepository;
-import ftn.uns.repository.ScheduleRepository;
+import ftn.uns.repository.DayRepository;
 import ftn.uns.repository.TimePeriodRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -33,13 +27,12 @@ public class HomeController {
     CourseRepository courseRepository;
 
     @Autowired
-    ScheduleRepository scheduleRepository;
-
-    @Autowired
     TimePeriodRepository timePeriodRepository;
 
     @Autowired
     ClassroomsRepository classroomsRepository;
+
+
 
     @RequestMapping("/insertData")
     public ResponseEntity populateData() throws Exception{
@@ -140,50 +133,7 @@ public class HomeController {
         return courseRepository.findAll();
     }
 
-    @RequestMapping("/schedule")
-    public Schedule saveSchedule(@RequestBody Schedule schedule) throws Exception{
-
-        //timePeriodRepository.saveAll(schedule.getTimePeriodList());
-
-//        System.out.println("PASSED " + schedule.toString());
-        Schedule saved = scheduleRepository.save(schedule);
-        System.out.println("SAVED: " + saved.toString());
-
-        return saved;
-    }
-
-    @GetMapping("/schedule/{id}")
-    public ResponseEntity getSchedule(@PathVariable String id) throws Exception{
-
-        Schedule schedule = scheduleRepository.findOneByDay(id);
-
-        if(schedule == null)
-            return new ResponseEntity<Schedule>(schedule, HttpStatus.NO_CONTENT);
-
-        return new ResponseEntity<Schedule>(schedule, HttpStatus.OK);
-
-    }
-
-    @GetMapping("/schedules")
-    public List<Schedule> getAllSchedules() throws Exception{
-        return scheduleRepository.findAllByOrderByDayorderAsc();
-    }
-
-    @GetMapping(value = "/course/search/{title}")
-    public List<Course> search_articles(@PathVariable String title) throws Exception{
-        return courseRepository.findAllByTitleIgnoreCaseContaining(title);
-    }
-
-    @RequestMapping("/deleteAllData")
-    public String deleteAll() throws Exception{
-
-        scheduleRepository.deleteAll();
-        classroomsRepository.deleteAll();
-        timePeriodRepository.deleteAll();
-        courseRepository.deleteAll();
 
 
-        return "deleted!";
-    }
 
 }

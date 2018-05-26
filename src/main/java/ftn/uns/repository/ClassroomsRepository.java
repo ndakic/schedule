@@ -1,6 +1,6 @@
 package ftn.uns.repository;
 
-import ftn.uns.model.json.Classrooms;
+import ftn.uns.model.Classrooms;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**

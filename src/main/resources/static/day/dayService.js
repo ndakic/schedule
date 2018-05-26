@@ -6,12 +6,12 @@
     'use strict';
     angular
         .module('HCIApp')
-        .factory('Schedule', Schedule);
+        .factory('Day', Day);
 
-    Schedule.$inject = ['$resource', '$state'];
+    Day.$inject = ['$resource', '$state'];
 
-    function Schedule ($resource, $state) {
-        var resourceUrl =  '/api/home/schedule/:id';
+    function Day ($resource, $state) {
+        var resourceUrl =  '/api/day/:id';
 
         return $resource(resourceUrl, {}, {
             'query': { method: 'GET', isArray: true},
@@ -20,7 +20,6 @@
                 transformResponse: function (data) {
                     if (data) {
                         data = angular.fromJson(data);
-
                     }
                     return data;
                 }

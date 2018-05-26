@@ -46,7 +46,7 @@ var ngMinorVer = angular.version.minor;
  * single view and it is unnamed then you can populate it like so:
  * <pre>
  * <div ui-view></div> 
- * $stateProvider.state("home", {
+ * $stateProvider.state("day", {
  *   template: "<h1>HELLO!</h1>"
  * })
  * </pre>
@@ -54,7 +54,7 @@ var ngMinorVer = angular.version.minor;
  * The above is a convenient shortcut equivalent to specifying your view explicitly with the {@link ui.router.state.$stateProvider#views `views`}
  * config property, by name, in this case an empty name:
  * <pre>
- * $stateProvider.state("home", {
+ * $stateProvider.state("day", {
  *   views: {
  *     "": {
  *       template: "<h1>HELLO!</h1>"
@@ -70,7 +70,7 @@ var ngMinorVer = angular.version.minor;
  * <div ui-view="main"></div>
  * </pre> 
  * <pre>
- * $stateProvider.state("home", {
+ * $stateProvider.state("day", {
  *   views: {
  *     "main": {
  *       template: "<h1>HELLO!</h1>"
@@ -87,7 +87,7 @@ var ngMinorVer = angular.version.minor;
  * </pre>
  * 
  * <pre>
- * $stateProvider.state("home", {
+ * $stateProvider.state("day", {
  *   views: {
  *     "": {
  *       template: "<h1>HELLO!</h1>"

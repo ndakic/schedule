@@ -8,50 +8,47 @@
         .controller('weekCtrl', function($scope, $http, $state){
             var vm = this;
 
-
             var insertData = function () {
                 var promise = $http.get("/api/home/insertData");
                 promise.then(function (response) {
-                    console.log("Data inserted.");
-                    loadAllSchedules();
+                    console.log("Insert Data!");
+                    loadAllDays();
                 });
             };
 
             insertData();
 
-
-            var loadAllSchedules = function () {
-                var promise = $http.get("/api/home/schedules");
+            var loadAllDays = function () {
+                var promise = $http.get("/api/day/days");
+                console.log("test1");
                 promise.then(function (response) {
-                    $scope.schedules = response.data;
-                    console.log("All Schedules loaded", response.data);
+                    $scope.days = response.data;
+                    console.log("days: ", $scope.days);
                     if(response.data.length == 0){
                         var order = 0;
                         var days = ['Monday', "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
                         for(var day in days){
-                            saveSchedule(days[day], order);
+                            saveDay(days[day], order);
                             order++;
                         }
                     }
                 });
             };
 
-
-            function saveSchedule(day, order) {
+            function saveDay(day, order) {
                 console.log("Save started!");
                 $scope.data = {
-                    "day": day,
+                    "id": day,
                     "dayorder": order,
                     "timePeriodList": $scope.lists
                 };
 
-                var promise = $http.post("/api/home/schedule", $scope.data);
+                var promise = $http.post("/api/day/saveDay", $scope.data);
                 promise.then(function (response) {
                     console.log("Week schedule created!");
                 });
             };
-
 
             $scope.lists = [
                 {

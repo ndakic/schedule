@@ -1,6 +1,6 @@
 package ftn.uns.repository;
 
-import ftn.uns.model.json.TimePeriod;
+import ftn.uns.model.TimePeriod;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**

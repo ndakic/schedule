@@ -1,12 +1,10 @@
 package ftn.uns.model;
 
 import ftn.uns.model.enums.OS;
-import ftn.uns.model.json.Classrooms;
 import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.List;
 
 /**
  * Created by daka on 5/16/18.

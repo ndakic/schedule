@@ -1,4 +1,4 @@
-package ftn.uns.model.json;
+package ftn.uns.model;
 
 import ftn.uns.model.Course;
 import lombok.Data;
