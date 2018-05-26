@@ -6,11 +6,11 @@
     'use strict';
     angular
         .module('HCIApp')
-        .controller('dayCtrl', homeCtrl);
+        .controller('dayCtrl', dayCtrl);
 
-        homeCtrl.$inject = ['$scope', '$http','$location', 'Alertify', 'entity'];
+        dayCtrl.$inject = ['$scope', '$http','$location', 'Alertify', 'entity'];
 
-         function homeCtrl($scope, $http, $location, Alertify, entity) {
+         function dayCtrl($scope, $http, $location, Alertify, entity) {
             var vm = this;
             $scope.entity = entity;
 
@@ -59,7 +59,6 @@
                 return status;
 
              }
-
 
 
             $scope.logEvent = function(message, course) {

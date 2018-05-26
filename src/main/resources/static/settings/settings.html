@@ -1,0 +1,17 @@
+
+
+<div class="container">
+
+    <p style="font-size: 13px;"><b> Choose classrooms to display:</b> </p>
+
+    <label ng-repeat="(room,enabled) in classrooms">
+        <ul style="list-style: none;">
+            <li><input type="checkbox" ng-model="classrooms[room]" /> {{room}}</li>
+        </ul>
+
+
+    </label>
+    <div ng-if="minimum == false"><p style="color: red"> Minimum 3 classes must be selected! </p></div>
+
+
+</div>

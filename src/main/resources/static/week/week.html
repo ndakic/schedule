@@ -11,7 +11,7 @@
     </div>
 </div>
 
-<div class="typesDemo row">
+<div class="typesDemo text-center">
     <div class="col-lg-12">
         <div ng-repeat="day in days" style="display: inline-block; width: 16%; text-align: center; margin: 0.2%; vertical-align: top;">
             <h4 > <a ui-sref="day({id:day.id})" style="color: #ec5a20">{{ day.id }}</a> </h4>
@@ -24,24 +24,22 @@
                         <div class="row">
                             <div ng-repeat="class in item.classrooms" style="display: inline-block; width: 20%; text-align: center; ">
 
-                                <!--<span ng-if="class.allowedTypes[0] == 'linux'" style="color: #8daefc"> {{class.classroom}} </span>-->
-                                <!--<span ng-if="class.allowedTypes[0] == 'windows'" style="color: #6cff61"> {{class.classroom}} </span>-->
-                                <!--<span ng-if="class.allowedTypes[0] == 'cross'" style="color: #ff6e09"> {{class.classroom}} </span>-->
+                                <div ng-if="vm.checkSettings(class.classroom)">
 
-                                <span style="font-size: 11px; color: darkgrey">{{class.classroom}}</span>
+                                    <span style="font-size: 11px; color: darkgrey">{{class.classroom}}</span>
 
-                                <ul dnd-list="class.course" style="min-height: 15px;">
-                                    <li ng-repeat="course in class.course"
-                                        class="background-{{course.department.id}}">
-                                        <div class="name">
-                                            <div class="item">{{course.label}}</div>
-                                            <span class="pull-center text-muted small" style="font-size: 70%"><em>{{course.department.id}}</em> </span>
-                                        </div>
-                                    </li>
-                                    <li class="dndPlaceholder">
-                                        Drop any <strong>{{class.allowedTypes.join(' or ')}}</strong> here
-                                    </li>
-                                </ul>
+                                    <ul dnd-list="class.course" style="min-height: 15px;">
+                                        <li ng-repeat="course in class.course"
+                                            class="background-{{course.department.id}}">
+                                            <div class="name">
+                                                <div class="item">{{course.label}}</div>
+                                                <span class="pull-center text-muted small" style="font-size: 70%"><em>{{course.department.id}}</em> </span>
+                                            </div>
+                                        </li>
+                                    </ul>
+
+                                </div>
+
                             </div>
                         </div>
                     </div>

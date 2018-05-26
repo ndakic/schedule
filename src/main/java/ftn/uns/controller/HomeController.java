@@ -3,16 +3,17 @@ package ftn.uns.controller;
 
 import ftn.uns.model.*;
 import ftn.uns.model.enums.OS;
-import ftn.uns.repository.ClassroomsRepository;
-import ftn.uns.repository.CourseRepository;
-import ftn.uns.repository.DayRepository;
-import ftn.uns.repository.TimePeriodRepository;
+import ftn.uns.model.settings.ClassroomsSettings;
+import ftn.uns.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by daka on 5/8/18.
@@ -32,7 +33,11 @@ public class HomeController {
     @Autowired
     ClassroomsRepository classroomsRepository;
 
+    @Autowired
+    DayRepository dayRepository;
 
+    @Autowired
+    ClassroomsSettingsRepository classroomsSettingsRepository;
 
     @RequestMapping("/insertData")
     public ResponseEntity populateData() throws Exception{
@@ -73,17 +78,6 @@ public class HomeController {
             courseRepository.save(course13);
             courseRepository.save(course14);
 
-            Classrooms classroom1 = new Classrooms("A1", 1, new String [] {"linux", "cross"}, null);
-            Classrooms classroom2 = new Classrooms("A2", 1, new String [] {"linux", "cross"}, null);
-            Classrooms classroom3 = new Classrooms("A3", 1, new String [] {"windows", "cross"}, null);
-            Classrooms classroom4 = new Classrooms("A4", 1, new String [] {"windows", "cross"}, null);
-            Classrooms classroom5 = new Classrooms("A5", 1, new String [] {"cross", "linux", "windows"}, null);
-
-            classroomsRepository.save(classroom1);
-            classroomsRepository.save(classroom2);
-            classroomsRepository.save(classroom3);
-            classroomsRepository.save(classroom4);
-            classroomsRepository.save(classroom5);
 
             TimePeriod timePeriod1 = new TimePeriod("7:00", 1, 5, null);
             TimePeriod timePeriod2 = new TimePeriod("7:15", 2, 5, null);
@@ -103,28 +97,74 @@ public class HomeController {
             TimePeriod timePeriod16 = new TimePeriod("10:45", 16, 5, null);
             TimePeriod timePeriod17 = new TimePeriod("11:00", 17, 5, null);
 
-            timePeriodRepository.save(timePeriod1);
-            timePeriodRepository.save(timePeriod2);
-            timePeriodRepository.save(timePeriod3);
-            timePeriodRepository.save(timePeriod4);
-            timePeriodRepository.save(timePeriod5);
-            timePeriodRepository.save(timePeriod6);
-            timePeriodRepository.save(timePeriod7);
-            timePeriodRepository.save(timePeriod8);
-            timePeriodRepository.save(timePeriod9);
-            timePeriodRepository.save(timePeriod10);
-            timePeriodRepository.save(timePeriod11);
-            timePeriodRepository.save(timePeriod12);
-            timePeriodRepository.save(timePeriod13);
-            timePeriodRepository.save(timePeriod14);
-            timePeriodRepository.save(timePeriod15);
-            timePeriodRepository.save(timePeriod16);
-            timePeriodRepository.save(timePeriod17);
+            List<TimePeriod> period = new ArrayList<>();
+
+            period.add(timePeriod1);
+            period.add(timePeriod2);
+            period.add(timePeriod3);
+            period.add(timePeriod4);
+            period.add(timePeriod5);
+            period.add(timePeriod6);
+            period.add(timePeriod7);
+            period.add(timePeriod8);
+            period.add(timePeriod9);
+            period.add(timePeriod10);
+            period.add(timePeriod11);
+            period.add(timePeriod12);
+            period.add(timePeriod13);
+            period.add(timePeriod14);
+            period.add(timePeriod15);
+            period.add(timePeriod16);
+            period.add(timePeriod17);
+
+
+            for(TimePeriod timePeriod: period){
+
+                Classrooms classroom1 = new Classrooms("A1", 1, new String [] {"linux", "cross"}, null);
+                Classrooms classroom2 = new Classrooms("A2", 1, new String [] {"linux", "cross"}, null);
+                Classrooms classroom3 = new Classrooms("A3", 1, new String [] {"windows", "cross"}, null);
+                Classrooms classroom4 = new Classrooms("A4", 1, new String [] {"windows", "cross"}, null);
+                Classrooms classroom5 = new Classrooms("A5", 1, new String [] {"cross", "linux", "windows"}, null);
+                Classrooms classroom6 = new Classrooms("A6", 1, new String [] {"cross", "linux", "windows"}, null);
+
+                List<Classrooms> classrooms = new ArrayList<>();
+
+                classrooms.add(classroom1);
+                classrooms.add(classroom2);
+                classrooms.add(classroom3);
+                classrooms.add(classroom4);
+                classrooms.add(classroom5);
+                classrooms.add(classroom6);
+
+                timePeriod.setClassrooms(classrooms);
+
+            }
+
+            Integer order = 0;
+            String [] days = new String[] {"Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"};
+
+            for(String day: days){
+                System.out.println("Day: " + day);
+                dayRepository.save(new Day(day, order, period));
+                order++;
+            }
+
+
+            Set<String> classroomsSet = new HashSet<>();
+            List<Classrooms> classroomsList = classroomsRepository.findAll();
+
+            for(Classrooms classrooms: classroomsList)
+                classroomsSet.add(classrooms.getClassroom());
+
+            for(String room: classroomsSet){
+                classroomsSettingsRepository.save(new ClassroomsSettings(room, true));
+            }
+
 
             System.out.println("Data inserted!");
         }
 
-        return new ResponseEntity<>(null, HttpStatus.OK);
+        return new ResponseEntity<>(courseList, HttpStatus.OK);
 
     }
 
@@ -133,7 +173,32 @@ public class HomeController {
         return courseRepository.findAll();
     }
 
+    @RequestMapping("/classrooms")
+    public Set<String> getClassrooms() throws Exception{
 
+        Set<String> classroomsSet = new HashSet<>();
+        List<Classrooms> classroomsList = classroomsRepository.findAll();
+
+        for(Classrooms classrooms: classroomsList)
+            classroomsSet.add(classrooms.getClassroom());
+
+        return classroomsSet;
+
+    }
+
+    @PostMapping("/saveClassroomSettings")
+    public ResponseEntity saveClassSettings(@RequestBody ClassroomsSettings classroomsSettings) throws Exception{
+
+        ClassroomsSettings room =  classroomsSettingsRepository.save(classroomsSettings);
+
+        return new ResponseEntity(room, HttpStatus.OK);
+
+    }
+
+    @GetMapping("/getClassroomSettings")
+    public List<ClassroomsSettings> allClassroomSettings() throws Exception{
+        return classroomsSettingsRepository.findAll();
+    }
 
 
 }

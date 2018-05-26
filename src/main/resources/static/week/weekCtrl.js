@@ -2,11 +2,12 @@
  * Created by daka on 5/24/18.
  */
 
-
 (function (angular) {
     angular.module('HCIApp')
         .controller('weekCtrl', function($scope, $http, $state){
             var vm = this;
+            vm.checkSettings = checkSettings;
+
 
             var insertData = function () {
                 var promise = $http.get("/api/home/insertData");
@@ -18,21 +19,31 @@
 
             insertData();
 
+            var loadClassrooms = function () {
+                var promise = $http.get("/api/home/getClassroomSettings");
+                promise.then(function (response) {
+                    $scope.classroomSettings = response.data;
+                });
+            };
+
+            loadClassrooms();
+
+            function checkSettings(classrooom) {
+
+                var status = false;
+
+                for(var room in $scope.classroomSettings){
+                    if($scope.classroomSettings[room]["id"] == classrooom){
+                       return $scope.classroomSettings[room]["status"];
+                    }
+                }
+            }
+
             var loadAllDays = function () {
                 var promise = $http.get("/api/day/days");
-                console.log("test1");
                 promise.then(function (response) {
                     $scope.days = response.data;
                     console.log("days: ", $scope.days);
-                    if(response.data.length == 0){
-                        var order = 0;
-                        var days = ['Monday', "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-
-                        for(var day in days){
-                            saveDay(days[day], order);
-                            order++;
-                        }
-                    }
                 });
             };
 
