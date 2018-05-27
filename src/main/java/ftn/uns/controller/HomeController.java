@@ -39,6 +39,9 @@ public class HomeController {
     @Autowired
     ClassroomsSettingsRepository classroomsSettingsRepository;
 
+    @Autowired
+    DepartmentRepository departmentRepository;
+
     @RequestMapping("/insertData")
     public ResponseEntity populateData() throws Exception{
 
@@ -47,21 +50,27 @@ public class HomeController {
         if(courseList.isEmpty()){
             System.out.println("Populate Course");
 
-            Course course1 = new Course("HCI-SIIT", "HCI", "Iterakcija Covek Racunar", 45, new Department("SIIT", "Softversko Inzenjersvo i Informacione Tehnologije"), OS.cross);
-            Course course2 = new Course("PP-SIIT", "PP","Programski Prevodioci", 90, new Department("SIIT", "Softversko Inzenjersvo i Informacione Tehnologije"), OS.linux);
-            Course course3 = new Course("NTP-SIIT", "NTP", "Napredne Tehnike Programiranja", 45, new Department("SIIT", "Softversko Inzenjersvo i Informacione Tehnologije"), OS.linux);
-            Course course4 = new Course("OS-SIIT", "OS","Operativni Sistemi", 45, new Department("SIIT", "Elektrotehnika i Racunarstvo"), OS.linux);
-            Course course5 = new Course("OP-SIIT", "OP","Organizacija Podataka", 90, new Department("SIIT", "Softversko Inzenjersvo i Informacione Tehnologije"), OS.windows);
-            Course course6 = new Course("WEB-SIIT", "WEB","Web Programiranje", 45, new Department("SIIT", "Elektrotehnika i Racunarstvo"), OS.linux);
-            Course course7 = new Course("MU-SIIT", "MU","Masinsko Ucenje", 90, new Department("SIIT", "Softversko Inzenjersvo i Informacione Tehnologije"), OS.linux);
+            Department siit = new Department("SIIT", "Softversko Inzenjersvo i Informacione Tehnologije", "18fff5");
+            Department e2 = new Department("E2", "Racunarstvo i Automatika", "fff722");
 
-            Course course8 = new Course("HCI-E2", "HCI","Iterakcija Covek Racunar", 45, new Department("E2", "Racunarstvo i Automatika"), OS.cross);
-            Course course9 = new Course("PP-E2", "PP","Programski Prevodioci", 45, new Department("E2", "Racunarstvo i Automatika"), OS.linux);
-            Course course10 = new Course("NTP-E2", "NTP","Napredne Tehnike Programiranja", 45, new Department("E2", "Racunarstvo i Automatika"), OS.linux);
-            Course course11 = new Course("OS-E2", "OS","Operativni Sistemi", 45, new Department("E2", "Racunarstvo i Automatika"), OS.linux);
-            Course course12 = new Course("OP-E2", "OP","Organizacija Podataka", 45, new Department("E2", "Racunarstvo i Automatika"), OS.windows);
-            Course course13 = new Course("WEB-E2", "WEB","Web Programiranje", 45, new Department("E2", "Elektrotehnika i Racunarstvo"), OS.windows);
-            Course course14 = new Course("MU-E2", "MU","Masinsko Ucenje", 45, new Department("E2", "Racunarstvo i Automatika"), OS.windows);
+            departmentRepository.save(siit);
+            departmentRepository.save(e2);
+
+            Course course1 = new Course("HCI-SIIT", "HCI", "Iterakcija Covek Racunar", 45, siit, OS.cross);
+            Course course2 = new Course("PP-SIIT", "PP","Programski Prevodioci", 90, siit, OS.linux);
+            Course course3 = new Course("NTP-SIIT", "NTP", "Napredne Tehnike Programiranja", 45, siit, OS.linux);
+            Course course4 = new Course("OS-SIIT", "OS","Operativni Sistemi", 45, siit, OS.linux);
+            Course course5 = new Course("OP-SIIT", "OP","Organizacija Podataka", 90, siit, OS.windows);
+            Course course6 = new Course("WEB-SIIT", "WEB","Web Programiranje", 45, siit, OS.linux);
+            Course course7 = new Course("MU-SIIT", "MU","Masinsko Ucenje", 90, siit, OS.linux);
+
+            Course course8 = new Course("HCI-E2", "HCI","Iterakcija Covek Racunar", 45, e2, OS.cross);
+            Course course9 = new Course("PP-E2", "PP","Programski Prevodioci", 45, e2, OS.linux);
+            Course course10 = new Course("NTP-E2", "NTP","Napredne Tehnike Programiranja", 45, e2, OS.linux);
+            Course course11 = new Course("OS-E2", "OS","Operativni Sistemi", 45, e2, OS.linux);
+            Course course12 = new Course("OP-E2", "OP","Organizacija Podataka", 45, e2, OS.windows);
+            Course course13 = new Course("WEB-E2", "WEB","Web Programiranje", 45, e2, OS.windows);
+            Course course14 = new Course("MU-E2", "MU","Masinsko Ucenje", 45, e2, OS.windows);
 
             courseRepository.save(course1);
             courseRepository.save(course2);
@@ -149,6 +158,7 @@ public class HomeController {
                 order++;
             }
 
+            Integer countClass = 0;
 
             Set<String> classroomsSet = new HashSet<>();
             List<Classrooms> classroomsList = classroomsRepository.findAll();
@@ -157,7 +167,13 @@ public class HomeController {
                 classroomsSet.add(classrooms.getClassroom());
 
             for(String room: classroomsSet){
-                classroomsSettingsRepository.save(new ClassroomsSettings(room, true));
+                if(countClass < 5)
+                    classroomsSettingsRepository.save(new ClassroomsSettings(room, true));
+                else
+                    classroomsSettingsRepository.save(new ClassroomsSettings(room, false));
+
+                countClass++;
+
             }
 
 
@@ -198,6 +214,32 @@ public class HomeController {
     @GetMapping("/getClassroomSettings")
     public List<ClassroomsSettings> allClassroomSettings() throws Exception{
         return classroomsSettingsRepository.findAll();
+    }
+
+    @GetMapping("/departments")
+    public List<Department> getDepartments() throws Exception{
+        return departmentRepository.findAll();
+    }
+
+    @PostMapping("addDepartment")
+    public ResponseEntity addDepartment(@RequestBody Department department) throws Exception{
+
+        Department exist = departmentRepository.findOneById(department.getId());
+
+        if(exist != null)
+            return new ResponseEntity(department, HttpStatus.NO_CONTENT);
+
+        departmentRepository.save(department);
+
+        return new ResponseEntity(department, HttpStatus.OK);
+    }
+
+
+    @PostMapping("deleteDepartment")
+    public ResponseEntity deleteDepartment(@RequestBody Department department) throws Exception{
+        departmentRepository.delete(department);
+
+        return new ResponseEntity(null, HttpStatus.OK);
     }
 
 

@@ -12,6 +12,7 @@
         'Alertify',
         'authentication',
         'dndLists',
+        'colorpicker.module'
     ]);
 
 

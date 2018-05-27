@@ -30,6 +30,15 @@
 
             loadClassrooms();
 
+            var loadDepartments= function () {
+                var promise = $http.get("/api/home/departments");
+                promise.then(function (response) {
+                    $scope.departments = response.data;
+                });
+            };
+
+            loadDepartments();
+
             function checkSettings(classrooom) {
                 //console.log("check");
                 for(var room in $scope.classroomSettings){

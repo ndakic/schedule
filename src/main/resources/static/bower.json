@@ -14,7 +14,7 @@
     "ng-alertify": "^1.0.2",
     "angular-drag-and-drop-lists" : "latest",
     "components-font-awesome": "latest",
-    "angular-moment": "latest"
+    "angular-bootstrap-colorpicker": "latest"
   },
   "devDependencies": {},
   "appPath": "client"

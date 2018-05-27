@@ -71,7 +71,7 @@
                  var count = 0;
 
                  if($scope.autocomplete === "ON"){
-                     for(var time in $scope.lists){
+                     out: for(var time in $scope.lists){
                          if($scope.lists[time]["ordertime"] > order && $scope.lists[time]["ordertime"] <= order + calc_addition){
                              console.log($scope.lists[time]["ordertime"]);
                              for(var room in $scope.lists[time]["classrooms"]){
@@ -86,7 +86,8 @@
                                          if(count == 2)
                                              calc_addition++;
                                      }else{
-                                         break;
+                                         console.log("BREAK: ", $scope.lists[time]["classrooms"][room]["course"]);
+                                         break out;
                                      }
                                  };
                              };

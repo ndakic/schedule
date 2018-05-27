@@ -1,41 +1,38 @@
 
-<div class="container">
-    <div class='my-legend'>
-        <div class='legend-title'>Course Department1234</div> {{roomsCount}}
-        <div class='legend-scale'>
-            <ul class='legend-labels'>
-                <li><span style='background:#18fff5;'></span>SIIT</li>
-                <li><span style='background:#fff722;'></span>E2</li>
-            </ul>
-        </div>
-    </div>
-</div>
+<!--<div class="container">-->
+    <!--<div class='my-legend' style="padding: 0px;">-->
+        <!--<div class='legend-title'>Course Department</div> {{roomsCount}}-->
+        <!--<div class='legend-scale'>-->
+            <!--<ul class='legend-labels' ng-repeat="depart in departments" style="float: none;">-->
+                <!--<li><span style="background: {{depart.color}};"></span>{{depart.id}}</li>-->
+            <!--</ul>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
 
 <div class="typesDemo text-center">
-    <div class="col-lg-12">
-        <div ng-repeat="day in days" style="display: inline-block; width: 16%; text-align: center; margin: 0.2%; vertical-align: top;">
-            <h4 > <a ui-sref="day({id:day.id})" style="color: #ec5a20">{{ day.id }}</a> </h4>
-            <div ng-repeat="item in day.timePeriodList" >
-                <div class="panel panel-info">
-                    <div class="panel-heading">
-                        <h3 class="panel-title"><b>{{item.time}}</b></h3>
-                    </div>
-                    <div class="panel-body">
-                        <div class="row">
-                            <div ng-repeat="classroom in item.classrooms" style="display: inline-block; width: 20%; text-align: center;" ng-if="vm.checkSettings(classroom.classroom) && vm.count()">
+    <div ng-repeat="day in days" class="col-lg-2">
+        <h4 > <a ui-sref="day({id:day.id})" style="color: #ec5a20">{{ day.id }}</a> </h4>
+        <div ng-repeat="item in day.timePeriodList" >
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><b>{{item.time}}</b></h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div ng-repeat="classroom in item.classrooms" style="display: inline-block; width: 20%; text-align: center;" ng-if="vm.checkSettings(classroom.classroom)">
 
-                                    <span style="font-size: 11px; color: darkgrey">{{classroom.classroom}}</span>
+                                <span style="font-size: 11px; color: darkgrey">{{classroom.classroom}}</span>
 
-                                    <ul dnd-list="classroom.course" style="min-height: 15px;">
-                                        <li ng-repeat="course in classroom.course"
-                                            class="background-{{course.department.id}}">
-                                            <div class="name">
-                                                <div class="item">{{course.label}}</div>
-                                                <span class="pull-center text-muted small" style="font-size: 70%"><em>{{course.department.id}}</em> </span>
-                                            </div>
-                                        </li>
-                                    </ul>
-                            </div>
+                                <ul dnd-list="classroom.course" style="min-height: 15px;">
+                                    <li ng-repeat="course in classroom.course"
+                                        style="background-color: #{{course.department.color}}">
+                                        <div class="name">
+                                            <div class="item">{{course.label}}</div>
+                                            <span class="pull-center text-muted small" style="font-size: 70%"><em>{{course.department.id}}</em> </span>
+                                        </div>
+                                    </li>
+                                </ul>
                         </div>
                     </div>
                 </div>

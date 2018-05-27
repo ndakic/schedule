@@ -21,12 +21,15 @@ public class Department implements Serializable {
 
     private String title;
 
+    private String color;
+
+
     public Department() {
     }
 
-    public Department(String id, String title) {
+    public Department(String id, String title, String color) {
         this.id = id;
         this.title = title;
+        this.color = color;
     }
-
 }
