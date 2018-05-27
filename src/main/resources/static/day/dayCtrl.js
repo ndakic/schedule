@@ -12,6 +12,7 @@
 
          function dayCtrl($scope, $http, $location, Alertify, entity) {
             var vm = this;
+            vm.checkSettings = checkSettings;
             $scope.entity = entity;
 
             $scope.selected = {};
@@ -60,7 +61,6 @@
 
              }
 
-
             $scope.logEvent = function(message, course) {
                  $scope.draggedCourse = course;
              };
@@ -96,6 +96,26 @@
 
                  saveDay();
              };
+
+             var loadClassrooms = function () {
+                 var promise = $http.get("/api/home/getClassroomSettings");
+                 promise.then(function (response) {
+                     $scope.classroomSettings = response.data;
+                 });
+             };
+
+             loadClassrooms();
+
+             function checkSettings(classrooom) {
+
+                 var status = false;
+
+                 for(var room in $scope.classroomSettings){
+                     if($scope.classroomSettings[room]["id"] == classrooom){
+                         return $scope.classroomSettings[room]["status"];
+                     }
+                 }
+             }
 
         };
 }(angular));

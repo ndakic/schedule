@@ -32,12 +32,12 @@
         loadClassrooms();
 
         $scope.$watch('classrooms', function(classrooms) {
+            console.log("watch");
             if(status){
-
                 var min = countClasses();
-                if(min < 3)
+                if(min < 5 || min > 5)
                     $scope.minimum = false;
-                if(min >= 3){
+                if(min === 5){
                     $scope.minimum = true;
                     console.log($scope.classrooms);
                     saveClassroomSettings();

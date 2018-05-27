@@ -1,7 +1,7 @@
 
 <div class="container">
     <div class='my-legend'>
-        <div class='legend-title'>Course Department</div>
+        <div class='legend-title'>Course Department1234</div> {{roomsCount}}
         <div class='legend-scale'>
             <ul class='legend-labels'>
                 <li><span style='background:#18fff5;'></span>SIIT</li>
@@ -15,21 +15,19 @@
     <div class="col-lg-12">
         <div ng-repeat="day in days" style="display: inline-block; width: 16%; text-align: center; margin: 0.2%; vertical-align: top;">
             <h4 > <a ui-sref="day({id:day.id})" style="color: #ec5a20">{{ day.id }}</a> </h4>
-            <div ng-repeat="item in day.timePeriodList">
+            <div ng-repeat="item in day.timePeriodList" >
                 <div class="panel panel-info">
                     <div class="panel-heading">
                         <h3 class="panel-title"><b>{{item.time}}</b></h3>
                     </div>
                     <div class="panel-body">
                         <div class="row">
-                            <div ng-repeat="class in item.classrooms" style="display: inline-block; width: 20%; text-align: center; ">
+                            <div ng-repeat="classroom in item.classrooms" style="display: inline-block; width: 20%; text-align: center;" ng-if="vm.checkSettings(classroom.classroom) && vm.count()">
 
-                                <div ng-if="vm.checkSettings(class.classroom)">
+                                    <span style="font-size: 11px; color: darkgrey">{{classroom.classroom}}</span>
 
-                                    <span style="font-size: 11px; color: darkgrey">{{class.classroom}}</span>
-
-                                    <ul dnd-list="class.course" style="min-height: 15px;">
-                                        <li ng-repeat="course in class.course"
+                                    <ul dnd-list="classroom.course" style="min-height: 15px;">
+                                        <li ng-repeat="course in classroom.course"
                                             class="background-{{course.department.id}}">
                                             <div class="name">
                                                 <div class="item">{{course.label}}</div>
@@ -37,9 +35,6 @@
                                             </div>
                                         </li>
                                     </ul>
-
-                                </div>
-
                             </div>
                         </div>
                     </div>

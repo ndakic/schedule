@@ -11,7 +11,7 @@
                         </div>
                         <div class="panel-body">
                             <div class="row">
-                                <div ng-repeat="class in item.classrooms" style="display: inline-block; width: 20%; text-align: center ">
+                                <div ng-repeat="class in item.classrooms" style="display: inline-block; width: 20%; text-align: center" ng-if="vm.checkSettings(class.classroom)">
 
                                     <span ng-if="class.allowedTypes[0] == 'linux'" style="color: #8daefc"> {{class.classroom}} </span>
 
