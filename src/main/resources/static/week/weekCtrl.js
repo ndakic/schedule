@@ -7,8 +7,6 @@
         .controller('weekCtrl', function($scope, $http){
             var vm = this;
             vm.checkSettings = checkSettings;
-            vm.count = count;
-            var count_view = 0;
 
 
             var insertData = function () {
@@ -48,12 +46,6 @@
                 }
             }
             
-            function count() {
-                console.log("test");
-
-                return true;
-                
-            }
 
             var loadAllDays = function () {
                 var promise = $http.get("/api/day/days");

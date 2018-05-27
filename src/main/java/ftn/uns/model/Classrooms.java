@@ -20,7 +20,6 @@ public class Classrooms implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    //@Id
     private String classroom;
 
     private Integer max;

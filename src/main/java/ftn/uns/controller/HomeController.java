@@ -173,9 +173,7 @@ public class HomeController {
                     classroomsSettingsRepository.save(new ClassroomsSettings(room, false));
 
                 countClass++;
-
             }
-
 
             System.out.println("Data inserted!");
         }

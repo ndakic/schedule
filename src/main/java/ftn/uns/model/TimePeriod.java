@@ -18,7 +18,6 @@ public class TimePeriod implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    //@Id
     private String time;
 
     private Integer ordertime;
