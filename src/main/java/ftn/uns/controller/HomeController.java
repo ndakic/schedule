@@ -241,4 +241,58 @@ public class HomeController {
     }
 
 
+    @PostMapping("/addClassroom")
+    public ResponseEntity addClassroom(@RequestBody Classrooms classroom) throws Exception{
+
+        List<Classrooms> classr = classroomsRepository.findAllByClassroom(classroom.getClassroom());
+
+        if(!classr.isEmpty())
+            return new ResponseEntity(null, HttpStatus.NO_CONTENT);
+
+        List<TimePeriod> timePeriodList = timePeriodRepository.findAll();
+
+        for(TimePeriod timePeriod: timePeriodList){
+            Classrooms room = new Classrooms(classroom.getClassroom(), 1, classroom.getAllowedTypes(), null);
+            List<Classrooms> classroomsList = timePeriod.getClassrooms();
+            classroomsList.add(room);
+            timePeriod.setClassrooms(classroomsList);
+            timePeriodRepository.save(timePeriod);
+        }
+
+        ClassroomsSettings classroomsSettings = new ClassroomsSettings(classroom.getClassroom(), false);
+        classroomsSettingsRepository.save(classroomsSettings);
+
+        return new ResponseEntity(null, HttpStatus.OK);
+
+    }
+
+    @GetMapping("/allClassrooms")
+    public ResponseEntity getAllClassrooms()  throws Exception{
+
+        List<Classrooms> classroomsList = classroomsRepository.findAll();
+
+        List<Classrooms> uniqueClassrooms = new ArrayList<>();
+
+        for(Classrooms classrooms: classroomsList){
+            if(checkClassroom(uniqueClassrooms, classrooms.getClassroom()))
+                uniqueClassrooms.add(classrooms);
+        }
+
+        return new ResponseEntity(uniqueClassrooms, HttpStatus.OK);
+    }
+
+
+    public Boolean checkClassroom(List<Classrooms> classroomsList, String classroom) throws  Exception{
+
+        Boolean status = true;
+
+        for(Classrooms classrooms: classroomsList){
+            if(classrooms.getClassroom().equalsIgnoreCase(classroom))
+                status = false;
+        }
+
+        return status;
+
+    }
+
 }

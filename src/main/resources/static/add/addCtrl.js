@@ -15,9 +15,15 @@
         vm.newDepartment = newDepartment;
         vm.deleteDepartment = deleteDepartment;
         vm.checkDelete = checkDelete;
+        vm.addClassroom = addClassroom;
 
 
         $scope.department = {};
+        $scope.classroom = {
+            "classroom" : ""
+        };
+        $scope.selected_os = "";
+        $scope.os_options = ['windows', 'linux', 'cross'];
 
         var loadDepartments= function () {
             var promise = $http.get("/api/home/departments");
@@ -28,6 +34,15 @@
 
         loadDepartments();
 
+        var loadUniqueClassrooms= function () {
+            var promise = $http.get("/api/home/allClassrooms");
+            promise.then(function (response) {
+                $scope.unique_classrooms = response.data;
+                console.log($scope.unique_classrooms);
+            });
+        };
+
+        loadUniqueClassrooms();
 
         var loadCourses = function () {
             var promise = $http.get("/api/home/courseList");
@@ -69,7 +84,6 @@
             });
         };
 
-
         function checkDelete(department) {
 
             var status = true;
@@ -82,8 +96,29 @@
             return status;
 
         }
+        
+        function addClassroom() {
 
+            $scope.classroom.allowedTypes = [$scope.selected_os];
 
+            console.log($scope.classroom);
+
+            if($scope.classroom.allowedTypes != ""){
+                var promise = $http.post("/api/home/addClassroom", $scope.classroom);
+                promise.then(function (response) {
+                    if(response.status == "200"){
+                        Alertify.success("Classroom added!");
+                        loadUniqueClassrooms();
+                    }
+                    else{
+                        Alertify.error('Classroom label already exist!');
+                    }
+                });
+            }else{
+                Alertify.error("Choose OS!");
+            }
+
+        }
 
     };
 }(angular));
