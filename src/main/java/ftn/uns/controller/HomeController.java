@@ -134,7 +134,7 @@ public class HomeController {
                 Classrooms classroom3 = new Classrooms("A3", 1, new String [] {"windows", "cross"}, null);
                 Classrooms classroom4 = new Classrooms("A4", 1, new String [] {"windows", "cross"}, null);
                 Classrooms classroom5 = new Classrooms("A5", 1, new String [] {"cross", "linux", "windows"}, null);
-                Classrooms classroom6 = new Classrooms("A6", 1, new String [] {"cross", "linux", "windows"}, null);
+//                Classrooms classroom6 = new Classrooms("A6", 1, new String [] {"cross", "linux", "windows"}, null);
 
                 List<Classrooms> classrooms = new ArrayList<>();
 
@@ -143,7 +143,7 @@ public class HomeController {
                 classrooms.add(classroom3);
                 classrooms.add(classroom4);
                 classrooms.add(classroom5);
-                classrooms.add(classroom6);
+//                classrooms.add(classroom6);
 
                 timePeriod.setClassrooms(classrooms);
 
@@ -158,7 +158,6 @@ public class HomeController {
                 order++;
             }
 
-            Integer countClass = 0;
 
             Set<String> classroomsSet = new HashSet<>();
             List<Classrooms> classroomsList = classroomsRepository.findAll();
@@ -166,14 +165,8 @@ public class HomeController {
             for(Classrooms classrooms: classroomsList)
                 classroomsSet.add(classrooms.getClassroom());
 
-            for(String room: classroomsSet){
-                if(countClass < 5)
-                    classroomsSettingsRepository.save(new ClassroomsSettings(room, true));
-                else
-                    classroomsSettingsRepository.save(new ClassroomsSettings(room, false));
-
-                countClass++;
-            }
+            for(String room: classroomsSet)
+                classroomsSettingsRepository.save(new ClassroomsSettings(room, true));
 
             System.out.println("Data inserted!");
         }
@@ -188,15 +181,11 @@ public class HomeController {
     }
 
     @RequestMapping("/classrooms")
-    public Set<String> getClassrooms() throws Exception{
+    public List<Classrooms> getClassrooms() throws Exception{
 
-        Set<String> classroomsSet = new HashSet<>();
         List<Classrooms> classroomsList = classroomsRepository.findAll();
 
-        for(Classrooms classrooms: classroomsList)
-            classroomsSet.add(classrooms.getClassroom());
-
-        return classroomsSet;
+        return classroomsList;
 
     }
 
@@ -219,7 +208,7 @@ public class HomeController {
         return departmentRepository.findAll();
     }
 
-    @PostMapping("addDepartment")
+    @PostMapping("/addDepartment")
     public ResponseEntity addDepartment(@RequestBody Department department) throws Exception{
 
         Department exist = departmentRepository.findOneById(department.getId());
@@ -233,13 +222,12 @@ public class HomeController {
     }
 
 
-    @PostMapping("deleteDepartment")
+    @PostMapping("/deleteDepartment")
     public ResponseEntity deleteDepartment(@RequestBody Department department) throws Exception{
         departmentRepository.delete(department);
 
         return new ResponseEntity(null, HttpStatus.OK);
     }
-
 
     @PostMapping("/addClassroom")
     public ResponseEntity addClassroom(@RequestBody Classrooms classroom) throws Exception{
@@ -266,7 +254,7 @@ public class HomeController {
 
     }
 
-    @GetMapping("/allClassrooms")
+    @GetMapping("/allUniqueClassrooms")
     public ResponseEntity getAllClassrooms()  throws Exception{
 
         List<Classrooms> classroomsList = classroomsRepository.findAll();
@@ -281,6 +269,43 @@ public class HomeController {
         return new ResponseEntity(uniqueClassrooms, HttpStatus.OK);
     }
 
+    @PostMapping("/deleteClassroom")
+    public ResponseEntity deleteClassroom(@RequestBody Classrooms classroom) throws Exception{
+
+        List<Classrooms> classroomsList = classroomsRepository.findAllByClassroom(classroom.getClassroom());
+        classroomsRepository.deleteAll(classroomsList);
+
+        ClassroomsSettings classroomsSettings = classroomsSettingsRepository.getOne(classroom.getClassroom());
+        classroomsSettingsRepository.delete(classroomsSettings);
+
+        List<ClassroomsSettings> classroomsSettingsRepositoryList = classroomsSettingsRepository.findAll();
+        for(ClassroomsSettings classrooms: classroomsSettingsRepositoryList){
+            if(classrooms.getStatus() == false){
+                classrooms.setStatus(true);
+                classroomsSettingsRepository.save(classrooms);
+                break;
+            }
+        }
+
+
+        return new ResponseEntity(null, HttpStatus.OK);
+
+    }
+
+    @RequestMapping("/deleteAllData")
+    public ResponseEntity deleteAlldata() throws Exception{
+
+        dayRepository.deleteAll();
+        timePeriodRepository.deleteAll();
+        classroomsRepository.deleteAll();
+        courseRepository.deleteAll();
+        classroomsSettingsRepository.deleteAll();
+
+
+        return new ResponseEntity(null, HttpStatus.OK);
+    }
+
+
 
     public Boolean checkClassroom(List<Classrooms> classroomsList, String classroom) throws  Exception{
 
@@ -294,5 +319,8 @@ public class HomeController {
         return status;
 
     }
+
+
+
 
 }

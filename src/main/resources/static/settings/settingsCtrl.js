@@ -12,6 +12,7 @@
 
     function settingsCtrl($scope, $http, $location, Alertify) {
         var vm = this;
+        vm.deleteAllData = deleteAllData;
 
         $scope.colors = {Blue: true, Orange: true};
         $scope.classrooms = {};
@@ -72,6 +73,27 @@
             }
         };
 
+        var insertData = function () {
+            var promise = $http.get("/api/home/insertData");
+            promise.then(function (response) {
+                console.log("Insert Data!");
+
+            });
+        };
+
+
+        function deleteAllData() {
+            var status = confirm("Are you sure?");
+
+            if(status){
+                var promise = $http.get("/api/home/deleteAllData");
+                promise.then(function (response) {
+                    Alertify.success("All data has been deleted!");
+                    insertData();
+                    loadClassrooms();
+                });
+            };
+        };
 
     };
 }(angular));

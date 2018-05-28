@@ -5,7 +5,7 @@
             <table>
                 <thead>
                 <tr>
-                    <th>Label</th>
+                    <th>Label1</th>
                     <th>OS</th>
                     <th></th>
                 </tr>
@@ -14,7 +14,7 @@
                 <tr ng-repeat="room in unique_classrooms">
                     <td>{{room.classroom}}</td>
                     <td>{{room.allowedTypes[0]}}</td>
-                    <td><button class="btn btn-danger" type="submit">delete</button></td>
+                    <td><button class="btn btn-danger" ng-click="vm.deleteClassroom(room)" ng-show="vm.checkDeleteClassroom(room.classroom)" type="submit">delete</button></td>
                 </tr>
 
                 </tbody>
