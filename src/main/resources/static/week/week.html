@@ -11,8 +11,8 @@
 <!--</div>-->
 
 <div class="typesDemo text-center">
-    <div ng-repeat="day in days" class="col-lg-2" data-step="1" data-intro="Weeks...">
-        <h4 data-step="2" data-intro="Choose day.." data-hint="This is a tooltip!" data-hintPosition="top-middle"> <a ui-sref="day({id:day.id})" style="color: #ec5a20">{{ day.id }}</a> </h4>
+    <div ng-repeat="day in days" class="col-lg-2" data-step="1" data-intro="Weeks..." data-intro-group="weeks">
+        <h4 data-step="2" data-intro="Choose day.."  data-intro-group="weeks" data-hint="This is a tooltip!" data-hintPosition="top-middle"> <a ui-sref="day({id:day.id})" style="color: #ec5a20">{{ day.id }}</a> </h4>
         <div ng-repeat="item in day.timePeriodList" >
             <div class="panel panel-info">
                 <div class="panel-heading">

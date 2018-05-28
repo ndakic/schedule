@@ -1,10 +1,13 @@
 
 
 <div class="container">
+	<script type="text/javascript">
+		settingsGuide();
+	</script>
 
     <p style="font-size: 13px;"><b> Choose classrooms to display:</b> </p>
 
-    <label ng-repeat="(room,enabled) in classrooms">
+    <label ng-repeat="(room,enabled) in classrooms" data-step="1" data-intro="Create.." data-intro-group="settings">
         <ul style="list-style: none;">
             <li><input type="checkbox" ng-model="classrooms[room]" /> {{room}}</li>
         </ul>
@@ -15,7 +18,8 @@
 
     <br> <br>
     <p style="font-size: 13px;"> <b> Delete all data: </b> </p>
-    <button class="btn btn-danger" ng-click="vm.deleteAllData()"  type="submit">Confirm</button>
+    <button class="btn btn-danger" ng-click="vm.deleteAllData()"  type="submit" data-intro="Create..">Confirm</button>
 
 
 </div>
+

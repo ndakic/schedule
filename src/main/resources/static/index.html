@@ -259,15 +259,26 @@
         }
 		
         function accTutFun(){
-            localStorage.setItem("tutorijal", true);
+            localStorage.setItem("tutorijal", "hint");
             javascript:introJs().addHints();
             closeModal();
         }
         
+               
         function guideTutFun(){
-            localStorage.setItem("tutorijal", true);
-            javascript:startTour();
+            localStorage.setItem("tutorijal", "guide");
+        	introJs().setOption('doneLabel', 'Next page').start('weeks').oncomplete(function() {
+                window.location.href = '/#!/settings?multipage=true';
+              });
             closeModal();
+        }
+        
+        function settingsGuide() {
+        	if(localStorage.getItem("tutorijal") == "guide") {
+	        	introJs().setOption('doneLabel', 'Next page').start('settings').oncomplete(function() {
+	                window.location.href = '/#!/settings?multipage=true';
+	              });
+        	}
         }
         
         // Function to open modal
@@ -277,15 +288,24 @@
         
         // Function to close modal
         function closeModal(){
+        	localStorage.setItem("tutorijal", false);
         	simpleModal.style.display = 'none';
         }
         
         // Function to close modal if outside click
         function outsideClick(e){
 	        if(e.target == simpleModal){
+	        	localStorage.setItem("tutorijal", false);
 	        	simpleModal.style.display = 'none';
 	        }
          }
+        
+        
+    	if (RegExp('multipage', 'gi').test(window.location.search)) {
+    	  introJs().start();
+    	}
+
+
     </script>
 </body>
 
