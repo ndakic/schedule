@@ -19,20 +19,34 @@
                     <h3 class="panel-title"><b>{{item.time}}</b></h3>
                 </div>
                 <div class="panel-body">
-                    <div class="row">
+                    <div class="row" style="margin-bottom: 0px; margin-top: 0px;">
                         <div ng-repeat="classroom in item.classrooms" style="display: inline-block; width: 20%; text-align: center;" ng-if="vm.checkSettings(classroom.classroom)">
 
-                                <span style="font-size: 11px; color: darkgrey">{{classroom.classroom}}</span>
+                            <span style="font-size: 11px; color: darkgrey">{{classroom.classroom}}</span>
 
-                                <ul dnd-list="classroom.course">
-                                    <li ng-repeat="course in classroom.course"
-                                        style="background-color: #{{course.department.color}}">
-                                        <div class="name">
+
+                            <div ng-if="vm.checkClassroomSize(item.classrooms)">
+                                <ul dnd-list="classroom.course" style="min-height: 0px;">
+                                    <li ng-repeat="course in classroom.course" style="background-color: {{course.department.color}};">
+                                        <div class="name" ng-if="course">
                                             <div class="item">{{course.label}}</div>
                                             <span class="pull-center text-muted small" style="font-size: 70%"><em>{{course.department.id}}</em> </span>
                                         </div>
                                     </li>
                                 </ul>
+                            </div>
+
+
+                            <div ng-if="vm.checkClassroomSize(item.classrooms) == false">
+                                <ul dnd-list="classroom.course" style="min-height: 41px">
+                                    <!--<li ng-repeat="course in classroom.course" style="background-color: #{{course.department.color}};">-->
+                                        <!--<div class="name" ng-if="course">-->
+                                            <!--<div class="item">{{course.label}}</div>-->
+                                            <!--<span class="pull-center text-muted small" style="font-size: 70%"><em>{{course.department.id}}</em> </span>-->
+                                        <!--</div>-->
+                                    <!--</li>-->
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>

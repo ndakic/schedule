@@ -21,8 +21,8 @@
             $scope.searchedTerm = "";
             $scope.lists = entity.timePeriodList;
             $scope.autocompleteOptions = ["ON", "OFF"];
-            $scope.autocomplete = "OFF";
-            $scope.followMe = "OFF";
+            $scope.autocomplete = "ON";
+
 
             function saveDay() {
                 $scope.data = {

@@ -7,6 +7,7 @@
         .controller('weekCtrl', function($scope, $http){
             var vm = this;
             vm.checkSettings = checkSettings;
+            vm.checkClassroomSize = checkClassroomSize;
 
 
             var insertData = function () {
@@ -55,6 +56,20 @@
                 });
             };
             loadAllDays();
+            
+            
+            function checkClassroomSize(classrooms) {
+
+                var status = false;
+
+                for(var room in classrooms)
+                    if(classrooms[room].course.length == 1)
+                        status = true;
+
+
+                return status;
+
+            }
 
         });
 }(angular));

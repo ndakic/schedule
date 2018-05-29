@@ -71,9 +71,11 @@
 
                 </div>
 
+                <br><br>
+
                 <div class="trashcan box box-grey box-padding">
                     <!-- If you use [] as referenced list, the dropped elements will be lost -->
-                    <h3>Trashcan</h3>
+                    <!--<h3>Trashcan</h3>-->
                     <ul dnd-list="[]"
                         dnd-inserted="logListEvent('inserted1 at', index, external, type, class.classroom, $parent.item.time, $parent.item.ordertime)">
                         <li><img src="images/trash3.png"> Throw trash here..</li>
@@ -111,14 +113,15 @@
 
                         <br>
                             <ul dnd-list="courseList"
-                                dnd-dragover="false">
+                                dnd-dragover="false" style="overflow: scroll; height: 300px;">
                                 <li ng-repeat="course in courseList | filter:course track by $index"
                                     dnd-draggable="course"
                                     dnd-type="course.os"
                                     dnd-disable-if="course.os == 'unknown'"
                                     dnd-selected="selected = course"
                                     dnd-dragstart="logEvent('Started to drag an item', course)"
-                                    class="background-{{course.os}}" ng-show="$index < show">
+                                    class="background-{{course.os}}" >
+                                    <!--ng-show="$index < show"-->
 
                                     <div class="name">
                                         <div class="item">{{course.title}}  <em>({{course.department.id}})</em></div>

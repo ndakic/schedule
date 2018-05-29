@@ -50,8 +50,8 @@ public class HomeController {
         if(courseList.isEmpty()){
             System.out.println("Populate Course");
 
-            Department siit = new Department("SIIT", "Softversko Inzenjersvo i Informacione Tehnologije", "18fff5");
-            Department e2 = new Department("E2", "Racunarstvo i Automatika", "fff722");
+            Department siit = new Department("SIIT", "Softversko Inzenjersvo i Informacione Tehnologije", "#18fff5");
+            Department e2 = new Department("E2", "Racunarstvo i Automatika", "#fff722");
 
             departmentRepository.save(siit);
             departmentRepository.save(e2);
@@ -104,7 +104,51 @@ public class HomeController {
             TimePeriod timePeriod14 = new TimePeriod("10:15", 14, 5, null);
             TimePeriod timePeriod15 = new TimePeriod("10:30", 15, 5, null);
             TimePeriod timePeriod16 = new TimePeriod("10:45", 16, 5, null);
-            TimePeriod timePeriod17 = new TimePeriod("11:00", 17, 5, null);
+            TimePeriod timePeriod18 = new TimePeriod("11:00", 17, 5, null);
+            TimePeriod timePeriod19 = new TimePeriod("11:15", 18, 5, null);
+            TimePeriod timePeriod20 = new TimePeriod("11:30", 19, 5, null);
+            TimePeriod timePeriod21 = new TimePeriod("11:45", 20, 5, null);
+            TimePeriod timePeriod22 = new TimePeriod("12:00", 21, 5, null);
+            TimePeriod timePeriod23 = new TimePeriod("12:15", 22, 5, null);
+            TimePeriod timePeriod24 = new TimePeriod("12:30", 23, 5, null);
+            TimePeriod timePeriod25 = new TimePeriod("12:45", 24, 5, null);
+            TimePeriod timePeriod26 = new TimePeriod("13:00", 25, 5, null);
+            TimePeriod timePeriod27 = new TimePeriod("13:15", 26, 5, null);
+            TimePeriod timePeriod28 = new TimePeriod("13:30", 27, 5, null);
+            TimePeriod timePeriod29 = new TimePeriod("13:45", 28, 5, null);
+            TimePeriod timePeriod30 = new TimePeriod("14:00", 29, 5, null);
+            TimePeriod timePeriod31 = new TimePeriod("14:15", 30, 5, null);
+            TimePeriod timePeriod32 = new TimePeriod("14:30", 31, 5, null);
+            TimePeriod timePeriod33 = new TimePeriod("14:45", 32, 5, null);
+            TimePeriod timePeriod34 = new TimePeriod("15:00", 33, 5, null);
+            TimePeriod timePeriod35 = new TimePeriod("15:15", 34, 5, null);
+            TimePeriod timePeriod36 = new TimePeriod("15:30", 35, 5, null);
+            TimePeriod timePeriod37 = new TimePeriod("15:45", 36, 5, null);
+            TimePeriod timePeriod38 = new TimePeriod("16:00", 37, 5, null);
+            TimePeriod timePeriod39 = new TimePeriod("16:15", 38, 5, null);
+            TimePeriod timePeriod40 = new TimePeriod("16:30", 39, 5, null);
+            TimePeriod timePeriod41 = new TimePeriod("16:45", 40, 5, null);
+            TimePeriod timePeriod42 = new TimePeriod("17:00", 41, 5, null);
+            TimePeriod timePeriod43 = new TimePeriod("17:15", 42, 5, null);
+            TimePeriod timePeriod44 = new TimePeriod("17:30", 43, 5, null);
+            TimePeriod timePeriod45 = new TimePeriod("17:45", 44, 5, null);
+            TimePeriod timePeriod46 = new TimePeriod("18:00", 45, 5, null);
+            TimePeriod timePeriod47 = new TimePeriod("18:15", 46, 5, null);
+            TimePeriod timePeriod48 = new TimePeriod("18:30", 47, 5, null);
+            TimePeriod timePeriod49 = new TimePeriod("18:45", 48, 5, null);
+            TimePeriod timePeriod50 = new TimePeriod("19:00", 49, 5, null);
+            TimePeriod timePeriod51 = new TimePeriod("19:15", 50, 5, null);
+            TimePeriod timePeriod52 = new TimePeriod("19:30", 51, 5, null);
+            TimePeriod timePeriod53 = new TimePeriod("19:45", 52, 5, null);
+            TimePeriod timePeriod54 = new TimePeriod("20:00", 53, 5, null);
+            TimePeriod timePeriod55 = new TimePeriod("20:15", 54, 5, null);
+            TimePeriod timePeriod56 = new TimePeriod("20:30", 55, 5, null);
+            TimePeriod timePeriod57 = new TimePeriod("20:45", 56, 5, null);
+            TimePeriod timePeriod58 = new TimePeriod("21:00", 57, 5, null);
+            TimePeriod timePeriod59 = new TimePeriod("21:15", 58, 5, null);
+            TimePeriod timePeriod60 = new TimePeriod("21:30", 59, 5, null);
+            TimePeriod timePeriod61 = new TimePeriod("21:45", 60, 5, null);
+
 
             List<TimePeriod> period = new ArrayList<>();
 
@@ -124,7 +168,53 @@ public class HomeController {
             period.add(timePeriod14);
             period.add(timePeriod15);
             period.add(timePeriod16);
-            period.add(timePeriod17);
+            period.add(timePeriod18);
+            period.add(timePeriod19);
+            period.add(timePeriod20);
+            period.add(timePeriod21);
+            period.add(timePeriod22);
+            period.add(timePeriod23);
+            period.add(timePeriod24);
+            period.add(timePeriod25);
+            period.add(timePeriod26);
+            period.add(timePeriod27);
+            period.add(timePeriod28);
+            period.add(timePeriod29);
+            period.add(timePeriod30);
+            period.add(timePeriod31);
+            period.add(timePeriod32);
+            period.add(timePeriod33);
+            period.add(timePeriod34);
+            period.add(timePeriod35);
+            period.add(timePeriod36);
+            period.add(timePeriod37);
+            period.add(timePeriod38);
+            period.add(timePeriod39);
+            period.add(timePeriod40);
+            period.add(timePeriod41);
+            period.add(timePeriod42);
+            period.add(timePeriod43);
+            period.add(timePeriod44);
+            period.add(timePeriod45);
+            period.add(timePeriod46);
+            period.add(timePeriod47);
+            period.add(timePeriod48);
+            period.add(timePeriod49);
+            period.add(timePeriod50);
+            period.add(timePeriod51);
+            period.add(timePeriod52);
+            period.add(timePeriod53);
+            period.add(timePeriod54);
+            period.add(timePeriod55);
+            period.add(timePeriod56);
+            period.add(timePeriod57);
+            period.add(timePeriod58);
+            period.add(timePeriod59);
+            period.add(timePeriod60);
+            period.add(timePeriod61);
+
+
+
 
 
             for(TimePeriod timePeriod: period){
