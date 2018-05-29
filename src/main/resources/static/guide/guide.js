@@ -26,6 +26,11 @@ var guideTutBtn = document.getElementById('guideTutBtn');
 //   }, false);
 
 // Listen for outside click
+if(localStorage.getItem("tutorijal") == null) {
+    window.onload = function() {
+        openModal();
+    };
+}
 
 closeBtn.addEventListener('click', closeModal);
 window.addEventListener('click', outsideClick);
@@ -34,11 +39,7 @@ accTutBtn.addEventListener('click', accTutFun);
 decTutBtn.addEventListener('click', decTutFun);
 guideTutBtn.addEventListener('click', guideTutFun);
 
-if(localStorage.getItem("tutorijal") == null) {
-    window.onload = function() {
-        openModal();
-    };
-}
+
 
 
 function decTutFun() {
@@ -56,7 +57,7 @@ function accTutFun(){
 function guideTutFun(){
     localStorage.setItem("tutorijal", "guide");
     introJs().setOption('doneLabel', 'Next page').start('weeks').oncomplete(function() {
-        window.location.href = '/#!/settings?multipage=true';
+        window.location.href = '/#!/settings';
     });
     closeModal();
 }
@@ -64,8 +65,14 @@ function guideTutFun(){
 function settingsGuide() {
     if(localStorage.getItem("tutorijal") == "guide") {
         introJs().setOption('doneLabel', 'Next page').start('settings').oncomplete(function() {
-            window.location.href = '/#!/settings?multipage=true';
+            window.location.href = '/#!/day/Monday';
         });
+    }
+}
+
+function daysGuide() {
+    if(localStorage.getItem("tutorijal") == "guide") {
+        introJs().setOption('doneLabel', 'Next page').start('days');
     }
 }
 
@@ -76,7 +83,6 @@ function openModal(){
 
 // Function to close modal
 function closeModal(){
-    localStorage.setItem("tutorijal", false);
     simpleModal.style.display = 'none';
 }
 
