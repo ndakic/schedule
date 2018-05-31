@@ -22,7 +22,8 @@
                                     <ul dnd-list="class.course"
                                         dnd-disable-if="class.course.length >= class.max"
                                         dnd-allowed-types="class.allowedTypes"
-                                        dnd-inserted="logListEvent('inserted1 at', index, external, type, class.classroom, $parent.item.time, $parent.item.ordertime)">
+                                        dnd-inserted="logListEvent('inserted1 at', index, external, type, class.classroom, $parent.item, $parent.item.ordertime)">
+                                        <!--dnd-drop="dropCallback(index, course, external, type)"-->
 
                                         <li ng-repeat="course in class.course"
                                             dnd-draggable="course"
@@ -30,7 +31,7 @@
                                             dnd-disable-if="course.os == 'unknown'"
                                             dnd-moved="class.course.splice($index, 1)"
                                             dnd-selected="selected = course"
-                                            dnd-dragstart="logEvent('Started to drag an item', course)"
+                                            dnd-dragstart="logEvent('Started1', course)"
 
                                             class="background-{{course.os}}">
 
@@ -39,7 +40,6 @@
                                                 <span class="pull-left text-muted small"><em>{{course.department.id}}</em> </span>
                                                 <span class="pull-right text-muted small"><em>{{course.os}}</em> </span>
                                             </div>
-
                                         </li>
 
                                         <li class="dndPlaceholder">
@@ -119,7 +119,7 @@
                                     dnd-type="course.os"
                                     dnd-disable-if="course.os == 'unknown'"
                                     dnd-selected="selected = course"
-                                    dnd-dragstart="logEvent('Started to drag an item', course)"
+                                    dnd-dragstart="logEvent('Started2', course)"
                                     class="background-{{course.os}}" >
                                     <!--ng-show="$index < show"-->
 
