@@ -1,21 +1,17 @@
 
 <div class="container">
-	<script type="text/javascript">
-		console.log("USAO DAYS");
-		daysGuide();
-	</script>
     <h2>{{entity.id}}</h2>
     <hr>
     <div class="typesDemo row">
-            <div class="col-lg-8">
-                <div ng-repeat="item in lists" data-step="1" data-intro="Create.." data-intro-group="days">
+            <div class="col-lg-8"  data-step="3" data-intro="Create.." data-intro-group="days">
+                <div ng-repeat="item in lists" >
                     <div class="panel panel-info">
                         <div class="panel-heading">
                             <h3 class="panel-title">{{item.time}}</h3>
                         </div>
-                        <div class="panel-body">
+                        <div class="panel-body" >
                             <div class="row">
-                                <div ng-repeat="class in item.classrooms" style="display: inline-block; width: 20%; text-align: center" ng-if="vm.checkSettings(class.classroom)">
+                                <div ng-repeat="class in item.classrooms" style="display: inline-block; width: 20%; text-align: center" ng-if="vm.checkSettings(class.classroom)" >
 
                                     <span ng-if="class.allowedTypes[0] == 'linux'" style="color: #8daefc"> {{class.classroom}} </span>
 
@@ -77,7 +73,7 @@
 
                 <br><br>
 
-                <div class="trashcan box box-grey box-padding">
+                <div class="trashcan box box-grey box-padding" data-step="4" data-intro="Create.." data-intro-group="days">
                     <!-- If you use [] as referenced list, the dropped elements will be lost -->
                     <!--<h3>Trashcan</h3>-->
                     <ul dnd-list="[]"
@@ -99,14 +95,14 @@
                 <!--<div class='legend-source'></div>-->
             </div>
 
-            <div class="panel panel-default">
+            <div class="panel panel-default" data-step="1" data-intro="Create.." data-intro-group="days">
                 <div class="panel-heading">
                     <i class="fa fa-tasks fa-fw"></i> Choose Course
                 </div>
                 <!-- /.panel-heading -->
                 <div class="panel-body">
                     <div class="list-group">
-                        <div class="input-group custom-search-form">
+                        <div class="input-group custom-search-form" data-step="2" data-intro="Create.." data-intro-group="days">
                             <input type="text" class="form-control" placeholder="Search by title.." ng-model="course.title">
                             <span class="input-group-btn">
                                 <button class="btn btn-default" type="button">
@@ -117,7 +113,7 @@
 
                         <br>
                             <ul dnd-list="courseList"
-                                dnd-dragover="false" style="overflow: scroll; height: 300px;">
+                                dnd-dragover="false" style="overflow: scroll; height: 300px;" >
                                 <li ng-repeat="course in courseList | filter:course track by $index"
                                     dnd-draggable="course"
                                     dnd-type="course.os"
@@ -148,6 +144,7 @@
             </div>
         </div>
     </div>
+
 </div>
 
 
@@ -156,7 +153,7 @@
 <!--</div>-->
 
 
-<script>
+<script type="text/javascript">
     $(window).scroll(function(e){
         var $el = $('.fixedElement');
         var isPositionFixed = ($el.css('position') == 'fixed');
@@ -169,5 +166,9 @@
             $('.fixedElement').css({'position': 'static', 'top': '0px'});
         }
     });
+
+	console.log("USAO DAYS");
+	daysGuide();
+
 
 </script>
