@@ -1,10 +1,14 @@
 
 <div class="container">
+	<script type="text/javascript">
+		console.log("USAO DAYS");
+		daysGuide();
+	</script>
     <h2>{{entity.id}}</h2>
     <hr>
     <div class="typesDemo row">
             <div class="col-lg-8">
-                <div ng-repeat="item in lists">
+                <div ng-repeat="item in lists" data-step="1" data-intro="Create.." data-intro-group="days">
                     <div class="panel panel-info">
                         <div class="panel-heading">
                             <h3 class="panel-title">{{item.time}}</h3>

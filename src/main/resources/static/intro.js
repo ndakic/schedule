@@ -1,4 +1,9 @@
-
+/**
+ * Intro.js v2.9.3
+ * https://github.com/usablica/intro.js
+ *
+ * Copyright (C) 2017 Afshin Mehrabani (@afshinmeh)
+ */
 
 (function(f) {
     if (typeof exports === "object" && typeof module !== "undefined") {
@@ -27,7 +32,7 @@
     }
 })(function () {
   //Default config/variables
-  var VERSION = '2.9.0';
+  var VERSION = '2.9.3';
 
   /**
    * IntroJs main class
@@ -1258,7 +1263,10 @@
           self._introExitCallback.call(self);
         }
 
-        self._introSkipCallback.call(self);
+        if (typeof(self._introSkipCallback) === 'function') {
+          self._introSkipCallback.call(self);
+        }
+
         _exitIntro.call(self, self._targetElement);
       };
 
@@ -1591,6 +1599,10 @@
       this.off = function (obj, type, listener, context, useCapture) {
         var id = this._id.apply(this, arguments),
             handler = obj[events_key] && obj[events_key][id];
+
+        if (!handler) {
+          return;
+        }
 
         if ('removeEventListener' in obj) {
           obj.removeEventListener(type, handler, useCapture);
