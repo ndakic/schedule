@@ -42,6 +42,9 @@ public class HomeController {
     @Autowired
     DepartmentRepository departmentRepository;
 
+    @Autowired
+    SoftwareRepository softwareRepository;
+
     @RequestMapping("/insertData")
     public ResponseEntity populateData() throws Exception{
 
@@ -215,16 +218,22 @@ public class HomeController {
 
 
 
+            Software software1 = new Software("IDJ", "IntelliJ IDEA", OS.cross);
+            Software software2 = new Software("ECL", "Eclipse", OS.cross);
+            Software software3 = new Software("VS", "Visual Studio", OS.windows);
+
+            softwareRepository.save(software1);
+            softwareRepository.save(software2);
+            softwareRepository.save(software3);
 
 
             for(TimePeriod timePeriod: period){
 
-                Classrooms classroom1 = new Classrooms("A1", 1, new String [] {"linux", "cross"}, null);
-                Classrooms classroom2 = new Classrooms("A2", 1, new String [] {"linux", "cross"}, null);
-                Classrooms classroom3 = new Classrooms("A3", 1, new String [] {"windows", "cross"}, null);
-                Classrooms classroom4 = new Classrooms("A4", 1, new String [] {"windows", "cross"}, null);
-                Classrooms classroom5 = new Classrooms("A5", 1, new String [] {"cross", "linux", "windows"}, null);
-//                Classrooms classroom6 = new Classrooms("A6", 1, new String [] {"cross", "linux", "windows"}, null);
+                Classrooms classroom1 = new Classrooms("A1", 1, new String [] {"linux", "cross"}, null, "Opis 1", 30, false, true, false, software1);
+                Classrooms classroom2 = new Classrooms("A2", 1, new String [] {"linux", "cross"}, null, "Opis 2", 45, true, true, false, software2);
+                Classrooms classroom3 = new Classrooms("A3", 1, new String [] {"windows", "cross"}, null, "Opis 3", 30, true, true, true, software3);
+                Classrooms classroom4 = new Classrooms("A4", 1, new String [] {"windows", "cross"}, null, "Opis 4", 45, false, true, false, software3);
+                Classrooms classroom5 = new Classrooms("A5", 1, new String [] {"cross", "linux", "windows"}, null, "Opis 5", 30, false, true, true, software2);
 
                 List<Classrooms> classrooms = new ArrayList<>();
 
@@ -233,7 +242,6 @@ public class HomeController {
                 classrooms.add(classroom3);
                 classrooms.add(classroom4);
                 classrooms.add(classroom5);
-//                classrooms.add(classroom6);
 
                 timePeriod.setClassrooms(classrooms);
 
@@ -329,8 +337,10 @@ public class HomeController {
 
         List<TimePeriod> timePeriodList = timePeriodRepository.findAll();
 
+        Software software = softwareRepository.findOneById(classroom.getSoftware().getId());
+
         for(TimePeriod timePeriod: timePeriodList){
-            Classrooms room = new Classrooms(classroom.getClassroom(), 1, classroom.getAllowedTypes(), null);
+            Classrooms room = new Classrooms(classroom.getClassroom(), 1, classroom.getAllowedTypes(), null, classroom.getDescription(), classroom.getCapacity(), classroom.getProjector(), classroom.getBasicTable(), classroom.getSmartTable(), software);
             List<Classrooms> classroomsList = timePeriod.getClassrooms();
             classroomsList.add(room);
             timePeriod.setClassrooms(classroomsList);
@@ -340,7 +350,7 @@ public class HomeController {
         ClassroomsSettings classroomsSettings = new ClassroomsSettings(classroom.getClassroom(), false);
         classroomsSettingsRepository.save(classroomsSettings);
 
-        return new ResponseEntity(null, HttpStatus.OK);
+        return new ResponseEntity(classroom, HttpStatus.OK);
 
     }
 
@@ -393,6 +403,40 @@ public class HomeController {
 
 
         return new ResponseEntity(null, HttpStatus.OK);
+    }
+
+    @RequestMapping("/addCourse")
+    public ResponseEntity addCourse(@RequestBody Course course) throws Exception{
+
+        Department department = departmentRepository.findOneById(course.getDepartment().getId());
+
+        System.out.println(course.toString());
+
+        Course exist = courseRepository.findOneById(course.getId());
+
+        if(exist != null)
+            return new ResponseEntity(null, HttpStatus.NO_CONTENT);
+
+        course.setDepartment(department);
+
+        courseRepository.save(course);
+
+        return new ResponseEntity(course, HttpStatus.OK);
+
+    }
+
+    @PostMapping("/deleteCourse")
+    public ResponseEntity deleteCourse(@RequestBody Course course) throws Exception{
+
+        courseRepository.delete(course);
+
+        return new ResponseEntity(course, HttpStatus.OK);
+
+    }
+
+    @GetMapping("/softwares")
+    public List<Software> getSoftwares() throws Exception{
+        return softwareRepository.findAll();
     }
 
 

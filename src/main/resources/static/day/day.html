@@ -22,7 +22,8 @@
                                     <ul dnd-list="class.course"
                                         dnd-disable-if="class.course.length >= class.max"
                                         dnd-allowed-types="class.allowedTypes"
-                                        dnd-inserted="logListEvent('inserted1 at', index, external, type, class.classroom, $parent.item.time, $parent.item.ordertime)">
+                                        dnd-inserted="logListEvent('inserted1 at', index, external, type, class.classroom, $parent.item, $parent.item.ordertime)">
+                                        <!--dnd-drop="dropCallback(index, course, external, type)"-->
 
                                         <li ng-repeat="course in class.course"
                                             dnd-draggable="course"
@@ -30,7 +31,7 @@
                                             dnd-disable-if="course.os == 'unknown'"
                                             dnd-moved="class.course.splice($index, 1)"
                                             dnd-selected="selected = course"
-                                            dnd-dragstart="logEvent('Started to drag an item', course)"
+                                            dnd-dragstart="logEvent('Started1', course)"
 
                                             class="background-{{course.os}}">
 
@@ -39,7 +40,6 @@
                                                 <span class="pull-left text-muted small"><em>{{course.department.id}}</em> </span>
                                                 <span class="pull-right text-muted small"><em>{{course.os}}</em> </span>
                                             </div>
-
                                         </li>
 
                                         <li class="dndPlaceholder">
@@ -59,19 +59,6 @@
         <div class="col-lg-4">
             <div class="fixedElement">
                 <br>
-                <div class="btn-group" data-toggle="buttons">
-                    <div class='my-legend' style="padding-bottom: 0px;">
-                        <div class='legend-title'>Auto complete - based on course duration</div>
-                        <div style="font-size: 10px;">
-                            <input type="radio" ng-model=autocomplete ng-value=autocompleteOptions[0]> ON
-                            &nbsp;
-                            <input type="radio" ng-model=autocomplete ng-value=autocompleteOptions[1]> OFF
-                        </div>
-                    </div>
-
-                </div>
-
-                <br><br>
 
                 <div class="trashcan box box-grey box-padding" data-step="4" data-intro="Create.." data-intro-group="days">
                     <!-- If you use [] as referenced list, the dropped elements will be lost -->
@@ -119,7 +106,7 @@
                                     dnd-type="course.os"
                                     dnd-disable-if="course.os == 'unknown'"
                                     dnd-selected="selected = course"
-                                    dnd-dragstart="logEvent('Started to drag an item', course)"
+                                    dnd-dragstart="logEvent('Started2', course)"
                                     class="background-{{course.os}}" >
                                     <!--ng-show="$index < show"-->
 
@@ -158,12 +145,12 @@
         var $el = $('.fixedElement');
         var isPositionFixed = ($el.css('position') == 'fixed');
         if ($(this).scrollTop() > 200 && !isPositionFixed){
-            $('.fixedElement').css({'position': 'fixed', 'top': '0px'});
+            $('.fixedElement').css({'position': 'fixed', 'top': '0px', 'max-width': '350px'});
 
         }
         if ($(this).scrollTop() < 200 && isPositionFixed)
         {
-            $('.fixedElement').css({'position': 'static', 'top': '0px'});
+            $('.fixedElement').css({'position': 'static', 'top': '0px', 'max-width': '350px'});
         }
     });
 

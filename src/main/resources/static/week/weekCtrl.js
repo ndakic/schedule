@@ -14,7 +14,6 @@
                 var promise = $http.get("/api/home/insertData");
                 promise.then(function (response) {
                     console.log("Insert Data!");
-
                 });
             };
 
@@ -39,7 +38,6 @@
             loadDepartments();
 
             function checkSettings(classrooom) {
-                //console.log("check");
                 for(var room in $scope.classroomSettings){
                     if($scope.classroomSettings[room]["id"] == classrooom){
                         return $scope.classroomSettings[room]["status"];
@@ -52,7 +50,6 @@
                 var promise = $http.get("/api/day/days");
                 promise.then(function (response) {
                     $scope.days = response.data;
-                    console.log("days: ", $scope.days);
                 });
             };
             loadAllDays();
