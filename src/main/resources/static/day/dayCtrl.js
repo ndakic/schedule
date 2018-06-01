@@ -99,15 +99,25 @@
                      var calc_addition = ($scope.draggedCourse.duration - 15)/15;
                      var count = 0;
 
+                     var two_hours = false;
+
+                     if(calc_addition > 2)
+                         two_hours = true;
+
                      var status = true;
 
                     $scope.insertPosition.push(timePeriod);
 
+
+
                      if($scope.autocomplete === "ON"){
                          out: for(var time in $scope.lists){
                              if($scope.lists[time]["ordertime"] > order && $scope.lists[time]["ordertime"] <= order + calc_addition){
+                                 console.log("time: ", $scope.lists[time]["ordertime"]);
+                                 console.log("calc: ", order + calc_addition);
                                  for(var room in $scope.lists[time]["classrooms"]){
                                      if($scope.lists[time]["classrooms"][room]["classroom"] == classroom){
+                                         console.log("len ", $scope.lists[time]["classrooms"][room]["course"].length);
                                          if($scope.lists[time]["classrooms"][room]["course"].length == 0){
                                              if(count != 2){
                                                  $scope.lists[time]["classrooms"][room]["course"].push($scope.draggedCourse);
@@ -117,7 +127,7 @@
 
 
                                              count++;
-                                             if(count == 2)
+                                             if(count == 2 && two_hours == true)
                                                  calc_addition++;
                                          }else{
                                              console.log('else: ', $scope.lists[time]["classrooms"][room]["course"]);
@@ -143,7 +153,7 @@
                                     if($scope.lists[time]["classrooms"][room]["course"].length == 1)
                                         if($scope.lists[time]["classrooms"][room]["course"][0].id == $scope.draggedCourse.id){
                                             $scope.lists[time]["classrooms"][room]["course"] = [];
-                                            console.log("DELETED!");
+                                            console.log("REMOVED!");
                                         }
                             }
                         }
@@ -160,6 +170,15 @@
 
                 }else{
                     console.log("del dragged:", $scope.draggedCourse);
+
+                    for(var time in $scope.lists)
+                        for(var room in $scope.lists[time]["classrooms"])
+                            for(var cour in $scope.lists[time]["classrooms"][room].course)
+                                if($scope.lists[time]["classrooms"][room].course[cour].id == $scope.draggedCourse.id){
+                                    $scope.lists[time]["classrooms"][room].course = [];
+                                    console.log("DELETED");
+                                }
+
                     saveDay();
                 }
 
