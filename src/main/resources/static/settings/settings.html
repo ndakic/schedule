@@ -1,10 +1,10 @@
 
 
-<div class="container">
+<div class="container" data-step="1" data-intro="Create.." data-intro-group="settings">
 
     <p style="font-size: 13px;"><b> Choose classrooms to display:</b> </p>
 
-    <label ng-repeat="(room,enabled) in classrooms" data-step="1" data-intro="Create.." data-intro-group="settings">
+    <label ng-repeat="(room,enabled) in classrooms"  >
         <ul style="list-style: none;">
             <li><input type="checkbox" ng-model="classrooms[room]" /> {{room}}</li>
         </ul>

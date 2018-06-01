@@ -30,7 +30,7 @@ if(localStorage.getItem("tutorijal") == null) {
     window.onload = function() {
         openModal();
     };
-}
+} 
 
 closeBtn.addEventListener('click', closeModal);
 window.addEventListener('click', outsideClick);
@@ -54,27 +54,96 @@ function accTutFun(){
 }
 
 
+
+
+
 function guideTutFun(){
     localStorage.setItem("tutorijal", "guide");
     introJs().setOption('doneLabel', 'Next page').start('weeks').oncomplete(function() {
+    	localStorage.setItem("tutorijal", "guideSettings");
         window.location.href = '/#!/settings';
     });
     closeModal();
 }
 
+function weekGuide() {
+	if (localStorage.getItem("tutorijal") == "guide") {
+		introJs().exit();
+	    introJs().setOption('doneLabel', 'Next page').start('weeks').oncomplete(function() {
+	    	localStorage.setItem("tutorijal", "guideSettings");
+	        window.location.href = '/#!/settings';
+	    });
+	} else {
+		introJs().exit();
+	}
+}
+
 function settingsGuide() {
-    if(localStorage.getItem("tutorijal") == "guide") {
+    if(localStorage.getItem("tutorijal") == "guideSettings") {
         introJs().setOption('doneLabel', 'Next page').start('settings').oncomplete(function() {
+        	localStorage.setItem("tutorijal", "guideDay");
             window.location.href = '/#!/day/Monday';
         });
+    } else {
+    	introJs().exit();
     }
 }
 
 function daysGuide() {
-    if(localStorage.getItem("tutorijal") == "guide") {
-        introJs().setOption('doneLabel', 'Next page').start('days');
+    if(localStorage.getItem("tutorijal") == "guideDay") {
+        introJs().setOption('doneLabel', 'Next page').start('days').oncomplete(function() {
+        	localStorage.setItem("tutorijal", "guideAddCourse");
+            window.location.href = '/#!/addCourse';
+        });
+
+    } else {
+    	introJs().exit();
     }
 }
+
+
+
+function addCourseGuide() {
+    if(localStorage.getItem("tutorijal") == "guideAddCourse") {
+        introJs().setOption('doneLabel', 'Next page').start('addCourse').oncomplete(function() {
+        	localStorage.setItem("tutorijal", "guideAddClassroom");
+            window.location.href = '/#!/addClassroom';
+        });
+
+    } else {
+    	introJs().exit();
+    }
+
+}
+
+
+function addClassroomGuide() {
+    if(localStorage.getItem("tutorijal") == "guideAddClassroom") {
+        introJs().setOption('doneLabel', 'Next page').start('addClassroom').oncomplete(function() {
+        	localStorage.setItem("tutorijal", "guideAddDepartment");
+            window.location.href = '/#!/addDepartment';
+        });
+
+    } else {
+    	introJs().exit();
+    }
+
+}
+
+function addDepartmentGuide() {
+    if(localStorage.getItem("tutorijal") == "guideAddDepartment") {
+        introJs().setOption('doneLabel', 'Done').start('addDepartment').oncomplete(function() {
+        	localStorage.setItem("tutorijal", false);
+            window.location.href = '/#!';
+        });
+
+    } else {
+    	introJs().exit();
+    }
+
+}
+
+
 
 // Function to open modal
 function openModal(){

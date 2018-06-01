@@ -35,7 +35,7 @@
     margin:0;
 }
 
-.modal-header{
+.modal-header-tut{
     background:coral;
     padding:15px;
     color:#fff;
@@ -45,7 +45,7 @@
     padding:10px 20px;
 }
 
-.modal-footer{
+.modal-footer-tut{
     background:coral;
     padding:10px;
     color:#fff;
