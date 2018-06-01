@@ -8,9 +8,9 @@
         .module('HCIApp')
         .controller('addCtrl', addCtrl);
 
-    addCtrl.$inject = ['$scope', '$http','$location', 'Alertify'];
+    addCtrl.$inject = ['$scope', '$http', 'Alertify'];
 
-    function addCtrl($scope, $http, $state, Alertify) {
+    function addCtrl($scope, $http, Alertify) {
         var vm = this;
         vm.newDepartment = newDepartment;
         vm.deleteDepartment = deleteDepartment;
@@ -18,6 +18,9 @@
         vm.checkDeleteClassroom = checkDeleteClassroom;
         vm.addClassroom = addClassroom;
         vm.deleteClassroom = deleteClassroom;
+        vm.addCourse = addCourse;
+        vm.checkDeleteCourse = checkDeleteCourse;
+        vm.deleteCourse = deleteCourse;
 
 
         $scope.department = {
@@ -26,8 +29,20 @@
         $scope.classroom = {
             "classroom" : ""
         };
-        $scope.selected_os = "";
+
+        $scope.course = {
+            "id": "",
+            'label' : "",
+            'title': "",
+            'duration': 45,
+            'department' : {"id": "SIIT"},
+            'os' : "linux"
+
+        };
+
         $scope.os_options = ['windows', 'linux', 'cross'];
+        $scope.department_options = [];
+        $scope.durationOptions = [45, 90, 180];
 
         $scope.all_classrooms = [];
 
@@ -35,6 +50,10 @@
             var promise = $http.get("/api/home/departments");
             promise.then(function (response) {
                 $scope.departments = response.data;
+
+                for(var depart in response.data)
+                    $scope.department_options.push(response.data[depart].id);
+
             });
         };
 
@@ -158,6 +177,58 @@
                 if(response.status == "200"){
                     Alertify.success("Classroom deleted!");
                     loadUniqueClassrooms();
+                }
+                else{
+                    Alertify.error('Error!');
+                }
+            });
+        }
+
+        function addCourse() {
+            console.log($scope.course);
+
+            var promise = $http.post("/api/home/addCourse", $scope.course);
+            promise.then(function (response) {
+                if(response.status == "200"){
+                    Alertify.success("Course added!");
+                    loadCourses();
+                    $scope.course = {
+                        "id": "",
+                        'label' : "",
+                        'title': "",
+                        'duration': 45,
+                        'department' : {"id": "SIIT"},
+                        'os' : "linux"
+
+                    };
+                }
+                else{
+                    Alertify.error('Course already exist!');
+                }
+            });
+
+        }
+
+        function checkDeleteCourse(course) {
+
+            var status = true;
+
+            for(var room in $scope.all_classrooms)
+                for(var cour in $scope.all_classrooms[room].course)
+                    if($scope.all_classrooms[room].course[cour].id == course.id)
+                        status = false;
+
+
+            return status;
+
+        }
+
+        function deleteCourse(course) {
+            var promise = $http.post("/api/home/deleteCourse", course);
+            promise.then(function (response) {
+                if(response.status == "200"){
+                    Alertify.success("Course deleted!");
+                    loadCourses();
                 }
                 else{
                     Alertify.error('Error!');

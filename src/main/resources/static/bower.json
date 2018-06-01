@@ -1,5 +1,5 @@
 {
-  "name": "sbzproject",
+  "name": "hciproject",
   "version": "0.0.0",
   "dependencies": {
     "angular-resource": "^1.5.9",

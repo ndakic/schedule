@@ -395,6 +395,35 @@ public class HomeController {
         return new ResponseEntity(null, HttpStatus.OK);
     }
 
+    @RequestMapping("/addCourse")
+    public ResponseEntity addCourse(@RequestBody Course course) throws Exception{
+
+        Department department = departmentRepository.findOneById(course.getDepartment().getId());
+
+        System.out.println(course.toString());
+
+        Course exist = courseRepository.findOneById(course.getId());
+
+        if(exist != null)
+            return new ResponseEntity(null, HttpStatus.NO_CONTENT);
+
+        course.setDepartment(department);
+
+        courseRepository.save(course);
+
+        return new ResponseEntity(course, HttpStatus.OK);
+
+    }
+
+    @PostMapping("/deleteCourse")
+    public ResponseEntity deleteCourse(@RequestBody Course course) throws Exception{
+
+        courseRepository.delete(course);
+
+        return new ResponseEntity(course, HttpStatus.OK);
+
+    }
+
 
 
     public Boolean checkClassroom(List<Classrooms> classroomsList, String classroom) throws  Exception{
