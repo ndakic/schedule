@@ -1,17 +1,33 @@
 
 <div class="container">
-    <div row>
+
+        <div class="col-lg-4">
+            <div class="input-group custom-search-form">
+                <input type="text" class="form-control" placeholder="Search by label.." ng-model="room.classroom" ng-maxlength="20" maxlength="20">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </span>
+            </div>
+        </div>
+
+        <div class="col-lg-8"></div>
+
+
+
+    <div class="row">
         <div class="col-lg-8">
             <table>
                 <thead>
                 <tr>
-                    <th>Label1</th>
+                    <th>Label</th>
                     <th>OS</th>
                     <th></th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr ng-repeat="room in unique_classrooms">
+                <tr ng-repeat="room in unique_classrooms | filter:room">
                     <td>{{room.classroom}}</td>
                     <td>{{room.allowedTypes[0]}}</td>
                     <td><button class="btn btn-danger" ng-click="vm.deleteClassroom(room)" ng-show="vm.checkDeleteClassroom(room.classroom)" type="submit">delete</button></td>
@@ -24,20 +40,15 @@
             <div class="wrapper">
                 <form name="AddForm" ng-submit="vm.addClassroom()">
                     <div class="modal-header">
-                        <h4 class="modal-title" id="myAppLabel">Add New Classroom1</h4>
+                        <h4 class="modal-title" id="myAppLabel">Add New Classroom</h4>
                     </div>
                     <div class="modal-body">
                         <jhi-alert-error></jhi-alert-error>
 
                         <div class="form-group">
                             <label class="control-label">Label</label>
-                            <input type="text" class="form-control" name="id" id="field_id" ng-model="classroom.classroom" ng-minlength="1" ng-maxlength="4" maxlength="4" required/>
+                            <input type="text" class="form-control" name="id" id="field_id" ng-model="classroom.classroom" minlength="2" maxlength="4" required/>
                         </div>
-
-                        <span ng-if="classroom.classroom.length < 2" style="font-size: 12px;"><b> Label must be between 2 and 4 character.</b> </span>
-
-                        <br>
-                        <br>
 
                         <div class="form-group">
                             <label class="control-label">OS</label>

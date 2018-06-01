@@ -1,6 +1,24 @@
 
 <div class="container">
-    <div row>
+
+
+    <div class="col-lg-4">
+        <div class="input-group custom-search-form">
+            <input type="text" class="form-control" placeholder="Search by title.." ng-model="search.title" ng-maxlength="20" maxlength="20">
+            <span class="input-group-btn">
+                    <button class="btn btn-default" type="button">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </span>
+        </div>
+    </div>
+
+    <div class="col-lg-8"></div>
+
+
+
+
+    <div class="row">
         <div class="col-lg-8">
             <table>
                 <thead>
@@ -12,7 +30,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr ng-repeat="department in departments">
+                <tr ng-repeat="department in departments | filter:search">
                     <td>{{department.id}}</td>
                     <td>{{department.title}}</td>
                     <td><span style="background-color: {{department.color}}; height: 16px; width: 30px; display: inline-block;"></span></td>
@@ -34,7 +52,7 @@
 
                         <div class="form-group">
                             <label class="control-label">ID</label>
-                            <input type="text" class="form-control" name="id" id="field_id" ng-model="department.id" ng-minlength="1" ng-maxlength="4" maxlength="4" required/>
+                            <input type="text" class="form-control" name="id" id="field_id" ng-model="department.id" minlength="2" maxlength="4" required/>
                         </div>
 
                         <div class="form-group">

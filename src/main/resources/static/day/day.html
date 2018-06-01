@@ -63,19 +63,6 @@
         <div class="col-lg-4">
             <div class="fixedElement">
                 <br>
-                <div class="btn-group" data-toggle="buttons">
-                    <div class='my-legend' style="padding-bottom: 0px;">
-                        <div class='legend-title'>Auto complete - based on course duration</div>
-                        <div style="font-size: 10px;">
-                            <input type="radio" ng-model=autocomplete ng-value=autocompleteOptions[0]> ON
-                            &nbsp;
-                            <input type="radio" ng-model=autocomplete ng-value=autocompleteOptions[1]> OFF
-                        </div>
-                    </div>
-
-                </div>
-
-                <br><br>
 
                 <div class="trashcan box box-grey box-padding">
                     <!-- If you use [] as referenced list, the dropped elements will be lost -->
@@ -161,12 +148,12 @@
         var $el = $('.fixedElement');
         var isPositionFixed = ($el.css('position') == 'fixed');
         if ($(this).scrollTop() > 200 && !isPositionFixed){
-            $('.fixedElement').css({'position': 'fixed', 'top': '0px'});
+            $('.fixedElement').css({'position': 'fixed', 'top': '0px', 'max-width': '350px'});
 
         }
         if ($(this).scrollTop() < 200 && isPositionFixed)
         {
-            $('.fixedElement').css({'position': 'static', 'top': '0px'});
+            $('.fixedElement').css({'position': 'static', 'top': '0px', 'max-width': '350px'});
         }
     });
 

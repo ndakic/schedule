@@ -20,7 +20,9 @@
         vm.deleteClassroom = deleteClassroom;
 
 
-        $scope.department = {};
+        $scope.department = {
+            "id": ""
+        };
         $scope.classroom = {
             "classroom" : ""
         };
