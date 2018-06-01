@@ -104,15 +104,14 @@
                              for(var room in $scope.lists[time]["classrooms"]){
                                  if($scope.lists[time]["classrooms"][room]["classroom"] == classroom){
                                      if($scope.lists[time]["classrooms"][room]["course"].length == 0){
-                                         if(count != 2){
+                                         if(count != 2 && count != 6 && count != 10){
                                              $scope.lists[time]["classrooms"][room]["course"].push($scope.draggedCourse);
                                              $scope.insertPosition.push($scope.lists[time]);
                                              $scope.insertClassroom = classroom;
                                          }
 
-
                                          count++;
-                                         if(count == 2 && two_hours == true)
+                                         if((count == 2 || count == 6 || count == 10) && two_hours == true)
                                              calc_addition++;
                                      }else{
                                          Alertify.error("Course can't be dragged here. Try again.");
