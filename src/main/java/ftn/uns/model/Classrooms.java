@@ -29,13 +29,32 @@ public class Classrooms implements Serializable {
     @ManyToMany
     private List<Course> course;
 
+    private String description;
+
+    private Integer capacity;
+
+    private Boolean projector;
+
+    private Boolean basicTable;
+
+    private Boolean smartTable;
+
+    private Software software;
+
+
     public Classrooms() {
     }
 
-    public Classrooms(String classroom, Integer max, String[] allowedTypes, List<Course> course) {
+    public Classrooms(String classroom, Integer max, String[] allowedTypes, List<Course> course, String description, Integer capacity, Boolean projector, Boolean basicTable, Boolean smartTable, Software software) {
         this.classroom = classroom;
         this.max = max;
         this.allowedTypes = allowedTypes;
         this.course = course;
+        this.description = description;
+        this.capacity = capacity;
+        this.projector = projector;
+        this.basicTable = basicTable;
+        this.smartTable = smartTable;
+        this.software = software;
     }
 }

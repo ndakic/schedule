@@ -27,7 +27,10 @@
             "id": ""
         };
         $scope.classroom = {
-            "classroom" : ""
+            "projector" : false,
+            "basicTable": false,
+            "smartTable": false,
+            "software": {"id": "IDJ"}
         };
 
         $scope.course = {
@@ -40,11 +43,15 @@
 
         };
 
-        $scope.os_options = ['windows', 'linux', 'cross'];
-        $scope.department_options = [];
-        $scope.durationOptions = [45, 90, 180];
 
+        $scope.yesNo = [true, false];
+        $scope.os_options = ['windows', 'linux', 'cross'];
+        $scope.durationOptions = [45, 90, 180];
+        $scope.department_options = [];
+        $scope.software_options = [];
         $scope.all_classrooms = [];
+        $scope.selected_os = "cross";
+        //$scope.selected_soft = "";
 
         var loadDepartments= function () {
             var promise = $http.get("/api/home/departments");
@@ -58,6 +65,20 @@
         };
 
         loadDepartments();
+
+
+        var loadSoftwares= function () {
+            var promise = $http.get("/api/home/softwares");
+            promise.then(function (response) {
+                $scope.softwares = response.data;
+
+                for(var soft in response.data)
+                    $scope.software_options.push(response.data[soft].id);
+
+            });
+        };
+
+        loadSoftwares();
 
         var loadUniqueClassrooms= function () {
             var promise = $http.get("/api/home/allUniqueClassrooms");
