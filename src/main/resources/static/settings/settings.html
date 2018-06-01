@@ -1,10 +1,6 @@
 
 
 <div class="container">
-	<script type="text/javascript">
-		console.log("USAO SETTINGS");
-		settingsGuide();
-	</script>
 
     <p style="font-size: 13px;"><b> Choose classrooms to display:</b> </p>
 
@@ -19,7 +15,11 @@
 
     <br> <br>
     <p style="font-size: 13px;"> <b> Delete all data: </b> </p>
-    <button class="btn btn-danger" ng-click="vm.deleteAllData()"  type="submit" data-intro="Create..">Confirm</button>
+    <button class="btn btn-danger" ng-click="vm.deleteAllData()"  type="submit" data-step="2" data-intro="Deletee.." data-intro-group="settings">Confirm</button>
+	<script type="text/javascript">
+		console.log("USAO SETTINGS");
+		settingsGuide();
+	</script>
 
 
 </div>
