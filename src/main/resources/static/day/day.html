@@ -3,7 +3,7 @@
     <h2>{{entity.id}}</h2>
     <hr>
     <div class="typesDemo row">
-            <div class="col-lg-8"  data-step="3" data-intro="Create.." data-intro-group="days">
+            <div class="col-lg-8"  data-step="3" data-intro="Create.." data-intro-group="days" data-hint="This is a tooltip!" data-hintPosition="top-middle">
                 <div ng-repeat="item in lists" >
                     <div class="panel panel-info">
                         <div class="panel-heading">
@@ -60,7 +60,7 @@
             <div class="fixedElement">
                 <br>
 
-                <div class="trashcan box box-grey box-padding" data-step="4" data-intro="Create.." data-intro-group="days">
+                <div class="trashcan box box-grey box-padding" data-step="4" data-intro="Create.." data-intro-group="days" data-hint="This is a tooltip!" data-hintPosition="top-middle">
                     <!-- If you use [] as referenced list, the dropped elements will be lost -->
                     <!--<h3>Trashcan</h3>-->
                     <ul dnd-list="[]"
@@ -89,7 +89,7 @@
                 <!-- /.panel-heading -->
                 <div class="panel-body">
                     <div class="list-group">
-                        <div class="input-group custom-search-form" data-step="1" data-intro="Create.." data-intro-group="days">
+                        <div class="input-group custom-search-form" data-step="1" data-intro="Create.." data-intro-group="days" data-hint="This is a tooltip!" data-hintPosition="top-middle">
                             <input type="text" class="form-control" placeholder="Search by title.." ng-model="course.title">
                             <span class="input-group-btn">
                                 <button class="btn btn-default" type="button">
@@ -100,7 +100,7 @@
 
                         <br>
                             <ul dnd-list="courseList"
-                                dnd-dragover="false" style="overflow: scroll; height: 300px;" >
+                                dnd-dragover="false" style="overflow: scroll; height: 300px;" data-hint="This is a tooltip!" data-hintPosition="top-middle">
                                 <li ng-repeat="course in courseList | filter:course track by $index"
                                     dnd-draggable="course"
                                     dnd-type="course.os"

@@ -115,9 +115,30 @@ function removeHintsMainPage() {
 function daysHint() {
 	if(localStorage.getItem("tutorijal") == "hint") {
 		javascript:introJs().removeHints();
-		console.log("USAO DAYS HINT");
+		javascript:introJs().showHints();
+	}
+}
 
-//		javascript:introJs().showHints();
+
+function courseHint() {
+	if(localStorage.getItem("tutorijal") == "hint") {
+		javascript:introJs().removeHints();
+		javascript:introJs().showHints();
+	}
+}
+
+
+function classroomHint() {
+	if(localStorage.getItem("tutorijal") == "hint") {
+		javascript:introJs().removeHints();
+		javascript:introJs().showHints();
+	}
+}
+
+function departmentHint() {
+	if(localStorage.getItem("tutorijal") == "hint") {
+		javascript:introJs().removeHints();
+		javascript:introJs().showHints();
 	}
 }
 
