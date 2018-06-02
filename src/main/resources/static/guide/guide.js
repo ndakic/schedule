@@ -48,9 +48,13 @@ function decTutFun() {
 }
 
 function accTutFun(){
+	
+	
     localStorage.setItem("tutorijal", "hint");
     javascript:introJs().addHints();
+    var x = document.getElementsByClassName("introjs-hints")[0].getElementsByTagName("a")[1].getAttribute("data-step"); 
     closeModal();
+    //javascript:introJs().hideHint(x);
 }
 
 
@@ -87,6 +91,38 @@ function settingsGuide() {
     } else {
     	introJs().exit();
     }
+}
+
+
+function settingsHint() {
+	if(localStorage.getItem("tutorijal") == "hint") {
+		javascript:introJs().removeHints();
+
+		javascript:introJs().showHints();
+	}
+}
+
+
+function removeHintsMainPage() {
+	if(localStorage.getItem("tutorijal") == "hint") {
+		javascript:introJs().removeHints();
+		setTimeout(showHints, 2000);
+		
+	}
+}
+
+
+function daysHint() {
+	if(localStorage.getItem("tutorijal") == "hint") {
+		javascript:introJs().removeHints();
+		console.log("USAO DAYS HINT");
+
+//		javascript:introJs().showHints();
+	}
+}
+
+function showHints() {
+	javascript:introJs().addHints();	
 }
 
 function daysGuide() {
