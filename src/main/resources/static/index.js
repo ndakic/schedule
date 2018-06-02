@@ -12,7 +12,8 @@
         'Alertify',
         'authentication',
         'dndLists',
-        'colorpicker.module'
+        'colorpicker.module',
+        'xeditable'
     ]);
 
 
@@ -107,6 +108,10 @@
                 });
             }
         }
+    });
+
+    app.run(function(editableOptions) {
+        editableOptions.theme = 'bs3';
     });
 
 }(angular));

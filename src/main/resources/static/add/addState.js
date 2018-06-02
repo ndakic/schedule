@@ -51,6 +51,33 @@
                     controllerAs: 'vm'
                 }
             }
+        }).state('course-detail', {
+            parent: 'app',
+            url: '/course/{id}',
+            data: {
+                authorities: [],
+                pageTitle: 'Course'
+            },
+            views: {
+                'content@': {
+                    templateUrl: 'add/courseDetails.html',
+                    controller: 'CourseDetailsCtrl',
+                    controllerAs: 'vm'
+                }
+            },
+            resolve: {
+                entity: ['$stateParams', 'Course', function($stateParams, Course) {
+                    return Course.get({id : $stateParams.id}).$promise;
+                }],
+                previousState: ["$state", function ($state) {
+                    var currentStateData = {
+                        name: $state.current.name || 'course-detail',
+                        params: $state.params,
+                        url: $state.href($state.current.name, $state.params)
+                    };
+                    return currentStateData;
+                }]
+            }
         });
     }
 })();

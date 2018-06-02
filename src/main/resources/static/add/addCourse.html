@@ -20,7 +20,7 @@
             <table >
                 <thead>
                 <tr>
-                    <th>ID123</th>
+                    <th>ID</th>
                     <th>Label</th>
                     <th>Title</th>
                     <th>Duration</th>
@@ -31,7 +31,7 @@
                 </thead>
                 <tbody>
                 <tr ng-repeat="course in courses | filter:search">
-                    <td style="max-width: 80px; overflow-wrap: break-word;">{{course.id}}</td>
+                    <td style="max-width: 80px; overflow-wrap: break-word;"> <a ui-sref="course-detail({id:course.id})">{{course.id}} </a></td>
                     <td>{{course.label}}</td>
                     <td style="max-width: 150px; overflow-wrap: break-word;">{{course.title}}</td>
                     <td>{{course.duration}}min</td>

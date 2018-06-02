@@ -53,27 +53,38 @@ public class HomeController {
         if(courseList.isEmpty()){
             System.out.println("Populate Course");
 
+
             Department siit = new Department("SIIT", "Softversko Inzenjersvo i Informacione Tehnologije", "#18fff5");
             Department e2 = new Department("E2", "Racunarstvo i Automatika", "#fff722");
 
             departmentRepository.save(siit);
             departmentRepository.save(e2);
 
-            Course course1 = new Course("HCI-SIIT", "HCI", "Iterakcija Covek Racunar", 45, siit, OS.cross);
-            Course course2 = new Course("PP-SIIT", "PP","Programski Prevodioci", 90, siit, OS.linux);
-            Course course3 = new Course("NTP-SIIT", "NTP", "Napredne Tehnike Programiranja", 45, siit, OS.linux);
-            Course course4 = new Course("OS-SIIT", "OS","Operativni Sistemi", 45, siit, OS.linux);
-            Course course5 = new Course("OP-SIIT", "OP","Organizacija Podataka", 90, siit, OS.windows);
-            Course course6 = new Course("WEB-SIIT", "WEB","Web Programiranje", 45, siit, OS.linux);
-            Course course7 = new Course("MU-SIIT", "MU","Masinsko Ucenje", 90, siit, OS.linux);
 
-            Course course8 = new Course("HCI-E2", "HCI","Iterakcija Covek Racunar", 45, e2, OS.cross);
-            Course course9 = new Course("PP-E2", "PP","Programski Prevodioci", 45, e2, OS.linux);
-            Course course10 = new Course("NTP-E2", "NTP","Napredne Tehnike Programiranja", 45, e2, OS.linux);
-            Course course11 = new Course("OS-E2", "OS","Operativni Sistemi", 45, e2, OS.linux);
-            Course course12 = new Course("OP-E2", "OP","Organizacija Podataka", 45, e2, OS.windows);
-            Course course13 = new Course("WEB-E2", "WEB","Web Programiranje", 45, e2, OS.windows);
-            Course course14 = new Course("MU-E2", "MU","Masinsko Ucenje", 45, e2, OS.windows);
+            Software software1 = new Software("IDJ", "IntelliJ IDEA", OS.cross);
+            Software software2 = new Software("ECL", "Eclipse", OS.cross);
+            Software software3 = new Software("VS", "Visual Studio", OS.windows);
+
+            softwareRepository.save(software1);
+            softwareRepository.save(software2);
+            softwareRepository.save(software3);
+
+
+            Course course1 = new Course("HCI-SIIT", "HCI", "Iterakcija Covek Racunar", 45, siit, OS.cross, "Neki Opis1", 30, 2, true, true, false, software1 );
+            Course course2 = new Course("PP-SIIT", "PP","Programski Prevodioci", 90, siit, OS.linux, "Neki Opis2", 45, 2, true, true, false, software3);
+            Course course3 = new Course("NTP-SIIT", "NTP", "Napredne Tehnike Programiranja", 45, siit, OS.linux, "Neki Opis3", 30, 2, true, true, false, software3);
+            Course course4 = new Course("OS-SIIT", "OS","Operativni Sistemi", 45, siit, OS.linux, "Neki Opis4", 30, 2, true, true, false, software1);
+            Course course5 = new Course("OP-SIIT", "OP","Organizacija Podataka", 90, siit, OS.windows, "Neki Opis5", 30, 2, true, true, false, software2);
+            Course course6 = new Course("WEB-SIIT", "WEB","Web Programiranje", 45, siit, OS.linux, "Neki Opis6", 45, 2, true, true, false, software2);
+            Course course7 = new Course("MU-SIIT", "MU","Masinsko Ucenje", 90, siit, OS.linux, "Neki Opis7", 30, 2, true, true, false, software1);
+
+            Course course8 = new Course("HCI-E2", "HCI","Iterakcija Covek Racunar", 45, e2, OS.cross, "Neki Opis8", 45, 2, true, true, false, software1);
+            Course course9 = new Course("PP-E2", "PP","Programski Prevodioci", 45, e2, OS.linux, "Neki Opis9", 30, 2, true, true, false, software1);
+            Course course10 = new Course("NTP-E2", "NTP","Napredne Tehnike Programiranja", 45, e2, OS.linux, "Neki Opis10", 30, 2, true, true, false, software3);
+            Course course11 = new Course("OS-E2", "OS","Operativni Sistemi", 45, e2, OS.linux, "Neki Opis11", 45, 2, true, true, false, software1);
+            Course course12 = new Course("OP-E2", "OP","Organizacija Podataka", 45, e2, OS.windows, "Neki Opis12", 30, 2, true, true, false, software2);
+            Course course13 = new Course("WEB-E2", "WEB","Web Programiranje", 45, e2, OS.windows, "Neki Opis13", 30, 2, true, true, false, software2);
+            Course course14 = new Course("MU-E2", "MU","Masinsko Ucenje", 45, e2, OS.windows, "Neki Opis14", 30, 2, true, true, false, software3);
 
             courseRepository.save(course1);
             courseRepository.save(course2);
@@ -217,16 +228,6 @@ public class HomeController {
             period.add(timePeriod61);
 
 
-
-            Software software1 = new Software("IDJ", "IntelliJ IDEA", OS.cross);
-            Software software2 = new Software("ECL", "Eclipse", OS.cross);
-            Software software3 = new Software("VS", "Visual Studio", OS.windows);
-
-            softwareRepository.save(software1);
-            softwareRepository.save(software2);
-            softwareRepository.save(software3);
-
-
             for(TimePeriod timePeriod: period){
 
                 Classrooms classroom1 = new Classrooms("A1", 1, new String [] {"linux", "cross"}, null, "Opis 1", 30, false, true, false, software1);
@@ -318,7 +319,6 @@ public class HomeController {
 
         return new ResponseEntity(department, HttpStatus.OK);
     }
-
 
     @PostMapping("/deleteDepartment")
     public ResponseEntity deleteDepartment(@RequestBody Department department) throws Exception{
@@ -425,6 +425,12 @@ public class HomeController {
 
     }
 
+    @RequestMapping("/updateCourse")
+    public ResponseEntity updateCourse(@RequestBody Course course) throws Exception{
+        return new ResponseEntity(courseRepository.save(course), HttpStatus.OK);
+
+    }
+
     @PostMapping("/deleteCourse")
     public ResponseEntity deleteCourse(@RequestBody Course course) throws Exception{
 
@@ -437,6 +443,11 @@ public class HomeController {
     @GetMapping("/softwares")
     public List<Software> getSoftwares() throws Exception{
         return softwareRepository.findAll();
+    }
+
+    @GetMapping("/course/{id}")
+    public ResponseEntity getCourse(@PathVariable String id) throws Exception{
+        return new ResponseEntity(courseRepository.findOneById(id), HttpStatus.OK);
     }
 
 
