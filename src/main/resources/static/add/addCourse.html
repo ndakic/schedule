@@ -1,7 +1,7 @@
 
 <div class="container">
 
-    <div class="col-lg-4" data-step="3" data-intro="Create.." data-intro-group="addCourse" data-hint="This is a tooltip!" data-hintPosition="top-middle">
+    <div class="col-lg-4" data-step="3" data-intro="Create.." data-intro-group="addCourse" data-hint="This is a tooltip!" data-hintPosition="top-left">
         <div class="input-group custom-search-form">
             <input type="text" class="form-control" placeholder="Search by title.." ng-model="search.title" maxlength="20">
             <span class="input-group-btn">
@@ -16,8 +16,8 @@
 
 
     <div class="row">
-        <div class="col-lg-8" data-step="1" data-intro="Create.." data-intro-group="addCourse" data-hint="This is a tooltip!" data-hintPosition="top-middle">
-            <table >
+        <div class="col-lg-8" data-step="1" data-intro="Create.." data-intro-group="addCourse" >
+            <table data-hint="This is a tooltip!" data-hintPosition="top-left">
                 <thead>
                 <tr>
                     <th>ID</th>
@@ -31,7 +31,7 @@
                 </thead>
                 <tbody>
                 <tr ng-repeat="course in courses | filter:search">
-                    <td style="max-width: 80px; overflow-wrap: break-word;"> <a ui-sref="course-detail({id:course.id})">{{course.id}} </a></td>
+                    <td style="max-width: 80px; overflow-wrap: break-word;"> <a ui-sref="course-detail({id:course.id})" data-hint="This is a tooltip!" data-hintPosition="top-left">{{course.id}} </a></td>
                     <td>{{course.label}}</td>
                     <td style="max-width: 150px; overflow-wrap: break-word;">{{course.title}}</td>
                     <td>{{course.duration}}min</td>
@@ -43,16 +43,16 @@
                 </tbody>
             </table>
         </div>
-        <div class="col-lg-4" data-step="2" data-intro="Create.." data-intro-group="addCourse" data-hint="This is a tooltip!" data-hintPosition="top-middle">
+        <div class="col-lg-4" data-step="2" data-intro="Create.." data-intro-group="addCourse">
             <div class="wrapper">
-                <form name="AddForm" ng-submit="vm.addCourse()">
+                <form name="AddForm" ng-submit="vm.addCourse()" data-hint="This is a tooltip!" data-hintPosition="top-left">
                     <div class="modal-header">
                         <h4 class="modal-title" id="myAppLabel">Add New Course</h4>
                     </div>
                     <div class="modal-body">
                         <jhi-alert-error></jhi-alert-error>
 
-                        <div class="form-group">
+                        <div class="form-group" >
                             <label class="control-label">ID</label>
                             <input type="text" class="form-control" name="label" id="field_id" ng-model="course.id" minlength="4" maxlength="10" required/>
                         </div>
