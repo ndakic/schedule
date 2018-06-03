@@ -33,7 +33,7 @@
                 </thead>
                 <tbody>
                 <tr ng-repeat="room in unique_classrooms | filter:room" >
-                    <td data-hint="By clicking on the Label you will be forwarded to the page, where you will be able to make changes on this specific classroom!" data-hintPosition="top-middle">{{room.classroom}}</td>
+                    <td> <a ui-sref="classroom-detail({id:room.classroom})" data-hint="By clicking on the Label you will be forwarded to the page, where you will be able to make changes on this specific classroom!" data-hintPosition="top-middle">{{room.classroom}}</td>
                     <!--<td>{{room.description}}</td>-->
                     <td>{{room.capacity}}</td>
                     <td>

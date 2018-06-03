@@ -495,6 +495,36 @@ public class HomeController {
 
     }
 
+    @RequestMapping("/updateClassroom")
+    public ResponseEntity updateClassroom(@RequestBody Classrooms classrooms) throws Exception{
+
+        List<Classrooms> classroomsList = classroomsRepository.findAllByClassroom(classrooms.getClassroom());
+
+        Software software = softwareRepository.findOneById(classrooms.getSoftware().getId());
+
+        for(Classrooms room: classroomsList){
+            room.setDescription(classrooms.getDescription());
+            room.setCapacity(classrooms.getCapacity());
+            room.setProjector(classrooms.getProjector());
+            room.setBasicTable(classrooms.getBasicTable());
+            room.setSmartTable(classrooms.getSmartTable());
+            room.setSoftware(software);
+            classroomsRepository.save(room);
+        }
+
+        List<Classrooms> classroomsList2 = classroomsRepository.findAllByClassroom(classrooms.getClassroom());
+
+        return new ResponseEntity(classroomsList2.get(0), HttpStatus.OK);
+    }
+
+    @GetMapping("/classroom/{id}")
+    public ResponseEntity getClassroom(@PathVariable String id) throws Exception{
+
+        List<Classrooms> classroomsList = classroomsRepository.findAllByClassroom(id);
+
+        return new ResponseEntity(classroomsList.get(0), HttpStatus.OK);
+    }
+
 
 
 

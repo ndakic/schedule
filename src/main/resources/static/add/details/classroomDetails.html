@@ -1,0 +1,93 @@
+<form editable-form name="editableForm" onaftersave="saveClassroom()">
+    <div class="container">
+        <div class="row" style="margin: 0px">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
+                <div class="panel panel-info">
+                    <div class="panel-heading" style="height: 30px ;padding-top: 8px">
+                        <h3 class="panel-title">Classroom Details</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row" style="margin: 0px">
+                            <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="/images/gear.png" class="img-circle img-responsive"></div>
+
+                            <div class=" col-md-9 col-lg-9 ">
+                                <table class="table table-user-information" style="margin: 0px; box-shadow: none; -webkit-box-shadow: 0px;">
+                                    <tbody>
+                                    <tr>
+                                        <td>ID:</td>
+                                        <td>{{ classroom.classroom }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Description:</td>
+                                        <td> <span editable-textarea="classroom.description" e-rows="7" e-cols="40" e-style="min-width: 150px; max-width: 200px; min-height: 50px; max-height: 300px;" e-minlength="10" e-maxlength="255" e-required>{{classroom.description}}</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Capacity (students):</td>
+                                        <td><span editable-select="classroom.capacity" e-name="status" e-ng-options="gsize for gsize in groupSize">{{classroom.capacity}} </span></span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Projector:</td>
+                                        <td>
+                                            <span ng-if="classroom.projector"> <span editable-select="classroom.projector" e-name="status" e-ng-options="opt.value as opt.text for opt in yesNo">yes</span></span>
+                                            <span ng-if="!classroom.projector"> <span editable-select="classroom.projector" e-name="status" e-ng-options="opt.value as opt.text for opt in yesNo">no</span></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Basic Table:</td>
+                                        <td>
+
+                                            <span ng-if="classroom.basicTable"> <span editable-select="classroom.basicTable" e-name="status" e-ng-options="opt.value as opt.text for opt in yesNo">yes</span></span>
+                                            <span ng-if="!classroom.basicTable"> <span editable-select="classroom.basicTable" e-name="status" e-ng-options="opt.value as opt.text for opt in yesNo">no</span></span>
+
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Smart Table:</td>
+                                        <td>
+                                            <span ng-if="classroom.smartTable"> <span editable-select="classroom.smartTable" e-name="status" e-ng-options="opt.value as opt.text for opt in yesNo">yes</span></span>
+                                            <span ng-if="!classroom.smartTable"> <span editable-select="classroom.smartTable" e-name="status" e-ng-options="opt.value as opt.text for opt in yesNo">no</span></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Software:</td>
+                                        <td><span editable-select="classroom.software.id" e-name="status" e-ng-options="soft.id as soft.title for soft in softwares">{{classroom.software.title}}</span></td>
+                                    </tr>
+
+                                    </tbody>
+                                </table>
+
+                                <br>
+                                <br>
+
+                                <button type="button" class="btn btn-info pull-right" ng-click="editableForm.$show()" ng-show="!editableForm.$visible">
+                                    Edit
+                                </button>
+
+                                <!-- buttons to submit / cancel form -->
+                                <span ng-show="editableForm.$visible">
+                                    <button type="submit" class="btn btn-primary pull-right" ng-disabled="editableForm.$waiting">
+                                      Save
+                                    </button>
+                                    <button type="button" class="btn btn-default pull-right" ng-disabled="editableForm.$waiting" ng-click="editableForm.$cancel()">
+                                      Cancel
+                                    </button>
+                                </span>
+                                <br>
+                                <br>
+
+                            </div>
+
+                        </div>
+                        <div class="panel-footer" ng-if="vm.previousState != 'classroom-detail'">
+                            <div>
+                                <button type="submit"ui-sref="{{ vm.previousState }}"class="btn btn-info">
+                                    <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

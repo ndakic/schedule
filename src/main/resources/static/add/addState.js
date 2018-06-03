@@ -145,6 +145,33 @@
                     return currentStateData;
                 }]
             }
+        }).state('classroom-detail', {
+            parent: 'app',
+            url: '/classroom/{id}',
+            data: {
+                authorities: [],
+                pageTitle: 'Classroom'
+            },
+            views: {
+                'content@': {
+                    templateUrl: 'add/details/classroomDetails.html',
+                    controller: 'DetailsCtrl',
+                    controllerAs: 'vm'
+                }
+            },
+            resolve: {
+                entity: ['$stateParams', 'Classroom', function($stateParams, Classroom) {
+                    return Classroom.get({id : $stateParams.id}).$promise;
+                }],
+                previousState: ["$state", function ($state) {
+                    var currentStateData = {
+                        name: $state.current.name || 'classroom-detail',
+                        params: $state.params,
+                        url: $state.href($state.current.name, $state.params)
+                    };
+                    return currentStateData;
+                }]
+            }
         });
     }
 })();
