@@ -21,6 +21,9 @@
         vm.addCourse = addCourse;
         vm.checkDeleteCourse = checkDeleteCourse;
         vm.deleteCourse = deleteCourse;
+        vm.addSoftware = addSoftware;
+        vm.deleteSoftware = deleteSoftware;
+        vm.checkDeleteSoftware = checkDeleteSoftware;
 
 
         $scope.department = {
@@ -40,7 +43,10 @@
             'duration': 45,
             'department' : {"id": "SIIT"},
             'os' : "linux"
+        };
 
+        $scope.software = {
+            "os": "linux",
         };
 
 
@@ -220,7 +226,6 @@
                     Alertify.error('Course already exist!');
                 }
             });
-
         }
 
         function checkDeleteCourse(course) {
@@ -248,6 +253,45 @@
                     Alertify.error('Error!');
                 }
             });
+        }
+
+        function addSoftware() {
+            var promise = $http.post("/api/home/addSoftware", $scope.software);
+            promise.then(function (response) {
+                if(response.status == "200"){
+                    Alertify.success("Software added!");
+                    loadSoftwares();
+                    $scope.software = {};
+                }
+                else{
+                    Alertify.error('Software already exist!');
+                }
+            });
+        }
+
+        function deleteSoftware(software) {
+            var promise = $http.post("/api/home/deleteSoftware", software);
+            promise.then(function (response) {
+                if(response.status == "200"){
+                    Alertify.success("Software deleted!");
+                    loadSoftwares();
+                }
+                else{
+                    Alertify.error('Error!');
+                }
+            });
+        };
+
+        function checkDeleteSoftware(software) {
+
+            var status = true;
+
+                for(var cour in $scope.courses)
+                    if($scope.courses[cour].softwareNeed.id == software.id)
+                        status = false;
+
+            return status;
+
         }
 
     };

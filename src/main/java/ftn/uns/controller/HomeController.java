@@ -24,25 +24,25 @@ public class HomeController {
 
 
     @Autowired
-    CourseRepository courseRepository;
+    private CourseRepository courseRepository;
 
     @Autowired
-    TimePeriodRepository timePeriodRepository;
+    private TimePeriodRepository timePeriodRepository;
 
     @Autowired
-    ClassroomsRepository classroomsRepository;
+    private ClassroomsRepository classroomsRepository;
 
     @Autowired
-    DayRepository dayRepository;
+    private DayRepository dayRepository;
 
     @Autowired
-    ClassroomsSettingsRepository classroomsSettingsRepository;
+    private ClassroomsSettingsRepository classroomsSettingsRepository;
 
     @Autowired
-    DepartmentRepository departmentRepository;
+    private DepartmentRepository departmentRepository;
 
     @Autowired
-    SoftwareRepository softwareRepository;
+    private SoftwareRepository softwareRepository;
 
     @RequestMapping("/insertData")
     public ResponseEntity populateData() throws Exception{
@@ -461,6 +461,42 @@ public class HomeController {
     public ResponseEntity updateDepartment(@RequestBody Department department) throws Exception{
         return new ResponseEntity(departmentRepository.save(department), HttpStatus.OK);
     }
+
+    @RequestMapping("/addSoftware")
+    public ResponseEntity addSoftware(@RequestBody Software software) throws Exception{
+
+        Software soft = softwareRepository.findOneById(software.getId());
+
+        if(soft != null)
+            return new ResponseEntity(null, HttpStatus.NO_CONTENT);
+
+        softwareRepository.save(software);
+
+        return new ResponseEntity(software, HttpStatus.OK);
+
+    }
+
+    @RequestMapping("/updateSoftware")
+    public ResponseEntity updateDepartment(@RequestBody Software software) throws Exception{
+        return new ResponseEntity(softwareRepository.save(software), HttpStatus.OK);
+    }
+
+    @GetMapping("/software/{id}")
+    public ResponseEntity getSoftware(@PathVariable String id) throws Exception{
+        return new ResponseEntity(softwareRepository.findOneById(id), HttpStatus.OK);
+    }
+
+    @PostMapping("/deleteSoftware")
+    public ResponseEntity deleteSoftware(@RequestBody Software software) throws Exception{
+
+        softwareRepository.delete(software);
+
+        return new ResponseEntity(software, HttpStatus.OK);
+
+    }
+
+
+
 
 
     public Boolean checkClassroom(List<Classrooms> classroomsList, String classroom) throws  Exception{

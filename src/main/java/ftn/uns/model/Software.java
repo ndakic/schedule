@@ -1,5 +1,6 @@
 package ftn.uns.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import ftn.uns.model.enums.OS;
 import lombok.Data;
 
@@ -28,6 +29,7 @@ public class Software implements Serializable{
 
     private String website;
 
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "MM/dd/yyyy")
     private Date date;
 
     private Integer price;

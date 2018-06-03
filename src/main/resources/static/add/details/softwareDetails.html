@@ -1,0 +1,90 @@
+<form editable-form name="editableForm" onaftersave="saveSoftware()">
+    <div class="container">
+        <div class="row" style="margin: 0px">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
+                <div class="panel panel-info">
+                    <div class="panel-heading" style="height: 30px ;padding-top: 8px">
+                        <h3 class="panel-title" >Software Details</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row" style="margin: 0px">
+                            <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="/images/gear.png" class="img-circle img-responsive"></div>
+
+                            <div class=" col-md-9 col-lg-9 ">
+                                <table class="table table-user-information" style="margin: 0px; box-shadow: none; -webkit-box-shadow: 0px;">
+                                    <tbody>
+                                    <tr>
+                                        <td>ID:</td>
+                                        <td>{{ software.id }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Title:</td>
+                                        <td><span editable-text="software.title" e-minlength="5" e-maxlength="30" e-required>{{software.title}}</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Description:</td>
+                                        <td> <span editable-textarea="software.description" e-rows="7" e-cols="40" e-style="min-width: 150px; max-width: 200px; min-height: 50px; max-height: 300px;" e-minlength="10" e-maxlength="255" e-required>{{software.description}}</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Date:</td>
+                                        <td>{{software.date}}</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>Manufacturer:</td>
+                                        <td><span editable-text="software.manufacturer" e-minlength="5" e-maxlength="30" e-required>{{software.manufacturer}}</span></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>Website:</td>
+                                        <td><span editable-text="software.website" e-minlength="6" e-maxlength="30" e-required>{{software.website}}</span></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>Price:</td>
+                                        <td><span editable-text="software.price" e-minlength="5" e-maxlength="30" e-required>{{software.price}}</span></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>OS:</td>
+                                        <td> <span editable-select="software.os" e-name="status" e-ng-options="os for os in os_options">{{software.os}}</span>  </td>
+                                    </tr>
+
+                                    </tbody>
+                                </table>
+
+                                <br>
+                                <br>
+
+                                <button type="button" class="btn btn-info pull-right" ng-click="editableForm.$show()" ng-show="!editableForm.$visible">
+                                    Edit
+                                </button>
+
+                                <!-- buttons to submit / cancel form -->
+                                <span ng-show="editableForm.$visible">
+                                    <button type="submit" class="btn btn-primary pull-right" ng-disabled="editableForm.$waiting">
+                                      Save
+                                    </button>
+                                    <button type="button" class="btn btn-default pull-right" ng-disabled="editableForm.$waiting" ng-click="editableForm.$cancel()">
+                                      Cancel
+                                    </button>
+                                </span>
+                                <br>
+                                <br>
+
+                            </div>
+
+                        </div>
+                        <div class="panel-footer" ng-if="vm.previousState != 'software-detail'">
+                            <div>
+                                <button type="submit"ui-sref="{{ vm.previousState }}"class="btn btn-info">
+                                    <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

@@ -17,6 +17,7 @@
 
         $scope.course = entity;
         $scope.department = entity;
+        $scope.software = entity;
 
         $scope.yesNo = [{value: true, "text": "yes"}, {value: false, "text": "no"}];
         $scope.os_options = ['windows', 'linux', 'cross'];
@@ -66,6 +67,14 @@
                 $scope.department = response.data;
             });
         };
+
+        $scope.saveSoftware = function () {
+            var promise = $http.post("/api/home/updateSoftware", $scope.software);
+            promise.then(function (response) {
+                $scope.software = response.data;
+            });
+        };
+
 
 
 

@@ -51,6 +51,19 @@
                     controllerAs: 'vm'
                 }
             }
+        }).state('addSoftware', {
+            parent: 'app',
+            url: '/addSoftware',
+            data: {
+                authorities: []
+            },
+            views: {
+                'content@': {
+                    templateUrl: 'add/addSoftware.html',
+                    controller: 'addCtrl',
+                    controllerAs: 'vm'
+                }
+            }
         }).state('course-detail', {
             parent: 'app',
             url: '/course/{id}',
@@ -99,6 +112,33 @@
                 previousState: ["$state", function ($state) {
                     var currentStateData = {
                         name: $state.current.name || 'department-detail',
+                        params: $state.params,
+                        url: $state.href($state.current.name, $state.params)
+                    };
+                    return currentStateData;
+                }]
+            }
+        }).state('software-detail', {
+            parent: 'app',
+            url: '/software/{id}',
+            data: {
+                authorities: [],
+                pageTitle: 'Software'
+            },
+            views: {
+                'content@': {
+                    templateUrl: 'add/details/softwareDetails.html',
+                    controller: 'DetailsCtrl',
+                    controllerAs: 'vm'
+                }
+            },
+            resolve: {
+                entity: ['$stateParams', 'Software', function($stateParams, Software) {
+                    return Software.get({id : $stateParams.id}).$promise;
+                }],
+                previousState: ["$state", function ($state) {
+                    var currentStateData = {
+                        name: $state.current.name || 'software-detail',
                         params: $state.params,
                         url: $state.href($state.current.name, $state.params)
                     };
