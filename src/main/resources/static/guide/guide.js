@@ -334,12 +334,12 @@ var daysSteps = [
      {
          element: '#trash',
          intro: 'Run the workflow to complete the AB Controls step.<br><br>After running the workflow, open the next guided workflow &mdash; <a href="../../4. Analyzing your test results.yxmd">4. Analyzing your test results</a>.',
-         position: 'right'
+         position: 'left'
       },
       {
           element: '#daysCourseId',
           intro: 'Run the workflow to complete the AB Controls step.<br><br>After running the workflow, open the next guided workflow &mdash; <a href="../../4. Analyzing your test results.yxmd">4. Analyzing your test results</a>.',
-          position: 'right'
+          position: 'left'
        }
   ];
 
@@ -400,15 +400,15 @@ var departmentSteps = [
 function settingsHint() {
 	if(localStorage.getItem("tutorijal") == "hint") {
 		javascript:introJs().removeHints();
-
 		javascript:introJs().showHints();
-		javascript:introJs().hideHint(1);
+
 	}
 }
 
 
 function removeHintsMainPage() {
 	if(localStorage.getItem("tutorijal") == "hint") {
+		document.getElementById("tuts").checked = true;
 		javascript:introJs().removeHints();
 		setTimeout(showHints, 2000);
 		
@@ -418,6 +418,7 @@ function removeHintsMainPage() {
 
 function daysHint() {
 	if(localStorage.getItem("tutorijal") == "hint") {
+		document.getElementById("tuts").checked = true;
 		javascript:introJs().removeHints();
 		javascript:introJs().showHints();
 	}
@@ -426,6 +427,7 @@ function daysHint() {
 
 function courseHint() {
 	if(localStorage.getItem("tutorijal") == "hint") {
+		document.getElementById("tuts").checked = true;
 		javascript:introJs().removeHints();
 		javascript:introJs().showHints();
 		javascript:introJs().hideHint(0);
@@ -435,17 +437,31 @@ function courseHint() {
 
 function classroomHint() {
 	if(localStorage.getItem("tutorijal") == "hint") {
+		document.getElementById("tuts").checked = true;
 		javascript:introJs().removeHints();
 		javascript:introJs().showHints();
 		javascript:introJs().hideHint(0);
 	}
 }
 
+
 function departmentHint() {
 	if(localStorage.getItem("tutorijal") == "hint") {
+		document.getElementById("tuts").checked = true;
 		javascript:introJs().removeHints();
 		javascript:introJs().showHints();
 		javascript:introJs().hideHint(0);
+	}
+}
+
+
+function softwareHint() {
+	if(localStorage.getItem("tutorijal") == "hint") {
+		document.getElementById("tuts").checked = true;
+		javascript:introJs().removeHints();
+		javascript:introJs().showHints();
+		console.log("SOFTWARE HINT");
+
 	}
 }
 
