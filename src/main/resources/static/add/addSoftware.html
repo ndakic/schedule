@@ -114,8 +114,9 @@
     </div>
 </div>
 <script type="text/javascript">
-    addDepartmentGuide();
-    departmentHint();
+	if(localStorage.getItem("tutorijal") == "hint") {
+		softwareHint();
+	} 
 </script>
 
 
