@@ -403,6 +403,7 @@ public class HomeController {
         classroomsRepository.deleteAll();
         courseRepository.deleteAll();
         classroomsSettingsRepository.deleteAll();
+        softwareRepository.deleteAll();
 
 
         return new ResponseEntity(null, HttpStatus.OK);
@@ -430,6 +431,11 @@ public class HomeController {
 
     @RequestMapping("/updateCourse")
     public ResponseEntity updateCourse(@RequestBody Course course) throws Exception{
+
+        Software software = softwareRepository.findOneById(course.getSoftwareNeed().getId());
+
+        course.setSoftwareNeed(software);
+
         return new ResponseEntity(courseRepository.save(course), HttpStatus.OK);
     }
 

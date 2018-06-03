@@ -22,7 +22,7 @@
                 <tr>
                     <th >Label</th>
                     <!--<th>Description</th>-->
-                    <th>Capacity</th>
+                    <!--<th>Capacity</th>-->
                     <th>Projector</th>
                     <th>Table</th>
                     <th>Smart Table</th>
@@ -35,7 +35,7 @@
                 <tr ng-repeat="room in unique_classrooms | filter:room" >
                     <td> <a ui-sref="classroom-detail({id:room.classroom})" data-hint="By clicking on the Label you will be forwarded to the page, where you will be able to make changes on this specific classroom!" data-hintPosition="top-middle">{{room.classroom}}</td>
                     <!--<td>{{room.description}}</td>-->
-                    <td>{{room.capacity}}</td>
+                    <!--<td>{{room.capacity}}</td>-->
                     <td>
                         <span ng-if="room.projector">yes</span>
                         <span ng-if="!room.projector">no</span>
@@ -67,7 +67,7 @@
 
                         <div class="form-group">
                             <label class="control-label">Label</label>
-                            <input type="text" class="form-control" ng-model="classroom.classroom" minlength="2" maxlength="4" required/>
+                            <input type="text" class="form-control" ng-model="classroom.classroom" minlength="2" maxlength="2" required/>
                         </div>
 
                         <!--<div class="form-group">-->
@@ -76,15 +76,21 @@
                         <!--</div>-->
 
 
-                        <div class="form-group">
-                            <label class="control-label">Capacity</label>
-                            <input class="form-control" type="number" min='10' max='50' ng-model="classroom.capacity" required>
-                        </div>
+                        <!--<div class="form-group">-->
+                            <!--<label class="control-label">Duration</label>-->
+                            <!--<div class="selectContainer">-->
+                                <!--<select class="form-control" ng-model= "classroom.capacity" name="size" ng-options="grSize for grSize in groupSize" required>-->
+
+                                <!--</select>-->
+                            <!--</div>-->
+                        <!--</div>-->
 
 
                         <div class="btn-group" data-toggle="buttons">
                             <div class='my-legend' style="padding-bottom: 0px;">
-                                <div class='legend-title'>Projector available:</div>
+                                <!--<div class='legend-title'>Projector available:</div>-->
+                                <label class="control-label">Projector available:</label>
+
                                 <div style="font-size: 10px;">
                                     <input type="radio" ng-model=classroom.projector ng-value=yesNo[0]> YES
                                     &nbsp;
@@ -98,7 +104,8 @@
 
                         <div class="btn-group" data-toggle="buttons">
                             <div class='my-legend' style="padding-bottom: 0px;">
-                                <div class='legend-title'>Table available:</div>
+                                <!--<div class='legend-title'>Table available:</div>-->
+                                <label class="control-label">Table available:</label>
                                 <div style="font-size: 10px;">
                                     <input type="radio" ng-model=classroom.basicTable ng-value=yesNo[0]> YES
                                     &nbsp;
@@ -112,7 +119,8 @@
 
                         <div class="btn-group" data-toggle="buttons">
                             <div class='my-legend' style="padding-bottom: 0px;">
-                                <div class='legend-title'>Smart Table available:</div>
+                                <label class="control-label">Smart Table available:</label>
+                                <!--<div class='legend-title'>Smart Table available:</div>-->
                                 <div style="font-size: 10px;">
                                     <input type="radio" ng-model=classroom.smartTable ng-value=yesNo[0]> YES
                                     &nbsp;
@@ -121,7 +129,7 @@
                             </div>
                         </div>
 
-                        <br>departmentHint
+                        <br>
                         <br>
 
                         <div class="form-group">
@@ -133,10 +141,11 @@
                             </div>
                         </div>
 
+
                         <div class="form-group">
                             <label class="control-label">Software</label>
                             <div class="selectContainer">
-                                <select class="form-control" ng-model= "classroom.software.id" name="size" ng-options="soft for soft in software_options">
+                                <select class="form-control" ng-model= "classroom.software.id" name="size" ng-options="soft.id as soft.title for soft in softwares">
 
                                 </select>
                             </div>
