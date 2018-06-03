@@ -430,6 +430,11 @@ public class HomeController {
 
     @RequestMapping("/updateCourse")
     public ResponseEntity updateCourse(@RequestBody Course course) throws Exception{
+
+        Software software = softwareRepository.findOneById(course.getSoftwareNeed().getId());
+
+        course.setSoftwareNeed(software);
+
         return new ResponseEntity(courseRepository.save(course), HttpStatus.OK);
     }
 

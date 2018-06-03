@@ -67,7 +67,7 @@
 
                         <div class="form-group">
                             <label class="control-label">Label</label>
-                            <input type="text" class="form-control" ng-model="classroom.classroom" minlength="2" maxlength="4" required/>
+                            <input type="text" class="form-control" ng-model="classroom.classroom" minlength="2" maxlength="2" required/>
                         </div>
 
                         <!--<div class="form-group">-->
@@ -84,7 +84,9 @@
 
                         <div class="btn-group" data-toggle="buttons">
                             <div class='my-legend' style="padding-bottom: 0px;">
-                                <div class='legend-title'>Projector available:</div>
+                                <!--<div class='legend-title'>Projector available:</div>-->
+                                <label class="control-label">Projector available:</label>
+
                                 <div style="font-size: 10px;">
                                     <input type="radio" ng-model=classroom.projector ng-value=yesNo[0]> YES
                                     &nbsp;
@@ -98,7 +100,8 @@
 
                         <div class="btn-group" data-toggle="buttons">
                             <div class='my-legend' style="padding-bottom: 0px;">
-                                <div class='legend-title'>Table available:</div>
+                                <!--<div class='legend-title'>Table available:</div>-->
+                                <label class="control-label">Table available:</label>
                                 <div style="font-size: 10px;">
                                     <input type="radio" ng-model=classroom.basicTable ng-value=yesNo[0]> YES
                                     &nbsp;
@@ -112,7 +115,8 @@
 
                         <div class="btn-group" data-toggle="buttons">
                             <div class='my-legend' style="padding-bottom: 0px;">
-                                <div class='legend-title'>Smart Table available:</div>
+                                <label class="control-label">Smart Table available:</label>
+                                <!--<div class='legend-title'>Smart Table available:</div>-->
                                 <div style="font-size: 10px;">
                                     <input type="radio" ng-model=classroom.smartTable ng-value=yesNo[0]> YES
                                     &nbsp;
@@ -121,7 +125,7 @@
                             </div>
                         </div>
 
-                        <br>departmentHint
+                        <br>
                         <br>
 
                         <div class="form-group">
