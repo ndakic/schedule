@@ -19,15 +19,15 @@
                                     </tr>
                                     <tr>
                                         <td>Title:</td>
-                                        <td>{{department.title}}</td>
+                                        <td><span editable-text="department.title" e-minlength="5" e-maxlength="30" e-required>{{department.title}}</span></td>
                                     </tr>
                                     <tr>
                                         <td>Description:</td>
-                                        <td>{{course.description}}</td>
+                                        <td> <span editable-textarea="department.description" e-rows="7" e-cols="40" e-style="min-width: 150px; max-width: 200px; min-height: 50px; max-height: 300px;" e-minlength="10" e-maxlength="255" e-required>{{course.description}}</span></td>
                                     </tr>
                                     <tr>
                                         <td>Date:</td>
-                                        <td>{{department.date}}</span></td>
+                                        <td>{{department.date}}</td>
                                     </tr>
 
                                     </tbody>
@@ -55,7 +55,7 @@
                             </div>
 
                         </div>
-                        <div class="panel-footer" ng-if="vm.previousState != 'course-detail'">
+                        <div class="panel-footer" ng-if="vm.previousState != 'department-detail'">
                             <div>
                                 <button type="submit"ui-sref="{{ vm.previousState }}"class="btn btn-info">
                                     <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>

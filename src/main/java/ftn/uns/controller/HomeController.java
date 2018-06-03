@@ -431,7 +431,6 @@ public class HomeController {
     @RequestMapping("/updateCourse")
     public ResponseEntity updateCourse(@RequestBody Course course) throws Exception{
         return new ResponseEntity(courseRepository.save(course), HttpStatus.OK);
-
     }
 
     @PostMapping("/deleteCourse")
@@ -456,6 +455,11 @@ public class HomeController {
     @GetMapping("/department/{id}")
     public ResponseEntity getDepartment(@PathVariable String id) throws Exception{
         return new ResponseEntity(departmentRepository.findOneById(id), HttpStatus.OK);
+    }
+
+    @RequestMapping("/updateDepartment")
+    public ResponseEntity updateDepartment(@RequestBody Department department) throws Exception{
+        return new ResponseEntity(departmentRepository.save(department), HttpStatus.OK);
     }
 
 
