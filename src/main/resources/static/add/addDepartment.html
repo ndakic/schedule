@@ -2,7 +2,7 @@
 <div class="container">
 
 
-    <div class="col-lg-4" data-step="3" data-intro="Create.." data-intro-group="addDepartment">
+    <div class="col-lg-4" id="departmentSearchId" data-intro-group="addDepartment">
         <div class="input-group custom-search-form">
             <input type="text" class="form-control" placeholder="Search by title.." ng-model="search.title" ng-maxlength="20" maxlength="20">
             <span class="input-group-btn">
@@ -19,7 +19,7 @@
 
 
     <div class="row">
-        <div class="col-lg-8" data-step="1" data-intro="Create.." data-intro-group="addDepartment">
+        <div class="col-lg-8" id="departmentTableId" data-intro-group="addDepartment">
             <table data-hint="This is a table of all departments, here you can delete or edit department!" data-hintPosition="top-left">
                 <thead>
                 <tr>
@@ -46,7 +46,7 @@
                 </tbody>
             </table>
         </div>
-        <div class="col-lg-4" data-step="2" data-intro="Create.." data-intro-group="addDepartment">
+        <div class="col-lg-4" id="departmentAddId" data-intro-group="addDepartment">
             <div class="wrapper">
                 <form name="AddForm" ng-submit="vm.newDepartment()">
                     <div class="modal-header">

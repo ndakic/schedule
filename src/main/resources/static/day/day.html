@@ -3,7 +3,7 @@
     <h2>{{entity.id}}</h2>
     <hr>
     <div class="typesDemo row">
-            <div class="col-lg-8"  data-step="3" data-intro="Create.." data-intro-group="days" data-hint="This is a schedule table for {{entity.id}}!" data-hintPosition="top-middle">
+            <div class="col-lg-8"  id="daysTableId" data-intro-group="days" data-hint="This is a schedule table for {{entity.id}}!" data-hintPosition="top-middle">
                 <div ng-repeat="item in lists" >
                     <div class="panel panel-info">
                         <div class="panel-heading">
@@ -57,10 +57,10 @@
 
 
         <div class="col-lg-4">
-            <div class="fixedElement">
+            <div class="fixedElement" style=" position: fixed;">
                 <br>
 
-                <div class="trashcan box box-grey box-padding" data-step="4" data-intro="Create.." data-intro-group="days" data-hint="Throw trash here by dragging items from schedule!" data-hintPosition="top-middle">
+                <div id="trash" class="trashcan box box-grey box-padding" data-hint="Throw trash here by dragging items from schedule!" data-hintPosition="top-middle" data-intro-group="days">
                     <!-- If you use [] as referenced list, the dropped elements will be lost -->
                     <!--<h3>Trashcan</h3>-->
                     <ul dnd-list="[]"
@@ -82,14 +82,14 @@
                 <!--<div class='legend-source'></div>-->
             </div>
 
-            <div class="panel panel-default" data-step="2" data-intro="Create.." data-intro-group="days">
+            <div class="panel panel-default" >
                 <div class="panel-heading">
                     <i class="fa fa-tasks fa-fw"></i> Choose Course
                 </div>
                 <!-- /.panel-heading -->
                 <div class="panel-body">
-                    <div class="list-group">
-                        <div class="input-group custom-search-form" data-step="1" data-intro="Create.." data-intro-group="days">
+                    <div class="list-group" id="daysCourseId" data-intro-group="days">
+                        <div class="input-group custom-search-form">
                             <input type="text" class="form-control" placeholder="Search by title.." ng-model="course.title">
                             <span class="input-group-btn">
                                 <button class="btn btn-default" type="button">
@@ -143,14 +143,16 @@
 <script type="text/javascript">
     $(window).scroll(function(e){
         var $el = $('.fixedElement');
+        var $trashel = $("#trash");
         var isPositionFixed = ($el.css('position') == 'fixed');
         if ($(this).scrollTop() > 200 && !isPositionFixed){
             $('.fixedElement').css({'position': 'fixed', 'top': '0px', 'max-width': '350px'});
-
+            $trashel.attr({'data-step' : '3', 'data-intro': 'Createe..', 'data-intro-group' : 'days' });
         }
         if ($(this).scrollTop() < 200 && isPositionFixed)
         {
             $('.fixedElement').css({'position': 'static', 'top': '0px', 'max-width': '350px'});
+            $trashel.attr({'data-step' : '3', 'data-intro': 'Createe..', 'data-intro-group' : 'days' });
         }
     });
     
