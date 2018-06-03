@@ -60,7 +60,7 @@
             },
             views: {
                 'content@': {
-                    templateUrl: 'add/courseDetails.html',
+                    templateUrl: 'add/details/courseDetails.html',
                     controller: 'DetailsCtrl',
                     controllerAs: 'vm'
                 }
@@ -87,7 +87,7 @@
             },
             views: {
                 'content@': {
-                    templateUrl: 'add/departmentDetails.html',
+                    templateUrl: 'add/details/departmentDetails.html',
                     controller: 'DetailsCtrl',
                     controllerAs: 'vm'
                 }

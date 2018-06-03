@@ -24,6 +24,15 @@
         $scope.groupSize = [20, 30, 45];
         $scope.numberOfTerms = [1, 2, 3, 4, 5];
 
+        $scope.opened = {};
+
+        $scope.open = function($event, elementOpened) {
+            $event.preventDefault();
+            $event.stopPropagation();
+
+            $scope.opened[elementOpened] = !$scope.opened[elementOpened];
+        };
+
         var loadDepartments= function () {
             var promise = $http.get("/api/home/departments");
             promise.then(function (response) {
@@ -45,14 +54,20 @@
         loadSoftwares();
 
         $scope.saveCourse = function () {
-            console.log($scope.course);
-
             var promise = $http.post("/api/home/updateCourse", $scope.course);
             promise.then(function (response) {
                 $scope.course = response.data;
             });
+        };
 
-        }
+        $scope.saveDepartment = function () {
+            var promise = $http.post("/api/home/updateDepartment", $scope.department);
+            promise.then(function (response) {
+                $scope.department = response.data;
+            });
+        };
+
+
 
 
     }
