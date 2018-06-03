@@ -1,7 +1,7 @@
 
 <div class="container">
 
-    <div class="col-lg-4" >
+    <div class="col-lg-4" id="classroomSearchId" data-intro-group="addClassroom">
         <div class="input-group custom-search-form">
             <input type="text" class="form-control" placeholder="Search by label.." ng-model="room.classroom" ng-maxlength="20" maxlength="20">
             <span class="input-group-btn">
@@ -16,8 +16,8 @@
 
 
     <div class="row">
-        <div class="col-lg-8" data-step="1" data-intro="Create.." data-intro-group="addClassroom" >
-            <table data-step="3" data-intro="Create.." data-intro-group="addClassroom" data-hint="This is a table of all classrooms, here you can delete or edit classroom!" data-hintPosition="top-left">
+        <div class="col-lg-8" id="classroomTableId" data-intro-group="addClassroom">
+            <table  data-hint="This is a table of all classrooms, here you can delete or edit classroom!" data-hintPosition="top-left">
                 <thead>
                 <tr>
                     <th >Label</th>
@@ -56,7 +56,7 @@
                 </tbody>
             </table>
         </div>
-        <div class="col-lg-4" data-step="2" data-intro="Create.." data-intro-group="addClassroom">
+        <div class="col-lg-4" id="classroomAddId" data-intro-group="addClassroom">
             <div class="wrapper">
                 <form name="AddForm" ng-submit="vm.addClassroom()">
                     <div class="modal-header">

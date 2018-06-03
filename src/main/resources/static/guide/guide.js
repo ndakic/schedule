@@ -73,7 +73,18 @@ function guideTutFun(){
 		}	
 	    localStorage.setItem("tutorijal", "guide");
 	    window.location.href = '/#!/#jump';
-	    introJs().setOption('doneLabel', 'Next page').start('weeks').oncomplete(function() {
+	    var intro = introJs();
+	    intro.setOptions({
+	    	steps: steps,
+	        showBullets: false,
+	        showButtons: true,
+	        showProgress: false,
+	        exitOnOverlayClick: false,
+	        showStepNumbers: true,
+	        keyboardNavigation: true,
+	        doneLabel : 'Next Page'
+	      });
+	    intro.start('weeks').oncomplete(function() {
 	    	localStorage.setItem("tutorijal", "guideSettings");
 	        window.location.href = '/#!/settings';
 	    });
@@ -91,7 +102,18 @@ function checkBoxGuide() {
 	}	
     localStorage.setItem("tutorijal", "guide");
     window.location.href = '/#!/#jump';
-    introJs().setOption('doneLabel', 'Next page').start('weeks').oncomplete(function() {
+    var intro = introJs();
+    intro.setOptions({
+    	steps: steps,
+        showBullets: false,
+        showButtons: true,
+        showProgress: false,
+        exitOnOverlayClick: false,
+        showStepNumbers: true,
+        keyboardNavigation: false,
+        doneLabel : 'Next Page'
+      });
+    intro.start('weeks').oncomplete(function() {
     	localStorage.setItem("tutorijal", "guideSettings");
         window.location.href = '/#!/settings';
     });
@@ -127,7 +149,18 @@ function settingsGuideCheckBox() {
 	if(checkBox.checked == true) {
 	    if(localStorage.getItem("tutorijal") == "guideSettings") {
 	    	checkBox.checked = true;
-	        introJs().setOption('doneLabel', 'Next page').start('settings').oncomplete(function() {
+		    var intro = introJs();
+		    intro.setOptions({
+		    	steps: settingsSeteps,
+		        showBullets: false,
+		        showButtons: true,
+		        showProgress: false,
+		        exitOnOverlayClick: false,
+		        showStepNumbers: true,
+		        keyboardNavigation: false,
+		        doneLabel : 'Next Page'
+		      });
+	        intro.start('settings').oncomplete(function() {
 	        	localStorage.setItem("tutorijal", "guideDay");
 	            window.location.href = '/#!/day/Monday';
 	        });
@@ -141,11 +174,27 @@ function settingsGuideCheckBox() {
 
 
 function daysGuide() {
+	setTimeout(checkBoxDaysGuide, 1000);
+
+}
+
+function checkBoxDaysGuide() {
 	var checkBox = document.getElementById("tuts");
 	if(checkBox.checked == true) {
 	    if(localStorage.getItem("tutorijal") == "guideDay") {
-	    	document.getElementById("tuts").checked = true;
-	        introJs().setOption('doneLabel', 'Next page').start('days').oncomplete(function() {
+	    	checkBox.checked = true;
+		    var intro = introJs();
+		    intro.setOptions({
+		    	steps: daysSteps,
+		        showBullets: false,
+		        showButtons: true,
+		        showProgress: false,
+		        exitOnOverlayClick: false,
+		        showStepNumbers: true,
+		        keyboardNavigation: true,
+		        doneLabel : 'Next Page'
+		      });
+	        intro.start('days').oncomplete(function() {
 	        	localStorage.setItem("tutorijal", "guideAddCourse");
 	            window.location.href = '/#!/addCourse';
 	        });
@@ -155,15 +204,29 @@ function daysGuide() {
 	    	document.getElementById("tuts").checked = false;
 	    }
 	}
-
 }
 
 function addCourseGuide() {
+	setTimeout(checkBoxCourseGuide, 1000);
+}
+
+function checkBoxCourseGuide() {
 	var checkBox = document.getElementById("tuts");
 	if(checkBox.checked == true) {
 	    if(localStorage.getItem("tutorijal") == "guideAddCourse") {
-	    	document.getElementById("tuts").checked = true;
-	        introJs().setOption('doneLabel', 'Next page').start('addCourse').oncomplete(function() {
+	    	checkBox.checked = true;
+		    var intro = introJs();
+		    intro.setOptions({
+		    	steps: courseSteps,
+		        showBullets: false,
+		        showButtons: true,
+		        showProgress: false,
+		        exitOnOverlayClick: false,
+		        showStepNumbers: true,
+		        keyboardNavigation: true,
+		        doneLabel : 'Next Page'
+		      });
+	        intro.start('addCourse').oncomplete(function() {
 	        	localStorage.setItem("tutorijal", "guideAddClassroom");
 	            window.location.href = '/#!/addClassroom';
 	        });
@@ -177,12 +240,27 @@ function addCourseGuide() {
 
 
 function addClassroomGuide() {
+	setTimeout(checkBoxClassroomGuide, 1000);
+
+}
+
+function checkBoxClassroomGuide() {
 	var checkBox = document.getElementById("tuts");
 	if(checkBox.checked == true) {
-
 	    if(localStorage.getItem("tutorijal") == "guideAddClassroom") {
-	    	document.getElementById("tuts").checked = true;
-	        introJs().setOption('doneLabel', 'Next page').start('addClassroom').oncomplete(function() {
+	    	checkBox.checked = true;
+		    var intro = introJs();
+		    intro.setOptions({
+		    	steps: classroomsSteps,
+		        showBullets: false,
+		        showButtons: true,
+		        showProgress: false,
+		        exitOnOverlayClick: false,
+		        showStepNumbers: true,
+		        keyboardNavigation: true,
+		        doneLabel : 'Next Page'
+		      });
+	        intro.start('addClassroom').oncomplete(function() {
 	        	localStorage.setItem("tutorijal", "guideAddDepartment");
 	            window.location.href = '/#!/addDepartment';
 	        });
@@ -191,15 +269,29 @@ function addClassroomGuide() {
 	    	introJs().exit();
 	    }
 	}
-
 }
 
 function addDepartmentGuide() {
+	setTimeout(checkBoxDepartmentGuide, 1000);
+}
+
+function checkBoxDepartmentGuide() {
 	var checkBox = document.getElementById("tuts");
 	if(checkBox.checked == true) {
 	    if(localStorage.getItem("tutorijal") == "guideAddDepartment") {
-	    	document.getElementById("tuts").checked = true;
-	        introJs().setOption('doneLabel', 'Done').start('addDepartment').oncomplete(function() {
+	    	checkBox.checked = true;
+		    var intro = introJs();
+		    intro.setOptions({
+		    	steps: departmentSteps,
+		        showBullets: false,
+		        showButtons: true,
+		        showProgress: false,
+		        exitOnOverlayClick: false,
+		        showStepNumbers: true,
+		        keyboardNavigation: true,
+		        doneLabel : 'Done'
+		      });
+	        intro.start('addDepartment').oncomplete(function() {
 	        	localStorage.setItem("tutorijal", false);
 	            window.location.href = '/#!';
 	            document.getElementById("tuts").checked = false;
@@ -212,6 +304,98 @@ function addDepartmentGuide() {
 	}
 }
 
+var steps = [
+    {
+       element: '#weekWednesday',
+       intro: 'Run the workflow to complete the AB Controls step.<br><br>After running the workflow, open the next guided workflow &mdash; <a href="../../4. Analyzing your test results.yxmd">4. Analyzing your test results</a>.',
+       position: 'right'
+    }
+  ];
+
+var settingsSeteps = [
+    {
+        element: '#settingsId',
+        intro: 'Run the workflow to complete the AB Controls step.<br><br>After running the workflow, open the next guided workflow &mdash; <a href="../../4. Analyzing your test results.yxmd">4. Analyzing your test results</a>.',
+        position: 'right'
+     },
+     {
+         element: '#btnId',
+         intro: 'Run the workflow to complete the AB Controls step.<br><br>After running the workflow, open the next guided workflow &mdash; <a href="../../4. Analyzing your test results.yxmd">4. Analyzing your test results</a>.',
+         position: 'right'
+      }
+  ];
+
+var daysSteps = [
+    {
+        element: '#daysTableId',
+        intro: 'Run the workflow to complete the AB Controls step.<br><br>After running the workflow, open the next guided workflow &mdash; <a href="../../4. Analyzing your test results.yxmd">4. Analyzing your test results</a>.',
+        position: 'right'
+     },
+     {
+         element: '#trash',
+         intro: 'Run the workflow to complete the AB Controls step.<br><br>After running the workflow, open the next guided workflow &mdash; <a href="../../4. Analyzing your test results.yxmd">4. Analyzing your test results</a>.',
+         position: 'right'
+      },
+      {
+          element: '#daysCourseId',
+          intro: 'Run the workflow to complete the AB Controls step.<br><br>After running the workflow, open the next guided workflow &mdash; <a href="../../4. Analyzing your test results.yxmd">4. Analyzing your test results</a>.',
+          position: 'right'
+       }
+  ];
+
+var courseSteps = [
+    {
+        element: '#courseTableId',
+        intro: 'Run the workflow to complete the AB Controls step.<br><br>After running the workflow, open the next guided workflow &mdash; <a href="../../4. Analyzing your test results.yxmd">4. Analyzing your test results</a>.',
+        position: 'right'
+     },
+     {
+         element: '#courseAddId',
+         intro: 'Run the workflow to complete the AB Controls step.<br><br>After running the workflow, open the next guided workflow &mdash; <a href="../../4. Analyzing your test results.yxmd">4. Analyzing your test results</a>.',
+         position: 'right'
+      },
+      {
+          element: '#courseSearchId',
+          intro: 'Run the workflow to complete the AB Controls step.<br><br>After running the workflow, open the next guided workflow &mdash; <a href="../../4. Analyzing your test results.yxmd">4. Analyzing your test results</a>.',
+          position: 'right'
+       }
+  ];
+
+var classroomsSteps = [
+    {
+        element: '#classroomTableId',
+        intro: 'Run the workflow to complete the AB Controls step.<br><br>After running the workflow, open the next guided workflow &mdash; <a href="../../4. Analyzing your test results.yxmd">4. Analyzing your test results</a>.',
+        position: 'right'
+     },
+     {
+         element: '#classroomAddId',
+         intro: 'Run the workflow to complete the AB Controls step.<br><br>After running the workflow, open the next guided workflow &mdash; <a href="../../4. Analyzing your test results.yxmd">4. Analyzing your test results</a>.',
+         position: 'right'
+      },
+      {
+          element: '#classroomSearchId',
+          intro: 'Run the workflow to complete the AB Controls step.<br><br>After running the workflow, open the next guided workflow &mdash; <a href="../../4. Analyzing your test results.yxmd">4. Analyzing your test results</a>.',
+          position: 'right'
+       }
+  ];
+
+var departmentSteps = [
+    {
+        element: '#departmentTableId',
+        intro: 'Run the workflow to complete the AB Controls step.<br><br>After running the workflow, open the next guided workflow &mdash; <a href="../../4. Analyzing your test results.yxmd">4. Analyzing your test results</a>.',
+        position: 'right'
+     },
+     {
+         element: '#departmentAddId',
+         intro: 'Run the workflow to complete the AB Controls step.<br><br>After running the workflow, open the next guided workflow &mdash; <a href="../../4. Analyzing your test results.yxmd">4. Analyzing your test results</a>.',
+         position: 'right'
+      },
+      {
+          element: '#departmentSearchId',
+          intro: 'Run the workflow to complete the AB Controls step.<br><br>After running the workflow, open the next guided workflow &mdash; <a href="../../4. Analyzing your test results.yxmd">4. Analyzing your test results</a>.',
+          position: 'right'
+       }
+  ];
 
 function settingsHint() {
 	if(localStorage.getItem("tutorijal") == "hint") {
