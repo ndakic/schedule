@@ -317,12 +317,13 @@ var settingsSeteps = [
         element: '#settingsId',
         intro: 'Run the workflow to complete the AB Controls step.<br><br>After running the workflow, open the next guided workflow &mdash; <a href="../../4. Analyzing your test results.yxmd">4. Analyzing your test results</a>.',
         position: 'right'
-     },
-     {
-         element: '#btnId',
-         intro: 'Run the workflow to complete the AB Controls step.<br><br>After running the workflow, open the next guided workflow &mdash; <a href="../../4. Analyzing your test results.yxmd">4. Analyzing your test results</a>.',
-         position: 'right'
-      }
+    }
+//     },
+//     {
+//         element: '#btnId',
+//         intro: 'Run the workflow to complete the AB Controls step.<br><br>After running the workflow, open the next guided workflow &mdash; <a href="../../4. Analyzing your test results.yxmd">4. Analyzing your test results</a>.',
+//         position: 'right'
+//      }
   ];
 
 var daysSteps = [
