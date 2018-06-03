@@ -1,7 +1,7 @@
 
 <div class="container">
 
-    <div class="col-lg-4" data-step="3" data-intro="Create.." data-intro-group="addCourse" data-hint="This is search bar, you can search by title or typing first letter!" data-hintPosition="top-left">
+    <div class="col-lg-4" data-step="3" data-intro="Create.." data-intro-group="addCourse" >
         <div class="input-group custom-search-form">
             <input type="text" class="form-control" placeholder="Search by title.." ng-model="search.title" maxlength="20">
             <span class="input-group-btn">
@@ -45,7 +45,7 @@
         </div>
         <div class="col-lg-4" data-step="2" data-intro="Create.." data-intro-group="addCourse">
             <div class="wrapper">
-                <form name="AddForm" ng-submit="vm.addCourse()" data-hint="Here you can add new course, just follow the steps and be specific about course ID!" data-hintPosition="top-left">
+                <form name="AddForm" ng-submit="vm.addCourse()">
                     <div class="modal-header">
                         <h4 class="modal-title" id="myAppLabel">Add New Course</h4>
                     </div>

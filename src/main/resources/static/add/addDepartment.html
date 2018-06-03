@@ -2,7 +2,7 @@
 <div class="container">
 
 
-    <div class="col-lg-4" data-step="3" data-intro="Create.." data-intro-group="addDepartment" data-hint="This is search bar, you can search by title or typing first two letter!" data-hintPosition="top-left">
+    <div class="col-lg-4" data-step="3" data-intro="Create.." data-intro-group="addDepartment">
         <div class="input-group custom-search-form">
             <input type="text" class="form-control" placeholder="Search by title.." ng-model="search.title" ng-maxlength="20" maxlength="20">
             <span class="input-group-btn">
@@ -48,7 +48,7 @@
         </div>
         <div class="col-lg-4" data-step="2" data-intro="Create.." data-intro-group="addDepartment">
             <div class="wrapper">
-                <form name="AddForm" ng-submit="vm.newDepartment()" data-hint="Here you can add new Department, just follow the steps and be specific about Department ID!" data-hintPosition="top-left">
+                <form name="AddForm" ng-submit="vm.newDepartment()">
                     <div class="modal-header">
                         <h4 class="modal-title" id="myAppLabel">Add New Department</h4>
                     </div>

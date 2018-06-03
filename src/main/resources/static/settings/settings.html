@@ -1,6 +1,6 @@
 
 
-<div class="container" data-step="1" data-intro="Create.." data-intro-group="settings"  data-hint="Choose classrooms to display on front page, it must be 5 of them!" data-hintPosition="top-left">
+<div class="container" data-step="1" data-intro="Create.." data-intro-group="settings">
 
     <p style="font-size: 13px;"><b> Choose classrooms to display:</b> </p>
 
@@ -14,7 +14,7 @@
     <div ng-if="minimum == false"><p style="color: red"> You must select exactly 5 classrooms! </p></div>
 
     <br> <br>
-    <p style="font-size: 13px;" data-hint="By clicking on the confirm button, it will wipe all data relatet to the schedule front page!" data-hintPosition="top-left"> <b> Delete all data: </b> </p>
+    <p style="font-size: 13px;"> <b> Delete all data: </b> </p>
     <button class="btn btn-danger" ng-click="vm.deleteAllData()"  type="submit" data-step="2" data-intro="Deletee.." data-intro-group="settings" >Confirm</button>
 	<script type="text/javascript">
 		settingsGuide();
