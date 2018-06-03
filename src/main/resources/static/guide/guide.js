@@ -12,6 +12,7 @@ var accTutBtn = document.getElementById('accTutBtn');
 var decTutBtn = document.getElementById('decTutBtn');
 var guideTutBtn = document.getElementById('guideTutBtn');
 
+
 // Get open modal button
 
 
@@ -47,32 +48,59 @@ function decTutFun() {
     closeModal();
 }
 
+
 function accTutFun(){
-	
-	
+	var checkBox = document.getElementById("tuts");
+	if(checkBox.checked == false) {
+		document.getElementById("tuts").checked = true;
+	}	
     localStorage.setItem("tutorijal", "hint");
     javascript:introJs().addHints();
-    var x = document.getElementsByClassName("introjs-hints")[0].getElementsByTagName("a")[1].getAttribute("data-step"); 
-    closeModal();
-    //javascript:introJs().hideHint(x);
+    //var x = document.getElementsByClassName("introjs-hints")[0].getElementsByTagName("a")[1].getAttribute("data-step"); 
+    closeModalGuide();
 }
 
 
-
-
-
 function guideTutFun(){
+	if (window.location.href != "http://localhost:8080/#!/") {
+		closeModal();
+		window.location.href = '/#!/';
+		setTimeout(checkBoxGuide, 2000);
+	} else {
+		var checkBox = document.getElementById("tuts");
+		if(checkBox.checked == false) {
+			document.getElementById("tuts").checked = true;
+		}	
+	    localStorage.setItem("tutorijal", "guide");
+	    window.location.href = '/#!/#jump';
+	    introJs().setOption('doneLabel', 'Next page').start('weeks').oncomplete(function() {
+	    	localStorage.setItem("tutorijal", "guideSettings");
+	        window.location.href = '/#!/settings';
+	    });
+	    closeModalGuide();
+	}
+	
+
+}
+
+
+function checkBoxGuide() {
+	var checkBox = document.getElementById("tuts");
+	if(checkBox.checked == false) {
+		document.getElementById("tuts").checked = true;
+	}	
     localStorage.setItem("tutorijal", "guide");
     introJs().setOption('doneLabel', 'Next page').start('weeks').oncomplete(function() {
     	localStorage.setItem("tutorijal", "guideSettings");
         window.location.href = '/#!/settings';
     });
-    closeModal();
+    closeModalGuide();
 }
+
 
 function weekGuide() {
 	if (localStorage.getItem("tutorijal") == "guide") {
-		introJs().exit();
+		//introJs().exit();
 	    introJs().setOption('doneLabel', 'Next page').start('weeks').oncomplete(function() {
 	    	localStorage.setItem("tutorijal", "guideSettings");
 	        window.location.href = '/#!/settings';
@@ -81,6 +109,7 @@ function weekGuide() {
 		introJs().exit();
 	}
 }
+
 
 function settingsGuide() {
     if(localStorage.getItem("tutorijal") == "guideSettings") {
@@ -99,6 +128,7 @@ function settingsHint() {
 		javascript:introJs().removeHints();
 
 		javascript:introJs().showHints();
+		javascript:introJs().hideHint(1);
 	}
 }
 
@@ -124,6 +154,7 @@ function courseHint() {
 	if(localStorage.getItem("tutorijal") == "hint") {
 		javascript:introJs().removeHints();
 		javascript:introJs().showHints();
+		javascript:introJs().hideHint(0);
 	}
 }
 
@@ -132,6 +163,7 @@ function classroomHint() {
 	if(localStorage.getItem("tutorijal") == "hint") {
 		javascript:introJs().removeHints();
 		javascript:introJs().showHints();
+		javascript:introJs().hideHint(0);
 	}
 }
 
@@ -139,6 +171,7 @@ function departmentHint() {
 	if(localStorage.getItem("tutorijal") == "hint") {
 		javascript:introJs().removeHints();
 		javascript:introJs().showHints();
+		javascript:introJs().hideHint(0);
 	}
 }
 
@@ -156,6 +189,37 @@ function daysGuide() {
     } else {
     	introJs().exit();
     }
+}
+
+function check(e) {
+	if (e.checked == false) {
+		if(localStorage.getItem("tutorijal") == "hint") {
+			javascript:introJs().removeHints();
+			localStorage.setItem("tutorijal", false);
+		} else if (localStorage.getItem("tutorijal") == "guideDay") {
+			localStorage.setItem("tutorijal", false);
+			introJs().exit();
+		} else if (localStorage.getItem("tutorijal") == "guideAddCourse") {
+			localStorage.setItem("tutorijal", false);
+			introJs().exit();
+		} else if (localStorage.getItem("tutorijal") == "guideAddClassroom") {
+			localStorage.setItem("tutorijal", false);
+			introJs().exit();
+		} else if (localStorage.getItem("tutorijal") == "guideAddDepartment") {
+			localStorage.setItem("tutorijal", false);
+			introJs().exit();
+		} else if (localStorage.getItem("tutorijal") == "guideSettings") {
+			localStorage.setItem("tutorijal", false);
+			introJs().exit();
+		} else if (localStorage.getItem("tutorijal") == "guide") {
+			localStorage.setItem("tutorijal", false);
+			introJs().exit();
+		}
+	} else {
+		
+		openModal();
+		
+	}
 }
 
 
@@ -192,6 +256,7 @@ function addDepartmentGuide() {
         introJs().setOption('doneLabel', 'Done').start('addDepartment').oncomplete(function() {
         	localStorage.setItem("tutorijal", false);
             window.location.href = '/#!';
+            document.getElementById("tuts").checked = false;
         });
 
     } else {
@@ -210,6 +275,11 @@ function openModal(){
 // Function to close modal
 function closeModal(){
     simpleModal.style.display = 'none';
+    document.getElementById("tuts").checked = false;
+}
+
+function closeModalGuide(){
+    simpleModal.style.display = 'none';
 }
 
 // Function to close modal if outside click
@@ -217,6 +287,7 @@ function outsideClick(e){
     if(e.target == simpleModal){
         localStorage.setItem("tutorijal", false);
         simpleModal.style.display = 'none';
+        document.getElementById("tuts").checked = false;
     }
 }
 

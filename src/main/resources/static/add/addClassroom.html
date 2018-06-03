@@ -1,7 +1,7 @@
 
 <div class="container">
 
-    <div class="col-lg-4" data-step="3" data-intro="Create.." data-intro-group="addClassroom" data-hint="This is a tooltip!" data-hintPosition="top-left">
+    <div class="col-lg-4" data-step="3" data-intro="Create.." data-intro-group="addClassroom" data-hint="This is search bar, you can search by label or typing first letter!" data-hintPosition="top-left">
         <div class="input-group custom-search-form">
             <input type="text" class="form-control" placeholder="Search by label.." ng-model="room.classroom" ng-maxlength="20" maxlength="20">
             <span class="input-group-btn">
@@ -17,7 +17,7 @@
 
     <div class="row">
         <div class="col-lg-8" data-step="1" data-intro="Create.." data-intro-group="addClassroom" >
-            <table data-hint="This is a tooltip!" data-hintPosition="top-left">
+            <table data-hint="This is a table of all classrooms, here you can delete or edit classroom!" data-hintPosition="top-left">
                 <thead>
                 <tr>
                     <th >Label</th>
@@ -33,7 +33,7 @@
                 </thead>
                 <tbody>
                 <tr ng-repeat="room in unique_classrooms | filter:room" >
-                    <td data-hint="This is a tooltip!" data-hintPosition="top-middle">{{room.classroom}}</td>
+                    <td data-hint="By clicking on the Label you will be forwarded to the page, where you will be able to make changes on this specific classroom!" data-hintPosition="top-middle">{{room.classroom}}</td>
                     <!--<td>{{room.description}}</td>-->
                     <td>{{room.capacity}}</td>
                     <td>
@@ -58,7 +58,7 @@
         </div>
         <div class="col-lg-4" data-step="2" data-intro="Create.." data-intro-group="addClassroom">
             <div class="wrapper">
-                <form name="AddForm" ng-submit="vm.addClassroom()" data-hint="This is a tooltip!" data-hintPosition="top-left">
+                <form name="AddForm" ng-submit="vm.addClassroom()" data-hint="Here you can add new classroom, just follow the steps and MAX capacity is 50!" data-hintPosition="top-left">
                     <div class="modal-header">
                         <h4 class="modal-title" id="myAppLabel">Add New Classroom</h4>
                     </div>
@@ -121,7 +121,7 @@
                             </div>
                         </div>
 
-                        <br>
+                        <br>departmentHint
                         <br>
 
                         <div class="form-group">

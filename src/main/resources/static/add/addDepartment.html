@@ -2,7 +2,7 @@
 <div class="container">
 
 
-    <div class="col-lg-4" data-step="3" data-intro="Create.." data-intro-group="addDepartment">
+    <div class="col-lg-4" data-step="3" data-intro="Create.." data-intro-group="addDepartment" data-hint="This is search bar, you can search by title or typing first two letter!" data-hintPosition="top-left">
         <div class="input-group custom-search-form">
             <input type="text" class="form-control" placeholder="Search by title.." ng-model="search.title" ng-maxlength="20" maxlength="20">
             <span class="input-group-btn">
@@ -20,7 +20,7 @@
 
     <div class="row">
         <div class="col-lg-8" data-step="1" data-intro="Create.." data-intro-group="addDepartment">
-            <table>
+            <table data-hint="This is a table of all departments, here you can delete or edit department!" data-hintPosition="top-left">
                 <thead>
                 <tr>
                     <th>Id</th>
@@ -31,7 +31,7 @@
                 </thead>
                 <tbody>
                 <tr ng-repeat="department in departments | filter:search">
-                    <td>{{department.id}}</td>
+                    <td data-hint="By clicking on the ID you will be forwarded to the page, where you will be able to make changes on this specific department!" data-hintPosition="top-left">{{department.id}}</td>
                     <td>{{department.title}}</td>
                     <td><span style="background-color: {{department.color}}; height: 16px; width: 30px; display: inline-block;"></span></td>
 
@@ -43,7 +43,7 @@
         </div>
         <div class="col-lg-4" data-step="2" data-intro="Create.." data-intro-group="addDepartment">
             <div class="wrapper">
-                <form name="AddForm" ng-submit="vm.newDepartment()">
+                <form name="AddForm" ng-submit="vm.newDepartment()" data-hint="Here you can add new Department, just follow the steps and be specific about Department ID!" data-hintPosition="top-left">
                     <div class="modal-header">
                         <h4 class="modal-title" id="myAppLabel">Add New Department</h4>
                     </div>
@@ -83,4 +83,5 @@
 </div>
 <script type="text/javascript">
 	addDepartmentGuide();
+	departmentHint();
 </script>
