@@ -25,14 +25,19 @@
                 <tr>
                     <th>Id</th>
                     <th>Title</th>
+                    <th>Starting Date</th>
+                    <th>Description</th>
                     <th>Color</th>
+
                     <th></th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr ng-repeat="department in departments | filter:search">
-                    <td data-hint="By clicking on the ID you will be forwarded to the page, where you will be able to make changes on this specific department!" data-hintPosition="top-left">{{department.id}}</td>
+                    <td>  <a ui-sref="department-detail({id:department.id})" data-hint="By clicking on the ID you will be forwarded to the page, where you will be able to make changes on this specific department!" data-hintPosition="top-left">{{department.id}} </a></td>
                     <td>{{department.title}}</td>
+                    <td>{{department.date}}</td>
+                    <td>{{department.description}}</td>
                     <td><span style="background-color: {{department.color}}; height: 16px; width: 30px; display: inline-block;"></span></td>
 
                     <td><button class="btn btn-danger" ng-click="vm.deleteDepartment(department)" ng-show="vm.checkDeleteDepartment(department)" type="submit">delete</button></td>
@@ -67,8 +72,24 @@
                         &nbsp; &nbsp; {{ department.color }}
                         <span style="background-color: {{department.color}}; height: 16px; width: 30px; display: inline-block;"></span>
 
+                        <br>
+                        <br>
+
+                        <div class="form-group">
+                            <label class="control-label">Date</label>
+                            <input class="form-control" type="text" ng-model="department.date" placeholder="date" id="datepicker1" maxlength="10">
+                        </div>
+
+
+                        <div class="form-group">
+                            <label class="control-label">Description</label>
+
+                            <textarea class="form-control" type="text" ng-model="department.description" rows="7" cols="40" style="min-width: 270px; max-width: 300px; min-height: 50px; max-height: 300px;" minlength="10" maxlength="255" required></textarea>
+                        </div>
 
                     </div>
+
+
                     <div class="modal-footer">
 
                         <button type="submit" ng-submit="vm.newDepartment()" class="btn btn-primary">
@@ -84,4 +105,11 @@
 <script type="text/javascript">
 	addDepartmentGuide();
 	departmentHint();
+</script>
+
+
+<script type="text/javascript">
+    $( function() {
+        $( "#datepicker1" ).datepicker();
+    } );
 </script>

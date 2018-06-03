@@ -51,7 +51,6 @@
         $scope.software_options = [];
         $scope.all_classrooms = [];
         $scope.selected_os = "cross";
-        //$scope.selected_soft = "";
 
         var loadDepartments= function () {
             var promise = $http.get("/api/home/departments");
@@ -84,7 +83,6 @@
             var promise = $http.get("/api/home/allUniqueClassrooms");
             promise.then(function (response) {
                 $scope.unique_classrooms = response.data;
-                console.log($scope.unique_classrooms);
             });
         };
 
@@ -94,7 +92,6 @@
             var promise = $http.get("/api/home/courseList");
             promise.then(function (response) {
                 $scope.courses = response.data;
-                console.log("courses: ", response.data);
             });
         };
 
@@ -147,7 +144,6 @@
             var promise = $http.get("/api/home/classrooms");
             promise.then(function (response) {
                 $scope.all_classrooms = response.data;
-                console.log($scope.all_classrooms);
             });
         };
 
@@ -161,7 +157,6 @@
                     return false;
             }
 
-            console.log("length: ", $scope.unique_classrooms.length);
             if($scope.unique_classrooms.length <= 5)
                 status = false;
 
@@ -206,8 +201,6 @@
         }
 
         function addCourse() {
-            console.log($scope.course);
-
             var promise = $http.post("/api/home/addCourse", $scope.course);
             promise.then(function (response) {
                 if(response.status == "200"){

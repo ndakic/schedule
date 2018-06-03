@@ -7,15 +7,16 @@
 
     angular
         .module('HCIApp')
-        .controller('CourseDetailsCtrl', CourseDetailsCtrl);
+        .controller('DetailsCtrl', DetailsCtrl);
 
-    CourseDetailsCtrl.$inject = ['$scope', 'entity', 'previousState', '$http'];
+    DetailsCtrl.$inject = ['$scope', 'entity', 'previousState', '$http'];
 
-    function CourseDetailsCtrl($scope, entity, previousState, $http) {
+    function DetailsCtrl($scope, entity, previousState, $http) {
         var vm = this;
-
         vm.previousState = previousState.name;
+
         $scope.course = entity;
+        $scope.department = entity;
 
         $scope.yesNo = [{value: true, "text": "yes"}, {value: false, "text": "no"}];
         $scope.os_options = ['windows', 'linux', 'cross'];
@@ -33,7 +34,6 @@
 
         loadDepartments();
 
-
         var loadSoftwares= function () {
             var promise = $http.get("/api/home/softwares");
             promise.then(function (response) {
@@ -43,7 +43,6 @@
         };
 
         loadSoftwares();
-
 
         $scope.saveCourse = function () {
             console.log($scope.course);

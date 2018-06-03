@@ -39,6 +39,7 @@ public class Classrooms implements Serializable {
 
     private Boolean smartTable;
 
+    @Column(columnDefinition = "LONGBLOB")
     private Software software;
 
 

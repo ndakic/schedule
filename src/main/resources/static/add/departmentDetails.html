@@ -1,0 +1,70 @@
+<form editable-form name="editableForm" onaftersave="saveDepartment()">
+    <div class="container">
+        <div class="row" style="margin: 0px">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
+                <div class="panel panel-info">
+                    <div class="panel-heading" style="height: 30px ;padding-top: 8px">
+                        <h3 class="panel-title" >Department Details</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row" style="margin: 0px">
+                            <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="/images/gear.png" class="img-circle img-responsive"></div>
+
+                            <div class=" col-md-9 col-lg-9 ">
+                                <table class="table table-user-information" style="margin: 0px; box-shadow: none; -webkit-box-shadow: 0px;">
+                                    <tbody>
+                                    <tr>
+                                        <td>ID:</td>
+                                        <td>{{ department.id }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Title:</td>
+                                        <td>{{department.title}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Description:</td>
+                                        <td>{{course.description}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Date:</td>
+                                        <td>{{department.date}}</span></td>
+                                    </tr>
+
+                                    </tbody>
+                                </table>
+
+                                <br>
+                                <br>
+
+                                <button type="button" class="btn btn-info pull-right" ng-click="editableForm.$show()" ng-show="!editableForm.$visible">
+                                    Edit
+                                </button>
+
+                                <!-- buttons to submit / cancel form -->
+                                <span ng-show="editableForm.$visible">
+                                    <button type="submit" class="btn btn-primary pull-right" ng-disabled="editableForm.$waiting">
+                                      Save
+                                    </button>
+                                    <button type="button" class="btn btn-default pull-right" ng-disabled="editableForm.$waiting" ng-click="editableForm.$cancel()">
+                                      Cancel
+                                    </button>
+                                </span>
+                                <br>
+                                <br>
+
+                            </div>
+
+                        </div>
+                        <div class="panel-footer" ng-if="vm.previousState != 'course-detail'">
+                            <div>
+                                <button type="submit"ui-sref="{{ vm.previousState }}"class="btn btn-info">
+                                    <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

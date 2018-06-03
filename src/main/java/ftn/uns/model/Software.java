@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * Created by daka on 5/19/18.
@@ -23,12 +24,28 @@ public class Software implements Serializable{
 
     private OS os;
 
+    private String manufacturer;
+
+    private String website;
+
+    private Date date;
+
+    private Integer price;
+
+    private String description;
+
     public Software() {
     }
 
-    public Software(String id, String title, OS os) {
+    public Software(String id, String title, OS os, String manufacturer, String website, Date date, Integer price, String description) {
         this.id = id;
         this.title = title;
         this.os = os;
+        this.manufacturer = manufacturer;
+        this.website = website;
+        this.date = date;
+        this.price = price;
+        this.description = description;
     }
+
 }

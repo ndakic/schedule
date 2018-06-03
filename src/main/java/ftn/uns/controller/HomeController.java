@@ -10,10 +10,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 /**
  * Created by daka on 5/8/18.
@@ -53,17 +52,21 @@ public class HomeController {
         if(courseList.isEmpty()){
             System.out.println("Populate Course");
 
+            String inputString = "11/11/2016";
+            DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+            Date inputDate = dateFormat.parse(inputString);
 
-            Department siit = new Department("SIIT", "Softversko Inzenjersvo i Informacione Tehnologije", "#18fff5");
-            Department e2 = new Department("E2", "Racunarstvo i Automatika", "#fff722");
+
+            Department siit = new Department("SIIT", "Softversko Inzenjersvo i Informacione Tehnologije", "#18fff5", "Dobar neki smer",inputDate);
+            Department e2 = new Department("E2", "Racunarstvo i Automatika", "#fff722", "Jos bolji neki smer", inputDate);
 
             departmentRepository.save(siit);
             departmentRepository.save(e2);
 
 
-            Software software1 = new Software("IDJ", "IntelliJ IDEA", OS.cross);
-            Software software2 = new Software("ECL", "Eclipse", OS.cross);
-            Software software3 = new Software("VS", "Visual Studio", OS.windows);
+            Software software1 = new Software("IDJ", "IntelliJ IDEA", OS.cross, "JetBrains", "www.jetbrains.com", inputDate, 10, "Najbolja stvar");
+            Software software2 = new Software("ECL", "Eclipse", OS.cross,"Eclipse Foundation", "www.eclipse.org", inputDate, 5, "Ne daj Boze nikom");
+            Software software3 = new Software("VS", "Visual Studio", OS.windows,"Microsoft", "www.visualstudio.com", inputDate, 30, "Prava stvar");
 
             softwareRepository.save(software1);
             softwareRepository.save(software2);
@@ -450,6 +453,10 @@ public class HomeController {
         return new ResponseEntity(courseRepository.findOneById(id), HttpStatus.OK);
     }
 
+    @GetMapping("/department/{id}")
+    public ResponseEntity getDepartment(@PathVariable String id) throws Exception{
+        return new ResponseEntity(departmentRepository.findOneById(id), HttpStatus.OK);
+    }
 
 
     public Boolean checkClassroom(List<Classrooms> classroomsList, String classroom) throws  Exception{

@@ -23,6 +23,7 @@ public class Course implements Serializable {
 
     private Integer duration;
 
+    @Column(columnDefinition = "LONGBLOB")
     private Department department;
 
     @Enumerated(EnumType.STRING)
@@ -40,6 +41,7 @@ public class Course implements Serializable {
 
     private Boolean smartTableNeed;
 
+    @Column(columnDefinition = "LONGBLOB")
     private Software softwareNeed;
 
 
