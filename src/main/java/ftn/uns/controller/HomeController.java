@@ -403,6 +403,7 @@ public class HomeController {
         classroomsRepository.deleteAll();
         courseRepository.deleteAll();
         classroomsSettingsRepository.deleteAll();
+        softwareRepository.deleteAll();
 
 
         return new ResponseEntity(null, HttpStatus.OK);

@@ -17,9 +17,15 @@
                                         <td>ID:</td>
                                         <td>{{ classroom.classroom }}</td>
                                     </tr>
+
+                                    <tr>
+                                        <td>OS:</td>
+                                        <td>{{ classroom.allowedTypes[0] }}</td>
+                                    </tr>
+
                                     <tr>
                                         <td>Description:</td>
-                                        <td> <span editable-textarea="classroom.description" e-rows="7" e-cols="40" e-style="min-width: 150px; max-width: 200px; min-height: 50px; max-height: 300px;" e-minlength="10" e-maxlength="255" e-required>{{classroom.description}}</span></td>
+                                        <td> <span editable-textarea="classroom.description" e-rows="7" e-cols="40" e-style="min-width: 150px; max-width: 200px; min-height: 50px; max-height: 300px;" e-minlength="10" e-maxlength="255">{{classroom.description}}</span></td>
                                     </tr>
                                     <tr>
                                         <td>Capacity (students):</td>

@@ -25,8 +25,8 @@
                 <tr>
                     <th>Id</th>
                     <th>Title</th>
-                    <th>Starting Date</th>
-                    <th>Description</th>
+                    <th>Introduction Date</th>
+                    <!--<th>Description</th>-->
                     <th>Color</th>
 
                     <th></th>
@@ -35,9 +35,9 @@
                 <tbody>
                 <tr ng-repeat="department in departments | filter:search">
                     <td>  <a ui-sref="department-detail({id:department.id})" data-hint="By clicking on the ID you will be forwarded to the page, where you will be able to make changes on this specific department!" data-hintPosition="top-left">{{department.id}} </a></td>
-                    <td>{{department.title}}</td>
+                    <td style="max-width: 150px; overflow-wrap: break-word;">{{department.title}}</td>
                     <td>{{department.date}}</td>
-                    <td>{{department.description}}</td>
+                    <!--<td>{{department.description}}</td>-->
                     <td><span style="background-color: {{department.color}}; height: 16px; width: 30px; display: inline-block;"></span></td>
 
                     <td><button class="btn btn-danger" ng-click="vm.deleteDepartment(department)" ng-show="vm.checkDeleteDepartment(department)" type="submit">delete</button></td>
@@ -62,7 +62,7 @@
 
                         <div class="form-group">
                             <label class="control-label">Title</label>
-                            <input class="form-control" type="text"  ng-model="department.title" minlength="4" maxlength="60" required>
+                            <input class="form-control" type="text"  ng-model="department.title" minlength="4" maxlength="80" required/>
                         </div>
 
                         <br>
@@ -76,16 +76,16 @@
                         <br>
 
                         <div class="form-group">
-                            <label class="control-label">Date</label>
-                            <input class="form-control" type="text" ng-model="department.date" placeholder="date" id="datepicker1" minlength="10" maxlength="10" required>
+                            <label class="control-label">Introduction Date (MM/dd/yyyy)</label>
+                            <input class="form-control" type="text" ng-model="department.date" id="datepicker1" minlength="10" maxlength="10" required>
                         </div>
 
 
-                        <div class="form-group">
-                            <label class="control-label">Description</label>
+                        <!--<div class="form-group">-->
+                            <!--<label class="control-label">Description</label>-->
 
-                            <textarea class="form-control" type="text" ng-model="department.description" rows="7" cols="40" style="min-width: 270px; max-width: 300px; min-height: 50px; max-height: 300px;" minlength="10" maxlength="255" required></textarea>
-                        </div>
+                            <!--<textarea class="form-control" type="text" ng-model="department.description" rows="7" cols="40" style="min-width: 270px; max-width: 300px; min-height: 50px; max-height: 300px;" minlength="10" maxlength="255"></textarea>-->
+                        <!--</div>-->
 
                     </div>
 

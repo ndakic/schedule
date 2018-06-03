@@ -82,8 +82,6 @@
                     if(checkIfAlreadyAdded($scope.draggedCourse))
                         $scope.already = false;
 
-
-
                 if(classroom != null && timePeriod != null){
 
                      var calc_addition = ($scope.draggedCourse.duration - 15)/15;
@@ -114,6 +112,12 @@
                                          if((count == 2 || count == 6 || count == 10) && two_hours == true)
                                              calc_addition++;
                                      }else{
+
+                                         if($scope.lists[time]["classrooms"][room]["course"][0].id == $scope.draggedCourse.id){
+                                             console.log("To je bas taj kurs!");
+                                         }
+
+
                                          Alertify.error("Course can't be dragged here. Try again.");
                                          status = false;
                                          break out;

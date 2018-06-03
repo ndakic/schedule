@@ -53,6 +53,7 @@
         $scope.yesNo = [true, false];
         $scope.os_options = ['windows', 'linux', 'cross'];
         $scope.durationOptions = [45, 90, 180];
+        $scope.groupSize = [20, 30, 45];
         $scope.department_options = [];
         $scope.software_options = [];
         $scope.all_classrooms = [];
@@ -261,7 +262,9 @@
                 if(response.status == "200"){
                     Alertify.success("Software added!");
                     loadSoftwares();
-                    $scope.software = {};
+                    $scope.software = {
+                        "os": "linux",
+                    };
                 }
                 else{
                     Alertify.error('Software already exist!');
@@ -286,9 +289,16 @@
 
             var status = true;
 
-                for(var cour in $scope.courses)
+            console.log(software);
+
+            for(var cour in $scope.courses)
+                if($scope.courses[cour].softwareNeed)
                     if($scope.courses[cour].softwareNeed.id == software.id)
                         status = false;
+
+            if($scope.softwares.length < 4)
+                status = false;
+
 
             return status;
 

@@ -19,15 +19,15 @@
                                     </tr>
                                     <tr>
                                         <td>Label:</td>
-                                        <td><span editable-text="course.label" e-minlength="2" e-maxlength="6" e-required>{{course.label}}</span></td>
+                                        <td><span editable-text="course.label" e-minlength="2" e-maxlength="3" e-required>{{course.label}}</span></td>
                                     </tr>
                                     <tr>
                                         <td>Title:</td>
-                                        <td> <span editable-text="course.title" e-minlength="5" e-maxlength="30" e-required>{{course.title}}</span></td>
+                                        <td style="max-width: 150px; overflow-wrap: break-word;"><span editable-text="course.title" e-minlength="5" e-maxlength="30" e-required>{{course.title}}</span></td>
                                     </tr>
                                     <tr>
                                         <td>Description:</td>
-                                        <td><span editable-textarea="course.description" e-rows="7" e-cols="40" e-style="min-width: 100px; max-width: 200px; min-height: 50px; max-height: 400px;" e-minlength="10" e-maxlength="255" e-required>{{course.description}}</span></td>
+                                        <td style="max-width: 150px; overflow-wrap: break-word;"><span editable-textarea="course.description" e-rows="7" e-cols="40" e-style="min-width: 100px; max-width: 200px; min-height: 50px; max-height: 400px;" e-minlength="10" e-maxlength="255">{{course.description}}</span></td>
                                     </tr>
                                     <tr>
                                         <td>Duration (minutes):</td>
@@ -54,8 +54,8 @@
                                     <tr>
                                         <td>Projector:</td>
                                         <td>
-                                            <span ng-if="course.projectorNeed"> <span editable-select="course.projectorNeed" e-name="status" e-ng-options="opt.value as opt.text for opt in yesNo">yes</span></span>
-                                            <span ng-if="!course.projectorNeed"> <span editable-select="course.projectorNeed" e-name="status" e-ng-options="opt.value as opt.text for opt in yesNo">no</span></span>
+                                         <span ng-if="course.projectorNeed" editable-select="course.projectorNeed" e-name="status" e-ng-options="opt.value as opt.text for opt in yesNo">yes</span>
+                                         <span ng-if="!course.projectorNeed" editable-select="course.projectorNeed" e-name="status" e-ng-options="opt.value as opt.text for opt in yesNo">no</span>
                                         </td>
                                     </tr>
                                     <tr>

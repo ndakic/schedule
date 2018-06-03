@@ -19,11 +19,11 @@
                                     </tr>
                                     <tr>
                                         <td>Title:</td>
-                                        <td><span editable-text="software.title" e-minlength="5" e-maxlength="30" e-required>{{software.title}}</span></td>
+                                        <td style="max-width: 150px; overflow-wrap: break-word;"><span editable-text="software.title" e-minlength="5" e-maxlength="30" e-required>{{software.title}}</span></td>
                                     </tr>
                                     <tr>
                                         <td>Description:</td>
-                                        <td> <span editable-textarea="software.description" e-rows="7" e-cols="40" e-style="min-width: 150px; max-width: 200px; min-height: 50px; max-height: 300px;" e-minlength="10" e-maxlength="255" e-required>{{software.description}}</span></td>
+                                        <td style="max-width: 150px; overflow-wrap: break-word;"> <span editable-textarea="software.description" e-rows="7" e-cols="40" e-style="min-width: 150px; max-width: 200px; min-height: 50px; max-height: 300px;" e-minlength="10" e-maxlength="255">{{software.description}}</span></td>
                                     </tr>
                                     <tr>
                                         <td>Date:</td>
@@ -31,18 +31,18 @@
                                     </tr>
 
                                     <tr>
-                                        <td>Manufacturer:</td>
-                                        <td><span editable-text="software.manufacturer" e-minlength="5" e-maxlength="30" e-required>{{software.manufacturer}}</span></td>
+                                        <td style="max-width: 150px; overflow-wrap: break-word;">Manufacturer:</td>
+                                        <td><span editable-text="software.manufacturer" e-minlength="5" e-maxlength="30" >{{software.manufacturer}}</span></td>
                                     </tr>
 
                                     <tr>
-                                        <td>Website:</td>
-                                        <td><span editable-text="software.website" e-minlength="6" e-maxlength="30" e-required>{{software.website}}</span></td>
+                                        <td style="max-width: 150px; overflow-wrap: break-word;">Website:</td>
+                                        <td><span editable-text="software.website" e-minlength="6" e-maxlength="30">{{software.website}}</span></td>
                                     </tr>
 
                                     <tr>
                                         <td>Price:</td>
-                                        <td><span editable-text="software.price" e-minlength="5" e-maxlength="30" e-required>{{software.price}}</span></td>
+                                        <td><span editable-number="software.price" e-min="1" e-max="9999999">{{software.price}}</span></td>
                                     </tr>
 
                                     <tr>
