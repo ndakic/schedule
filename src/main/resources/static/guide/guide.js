@@ -307,7 +307,7 @@ function checkBoxDepartmentGuide() {
 var steps = [
     {
        element: '#weekWednesday',
-       intro: 'Run the workflow to complete the AB Controls step.<br><br>After running the workflow, open the next guided workflow &mdash; <a href="../../4. Analyzing your test results.yxmd">4. Analyzing your test results</a>.',
+       intro: 'Welcome<br><br> This page contains all information related to the weekly schedule of classes per classroom. Each course has its own color. It was taken one day to get closer to the user.<br><br><img style="max-width: 100%; max-height: 100vh; margin: auto;" src="images/week.png"><br><br><br><p style="font-size:12px;text-align:right;"><i>Please follow step by step. . .</i></p>',
        position: 'right'
     }
   ];
@@ -315,7 +315,7 @@ var steps = [
 var settingsSeteps = [
     {
         element: '#settingsId',
-        intro: 'Run the workflow to complete the AB Controls step.<br><br>After running the workflow, open the next guided workflow &mdash; <a href="../../4. Analyzing your test results.yxmd">4. Analyzing your test results</a>.',
+        intro: 'Choose classrooms to display on front page, on schedule table.',
         position: 'right'
     }
 //     },
@@ -329,17 +329,17 @@ var settingsSeteps = [
 var daysSteps = [
     {
         element: '#daysTableId',
-        intro: 'Run the workflow to complete the AB Controls step.<br><br>After running the workflow, open the next guided workflow &mdash; <a href="../../4. Analyzing your test results.yxmd">4. Analyzing your test results</a>.',
+        intro: 'Schedule table for this day. Here are all information about the daily schedule of courses per classroom.<br><br><p style="font-size:12px;text-align:right;"><i>Press ESC to leave. . .</i></p>',
         position: 'right'
      },
      {
          element: '#trash',
-         intro: 'Run the workflow to complete the AB Controls step.<br><br>After running the workflow, open the next guided workflow &mdash; <a href="../../4. Analyzing your test results.yxmd">4. Analyzing your test results</a>.',
+         intro: 'This step shows you how to use trash, drag course from schedule and drop it in trash.<br><br><img style="max-width: 100%; max-height: 100vh; margin: auto;" src="images/trash.gif"><p style="font-size:12px;text-align:right;"><i>Press ESC to leave. . .</i></p>',
          position: 'left'
       },
       {
           element: '#daysCourseId',
-          intro: 'Run the workflow to complete the AB Controls step.<br><br>After running the workflow, open the next guided workflow &mdash; <a href="../../4. Analyzing your test results.yxmd">4. Analyzing your test results</a>.',
+          intro: 'This step shows you how to use drag and drop system, to put course on schedule.<br>You can also search the course by title in the search bar.<br><br><img style="max-width: 100%; max-height: 100vh; margin: auto;" src="images/drag.gif"><p style="font-size:12px;text-align:right;"><i>Press ESC to leave. . .</i></p>',
           position: 'left'
        }
   ];
@@ -347,55 +347,40 @@ var daysSteps = [
 var courseSteps = [
     {
         element: '#courseTableId',
-        intro: 'Run the workflow to complete the AB Controls step.<br><br>After running the workflow, open the next guided workflow &mdash; <a href="../../4. Analyzing your test results.yxmd">4. Analyzing your test results</a>.',
+        intro: 'Course table shows all information, here you can edit course by clicking on ID, or delete specific course.<p style="font-size:12px;text-align:right;"><i>Press ESC to leave. . .</i></p>',
         position: 'right'
      },
      {
          element: '#courseAddId',
-         intro: 'Run the workflow to complete the AB Controls step.<br><br>After running the workflow, open the next guided workflow &mdash; <a href="../../4. Analyzing your test results.yxmd">4. Analyzing your test results</a>.',
+         intro: 'Here you can add new course.<p style="font-size:12px;text-align:right;"><i>Press ESC to leave. . .</i></p>',
          position: 'right'
-      },
-      {
-          element: '#courseSearchId',
-          intro: 'Run the workflow to complete the AB Controls step.<br><br>After running the workflow, open the next guided workflow &mdash; <a href="../../4. Analyzing your test results.yxmd">4. Analyzing your test results</a>.',
-          position: 'right'
-       }
+      }
   ];
 
 var classroomsSteps = [
     {
         element: '#classroomTableId',
-        intro: 'Run the workflow to complete the AB Controls step.<br><br>After running the workflow, open the next guided workflow &mdash; <a href="../../4. Analyzing your test results.yxmd">4. Analyzing your test results</a>.',
+        intro: 'Classroom table shows all information about classrooms you need to know, also you can edit classroom by clicking on label, or delete specific classroom.<p style="font-size:12px;text-align:right;"><i>Press ESC to leave. . .</i></p>',
         position: 'right'
      },
      {
          element: '#classroomAddId',
-         intro: 'Run the workflow to complete the AB Controls step.<br><br>After running the workflow, open the next guided workflow &mdash; <a href="../../4. Analyzing your test results.yxmd">4. Analyzing your test results</a>.',
+         intro: 'Here you can add new classroom.<p style="font-size:12px;text-align:right;"><i>Press ESC to leave. . .</i></p>',
          position: 'right'
-      },
-      {
-          element: '#classroomSearchId',
-          intro: 'Run the workflow to complete the AB Controls step.<br><br>After running the workflow, open the next guided workflow &mdash; <a href="../../4. Analyzing your test results.yxmd">4. Analyzing your test results</a>.',
-          position: 'right'
-       }
+      }
   ];
 
 var departmentSteps = [
     {
         element: '#departmentTableId',
-        intro: 'Run the workflow to complete the AB Controls step.<br><br>After running the workflow, open the next guided workflow &mdash; <a href="../../4. Analyzing your test results.yxmd">4. Analyzing your test results</a>.',
+        intro: 'Department table shows all inforimation, also you can edit department by clicking on ID, or delete specific department.<p style="font-size:12px;text-align:right;"><i>Press ESC to leave. . .</i></p>',
         position: 'right'
      },
      {
          element: '#departmentAddId',
-         intro: 'Run the workflow to complete the AB Controls step.<br><br>After running the workflow, open the next guided workflow &mdash; <a href="../../4. Analyzing your test results.yxmd">4. Analyzing your test results</a>.',
+         intro: 'Here you can add new department.<p style="font-size:12px;text-align:right;"><i>Press ESC to leave. . .</i></p>',
          position: 'right'
-      },
-      {
-          element: '#departmentSearchId',
-          intro: 'Run the workflow to complete the AB Controls step.<br><br>After running the workflow, open the next guided workflow &mdash; <a href="../../4. Analyzing your test results.yxmd">4. Analyzing your test results</a>.',
-          position: 'right'
-       }
+      }
   ];
 
 function settingsHint() {
@@ -421,7 +406,7 @@ function daysHint() {
 	if(localStorage.getItem("tutorijal") == "hint") {
 		document.getElementById("tuts").checked = true;
 		javascript:introJs().removeHints();
-		javascript:introJs().showHints();
+		setTimeout(showHints, 2000);
 	}
 }
 

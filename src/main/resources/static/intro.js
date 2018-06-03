@@ -311,6 +311,7 @@
     if ((code === 'Escape' || code === 27) && this._options.exitOnEsc === true) {
       //escape key pressed, exit the intro
       //check if exit callback is defined
+    	document.getElementById("tuts").checked = false;
       _exitIntro.call(this, this._targetElement);
     } else if (code === 'ArrowLeft' || code === 37) {
       //left arrow
@@ -1255,18 +1256,22 @@
       skipTooltipButton.innerHTML = this._options.skipLabel;
 
       skipTooltipButton.onclick = function() {
+    	  
         if (self._introItems.length - 1 === self._currentStep && typeof (self._introCompleteCallback) === 'function') {
+        	
           self._introCompleteCallback.call(self);
         }
 
         if (self._introItems.length - 1 !== self._currentStep && typeof (self._introExitCallback) === 'function') {
+          
           self._introExitCallback.call(self);
         }
 
         if (typeof(self._introSkipCallback) === 'function') {
+        	
           self._introSkipCallback.call(self);
         }
-
+        
         _exitIntro.call(self, self._targetElement);
       };
 
@@ -1361,6 +1366,7 @@
       }
       if (typeof skipTooltipButton !== "undefined" && skipTooltipButton !== null) {
         skipTooltipButton.innerHTML = this._options.skipLabel;
+        
       }
     }
 
