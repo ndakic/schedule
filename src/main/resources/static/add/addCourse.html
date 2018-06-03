@@ -111,6 +111,9 @@
     </div>
 </div>
 <script type="text/javascript">
-	addCourseGuide();
-	courseHint();
+	if(localStorage.getItem("tutorijal") == "hint") {
+		courseHint();
+	} else  {
+		addCourseGuide();
+	}	
 </script>
