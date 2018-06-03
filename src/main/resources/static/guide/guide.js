@@ -90,6 +90,7 @@ function checkBoxGuide() {
 		document.getElementById("tuts").checked = true;
 	}	
     localStorage.setItem("tutorijal", "guide");
+    window.location.href = '/#!/#jump';
     introJs().setOption('doneLabel', 'Next page').start('weeks').oncomplete(function() {
     	localStorage.setItem("tutorijal", "guideSettings");
         window.location.href = '/#!/settings';
@@ -99,27 +100,116 @@ function checkBoxGuide() {
 
 
 function weekGuide() {
-	if (localStorage.getItem("tutorijal") == "guide") {
-		//introJs().exit();
-	    introJs().setOption('doneLabel', 'Next page').start('weeks').oncomplete(function() {
-	    	localStorage.setItem("tutorijal", "guideSettings");
-	        window.location.href = '/#!/settings';
-	    });
-	} else {
-		introJs().exit();
+	var checkBox = document.getElementById("tuts");
+	if(checkBox.checked == true) {
+		if (localStorage.getItem("tutorijal") == "guide") {
+			//introJs().exit();
+			document.getElementById("tuts").checked = true;
+		    introJs().setOption('doneLabel', 'Next page').start('weeks').oncomplete(function() {
+		    	localStorage.setItem("tutorijal", "guideSettings");
+		        window.location.href = '/#!/settings';
+		    });
+		} else {
+			introJs().exit();
+			checkBox.checked = false;
+		}
 	}
+
 }
 
 
 function settingsGuide() {
-    if(localStorage.getItem("tutorijal") == "guideSettings") {
-        introJs().setOption('doneLabel', 'Next page').start('settings').oncomplete(function() {
-        	localStorage.setItem("tutorijal", "guideDay");
-            window.location.href = '/#!/day/Monday';
-        });
-    } else {
-    	introJs().exit();
-    }
+	setTimeout(settingsGuideCheckBox, 1000);
+}
+
+function settingsGuideCheckBox() {
+	var checkBox = document.getElementById("tuts");
+	if(checkBox.checked == true) {
+	    if(localStorage.getItem("tutorijal") == "guideSettings") {
+	    	checkBox.checked = true;
+	        introJs().setOption('doneLabel', 'Next page').start('settings').oncomplete(function() {
+	        	localStorage.setItem("tutorijal", "guideDay");
+	            window.location.href = '/#!/day/Monday';
+	        });
+	    } else {
+	    	introJs().exit();
+	    	document.getElementById("tuts").checked = false;
+	    }
+	}
+	
+}
+
+
+function daysGuide() {
+	var checkBox = document.getElementById("tuts");
+	if(checkBox.checked == true) {
+	    if(localStorage.getItem("tutorijal") == "guideDay") {
+	    	document.getElementById("tuts").checked = true;
+	        introJs().setOption('doneLabel', 'Next page').start('days').oncomplete(function() {
+	        	localStorage.setItem("tutorijal", "guideAddCourse");
+	            window.location.href = '/#!/addCourse';
+	        });
+
+	    } else {
+	    	introJs().exit();
+	    	document.getElementById("tuts").checked = false;
+	    }
+	}
+
+}
+
+function addCourseGuide() {
+	var checkBox = document.getElementById("tuts");
+	if(checkBox.checked == true) {
+	    if(localStorage.getItem("tutorijal") == "guideAddCourse") {
+	    	document.getElementById("tuts").checked = true;
+	        introJs().setOption('doneLabel', 'Next page').start('addCourse').oncomplete(function() {
+	        	localStorage.setItem("tutorijal", "guideAddClassroom");
+	            window.location.href = '/#!/addClassroom';
+	        });
+	
+	    } else {
+	    	introJs().exit();
+	    	document.getElementById("tuts").checked = false;
+	    }
+	}
+}
+
+
+function addClassroomGuide() {
+	var checkBox = document.getElementById("tuts");
+	if(checkBox.checked == true) {
+
+	    if(localStorage.getItem("tutorijal") == "guideAddClassroom") {
+	    	document.getElementById("tuts").checked = true;
+	        introJs().setOption('doneLabel', 'Next page').start('addClassroom').oncomplete(function() {
+	        	localStorage.setItem("tutorijal", "guideAddDepartment");
+	            window.location.href = '/#!/addDepartment';
+	        });
+	
+	    } else {
+	    	introJs().exit();
+	    }
+	}
+
+}
+
+function addDepartmentGuide() {
+	var checkBox = document.getElementById("tuts");
+	if(checkBox.checked == true) {
+	    if(localStorage.getItem("tutorijal") == "guideAddDepartment") {
+	    	document.getElementById("tuts").checked = true;
+	        introJs().setOption('doneLabel', 'Done').start('addDepartment').oncomplete(function() {
+	        	localStorage.setItem("tutorijal", false);
+	            window.location.href = '/#!';
+	            document.getElementById("tuts").checked = false;
+	        });
+	
+	    } else {
+	    	introJs().exit();
+	    	document.getElementById("tuts").checked = false;
+	    }
+	}
 }
 
 
@@ -179,18 +269,6 @@ function showHints() {
 	javascript:introJs().addHints();	
 }
 
-function daysGuide() {
-    if(localStorage.getItem("tutorijal") == "guideDay") {
-        introJs().setOption('doneLabel', 'Next page').start('days').oncomplete(function() {
-        	localStorage.setItem("tutorijal", "guideAddCourse");
-            window.location.href = '/#!/addCourse';
-        });
-
-    } else {
-    	introJs().exit();
-    }
-}
-
 function check(e) {
 	if (e.checked == false) {
 		if(localStorage.getItem("tutorijal") == "hint") {
@@ -224,46 +302,7 @@ function check(e) {
 
 
 
-function addCourseGuide() {
-    if(localStorage.getItem("tutorijal") == "guideAddCourse") {
-        introJs().setOption('doneLabel', 'Next page').start('addCourse').oncomplete(function() {
-        	localStorage.setItem("tutorijal", "guideAddClassroom");
-            window.location.href = '/#!/addClassroom';
-        });
 
-    } else {
-    	introJs().exit();
-    }
-
-}
-
-
-function addClassroomGuide() {
-    if(localStorage.getItem("tutorijal") == "guideAddClassroom") {
-        introJs().setOption('doneLabel', 'Next page').start('addClassroom').oncomplete(function() {
-        	localStorage.setItem("tutorijal", "guideAddDepartment");
-            window.location.href = '/#!/addDepartment';
-        });
-
-    } else {
-    	introJs().exit();
-    }
-
-}
-
-function addDepartmentGuide() {
-    if(localStorage.getItem("tutorijal") == "guideAddDepartment") {
-        introJs().setOption('doneLabel', 'Done').start('addDepartment').oncomplete(function() {
-        	localStorage.setItem("tutorijal", false);
-            window.location.href = '/#!';
-            document.getElementById("tuts").checked = false;
-        });
-
-    } else {
-    	introJs().exit();
-    }
-
-}
 
 
 

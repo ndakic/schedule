@@ -16,11 +16,14 @@
     <br> <br>
     <p style="font-size: 13px;"> <b> Delete all data: </b> </p>
     <button class="btn btn-danger" ng-click="vm.deleteAllData()"  type="submit" data-step="2" data-intro="Deletee.." data-intro-group="settings" >Confirm</button>
-	<script type="text/javascript">
-		settingsGuide();
-		settingsHint();
-	</script>
-
 
 </div>
-
+<script type="text/javascript">
+	if(localStorage.getItem("tutorijal") == "hint") {
+		settingsHint();
+	} else {
+		settingsGuide();
+	}
+	
+	
+</script>

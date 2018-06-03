@@ -153,10 +153,11 @@
             $('.fixedElement').css({'position': 'static', 'top': '0px', 'max-width': '350px'});
         }
     });
-
-	console.log("USAO DAYS");
-	daysGuide();
-	daysHint();
-
-
+    
+    
+	if(localStorage.getItem("tutorijal") == "hint") {
+		daysHint();
+	} else {
+		daysGuide();
+	}
 </script>
