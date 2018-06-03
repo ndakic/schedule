@@ -1,0 +1,122 @@
+
+<div class="container">
+    <div class="col-lg-4">
+        <div class="input-group custom-search-form">
+            <input type="text" class="form-control" placeholder="Search by title.." ng-model="search.title" ng-maxlength="20" maxlength="20">
+            <span class="input-group-btn">
+                <button class="btn btn-default" type="button">
+                    <i class="fa fa-search"></i>
+                </button>
+            </span>
+        </div>
+    </div>
+
+    <div class="col-lg-8"></div>
+
+    <div class="row">
+        <div class="col-lg-8">
+            <table>
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Title</th>
+                    <th>Website</th>
+                    <th>Manufacturer</th>
+                    <th>OS</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="software in softwares | filter:search">
+                    <td>  <a ui-sref="software-detail({id:software.id})" data-hint="By clicking on the ID you will be forwarded to the page, where you will be able to make changes on this specific software!" data-hintPosition="top-left">{{software.id}} </a></td>
+                    <td>{{software.title}}</td>
+                    <td>{{software.website}}</td>
+                    <td>{{software.description}}</td>
+                    <td>{{software.os}}</td>
+
+                    <td><button class="btn btn-danger" ng-click="vm.deleteSoftware(software)" ng-show="vm.checkDeleteSoftware(software)" type="submit">delete</button></td>
+                </tr>
+
+                </tbody>
+            </table>
+        </div>
+        <div class="col-lg-4">
+            <div class="wrapper">
+                <form name="AddForm" ng-submit="vm.addSoftware()">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="myAppLabel">Add New Software</h4>
+                    </div>
+                    <div class="modal-body">
+                        <jhi-alert-error></jhi-alert-error>
+
+                        <div class="form-group">
+                            <label class="control-label">ID</label>
+                            <input type="text" class="form-control" name="id" id="field_id" ng-model="software.id" minlength="2" maxlength="4" required/>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label">Title</label>
+                            <input class="form-control" type="text"  ng-model="software.title" minlength="4" maxlength="60" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label">Manufacturer</label>
+                            <input class="form-control" type="text"  ng-model="software.manufacturer" minlength="4" maxlength="60" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label">Price</label>
+                            <input class="form-control" type="number"  ng-model="software.price" min="1" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label">Website</label>
+                            <input class="form-control" type="text"  ng-model="software.website" minlength="6" maxlength="20" required>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label class="control-label">Date</label>
+                            <input class="form-control" type="text" ng-model="software.date" id="datepicker1" minlength="10" maxlength="10" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label">OS</label>
+                            <div class="selectContainer">
+                                <select class="form-control" ng-model= "software.os" name="size" ng-options="os for os in os_options" required>
+
+                                </select>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label class="control-label">Description</label>
+                            <textarea class="form-control" type="text" ng-model="software.description" rows="7" cols="40" style="min-width: 300px; max-width: 310px; min-height: 50px; max-height: 200px;" minlength="10" maxlength="255" required></textarea>
+                        </div>
+
+                    </div>
+
+                    <div class="modal-footer">
+
+                        <button type="submit" ng-submit="vm.addSoftware()" class="btn btn-primary">
+                            <span class="glyphicon"></span>&nbsp;<span>Add</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script type="text/javascript">
+    addDepartmentGuide();
+    departmentHint();
+</script>
+
+
+<script type="text/javascript">
+    $( function() {
+        $( "#datepicker1" ).datepicker();
+    } );
+</script>

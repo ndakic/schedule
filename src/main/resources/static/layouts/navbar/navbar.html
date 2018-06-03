@@ -13,15 +13,16 @@
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
-                    <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" data-hint="By clicking on the create, it will show dropdown menu, where you will be able to choose between three options off what you want to create or change!" data-hintPosition="top-middle">Create<span class="caret"></span></a>
+                    <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Create<span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="" ng-click="vm.addCourse()">Course</a></li>
                         <li><a href="" ng-click="vm.addClassroom()" >Classrooms</a></li>
                         <li><a href="" ng-click="vm.addDepartment()">Department</a></li>
+                        <li><a href="" ng-click="vm.addSoftware()">Software</a></li>
 
                     </ul>
                 </li>
-                <li><a href="" ng-click="vm.settings()" data-hint="By clicking on the settings you will be forwarded to the page, where you will be able to make changes related to the schedule front page!" data-hintPosition="top-middle">Settings</a></li>
+                <li><a href="" ng-click="vm.settings()" >Settings</a></li>
                 <li style="padding-top: 10px"><label class="switch">
 					  <input id="tuts" name="tuts" onclick="check(this);" type="checkbox">
 					  <span class="slider round"></span>
@@ -29,7 +30,5 @@
 				</li>
             </ul>
         </div>
-        
-
     </div>
 </nav>
