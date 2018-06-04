@@ -74,6 +74,7 @@ function guideTutFun(){
 	    localStorage.setItem("tutorijal", "guide");
 	    window.location.href = '/#!/#jump';
 	    var intro = introJs();
+	    window.scrollTo(0, 0);
 	    intro.setOptions({
 	    	steps: steps,
 	        showBullets: false,
@@ -103,6 +104,7 @@ function checkBoxGuide() {
     localStorage.setItem("tutorijal", "guide");
     window.location.href = '/#!/#jump';
     var intro = introJs();
+    window.scrollTo(0, 0);
     intro.setOptions({
     	steps: steps,
         showBullets: false,
@@ -226,6 +228,7 @@ function checkBoxCourseGuide() {
 		        keyboardNavigation: true,
 		        doneLabel : 'Next Page'
 		      });
+		    window.scrollTo(0, 0);
 	        intro.start('addCourse').oncomplete(function() {
 	        	localStorage.setItem("tutorijal", "guideAddClassroom");
 	            window.location.href = '/#!/addClassroom';
@@ -412,42 +415,89 @@ function daysHint() {
 
 
 function courseHint() {
+	javascript:introJs().removeHints();
+	setTimeout(courseHintTimeout, 500);
+
+}
+
+function courseHintTimeout() {
+	var checkBox = document.getElementById("tuts");
+	
 	if(localStorage.getItem("tutorijal") == "hint") {
-		document.getElementById("tuts").checked = true;
-		javascript:introJs().removeHints();
-		javascript:introJs().showHints();
-		javascript:introJs().hideHint(0);
+		if(checkBox.checked == true) {
+			javascript:introJs().removeHints();
+			checkBox.checked = false;
+			checkBox.checked = true;
+			javascript:introJs().addHints();
+			
+//			javascript:introJs().showHints();
+//			javascript:introJs().hideHint(0);
+		}
 	}
 }
 
 
 function classroomHint() {
-	if(localStorage.getItem("tutorijal") == "hint") {
-		document.getElementById("tuts").checked = true;
-		javascript:introJs().removeHints();
-		javascript:introJs().showHints();
-		javascript:introJs().hideHint(0);
-	}
+	javascript:introJs().removeHints();
+	setTimeout(courseHintTimeout, 500);
+
 }
 
+
+function courseHintTimeout() {
+	var checkBox = document.getElementById("tuts");
+	if(localStorage.getItem("tutorijal") == "hint") {
+		if(checkBox.checked == true) {
+			javascript:introJs().removeHints();
+			checkBox.checked = false;
+			checkBox.checked = true;
+			javascript:introJs().addHints();
+			
+//			javascript:introJs().showHints();
+//			javascript:introJs().hideHint(0);
+		}
+	}
+}
 
 function departmentHint() {
+	javascript:introJs().removeHints();
+	setTimeout(courseHintTimeout, 500);
+
+}
+
+function departmentHintTimeout() {
+	var checkBox = document.getElementById("tuts");
 	if(localStorage.getItem("tutorijal") == "hint") {
-		document.getElementById("tuts").checked = true;
-		javascript:introJs().removeHints();
-		javascript:introJs().showHints();
-		javascript:introJs().hideHint(0);
+		if(checkBox.checked == true) {
+			javascript:introJs().removeHints();
+			checkBox.checked = false;
+			checkBox.checked = true;
+			javascript:introJs().addHints();
+			
+//			javascript:introJs().showHints();
+//			javascript:introJs().hideHint(0);
+		}
 	}
 }
 
-
 function softwareHint() {
-	if(localStorage.getItem("tutorijal") == "hint") {
-		document.getElementById("tuts").checked = true;
-		javascript:introJs().removeHints();
-		javascript:introJs().showHints();
-		console.log("SOFTWARE HINT");
+	javascript:introJs().removeHints();
+	setTimeout(courseHintTimeout, 500);
 
+}
+
+function softwareHintTimeout() {
+	var checkBox = document.getElementById("tuts");
+	if(localStorage.getItem("tutorijal") == "hint") {
+		if(checkBox.checked == true) {
+			javascript:introJs().removeHints();
+			checkBox.checked = false;
+			checkBox.checked = true;
+			javascript:introJs().addHints();
+			
+//			javascript:introJs().showHints();
+//			javascript:introJs().hideHint(0);
+		}
 	}
 }
 
