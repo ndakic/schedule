@@ -110,7 +110,7 @@ function checkBoxGuide() {
         showProgress: false,
         exitOnOverlayClick: false,
         showStepNumbers: true,
-        keyboardNavigation: false,
+        keyboardNavigation: true,
         doneLabel : 'Next Page'
       });
     intro.start('weeks').oncomplete(function() {
@@ -157,7 +157,7 @@ function settingsGuideCheckBox() {
 		        showProgress: false,
 		        exitOnOverlayClick: false,
 		        showStepNumbers: true,
-		        keyboardNavigation: false,
+		        keyboardNavigation: true,
 		        doneLabel : 'Next Page'
 		      });
 	        intro.start('settings').oncomplete(function() {
