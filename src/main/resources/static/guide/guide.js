@@ -72,7 +72,7 @@ function guideTutFun(){
 			document.getElementById("tuts").checked = true;
 		}	
 	    localStorage.setItem("tutorijal", "guide");
-	    window.location.href = '/#!/#jump';
+	    window.location.href = '/#!/#navBar';
 	    var intro = introJs();
 	    window.scrollTo(0, 0);
 	    intro.setOptions({
@@ -229,6 +229,7 @@ function checkBoxCourseGuide() {
 		        doneLabel : 'Next Page'
 		      });
 		    window.scrollTo(0, 0);
+		    
 	        intro.start('addCourse').oncomplete(function() {
 	        	localStorage.setItem("tutorijal", "guideAddClassroom");
 	            window.location.href = '/#!/addClassroom';
