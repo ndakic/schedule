@@ -52,7 +52,7 @@
 
         $scope.yesNo = [true, false];
         $scope.os_options = ['windows', 'linux', 'cross'];
-        $scope.durationOptions = [45, 90, 180];
+        $scope.durationOptions = [45, 90, 135, 180];
         $scope.groupSize = [20, 30, 45];
         $scope.department_options = [];
         $scope.software_options = [];
