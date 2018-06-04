@@ -1,0 +1,10 @@
+sudo: true
+language: java
+services: mysql
+jdk:
+  - oraclejdk8
+before_script:
+  - mysql -u root -e 'CREATE DATABASE schedule;'
+  - mysql -u root -e "SET PASSWORD FOR 'root'@'localhost' = PASSWORD('root');"
+before_install:
+- chmod +x mvnw
