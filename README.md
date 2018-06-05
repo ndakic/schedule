@@ -63,5 +63,5 @@ Eclipse:
 
 
 ### guide schedule
-![Screenshot](screenshots/guide/guideWeek.png)
+![Screenshot](screenshots/guide/guideWeek2.png)
 
