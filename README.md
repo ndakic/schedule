@@ -31,17 +31,17 @@ App for organization courses using <b>drag-and-drop</b> technology.
 ## How to run App:
 
 - Just create database with name <b>'schedule'</b> or some other name but than update connection settings to db in application.properties. Tables and columns will be created automatically.
-- Set your username and password of database - Default: username: <b>root</b>, password: <b>root</b> 
+- Set your username and password of database in application.properties - Default: username: <b>root</b>, password: <b>root</b> 
 
 - Install [bower](https://tecadmin.net/install-bower-on-ubuntu/) for client dependencies. (AngularJS, Bootstrap..)
-- Go to src/main/resources/static with terminal and enter <b>'bower install'</b> to install all dependencies. 
+- Open terminal and go to schedule/src/main/resources/static and enter <b>'bower install'</b> to install all front-end dependencies. 
 
 IntelliJ IDEA: 
 - Just import project with maven 
 
 Eclipse:
 - Import project
-- [Install](https://stackoverflow.com/a/46034044) [Lombok](https://projectlombok.org/)
+- [Install](https://stackoverflow.com/a/46034044) Lombok
 
  
 
