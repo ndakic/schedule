@@ -58,10 +58,6 @@ Eclipse:
 ![Screenshot](screenshots/app/dragAndDrop.png)
 
 
-### guide drag-and-drop
-![Screenshot](screenshots/guide/guideDragAndDrop.png)
+### guide
 
-
-### guide schedule
-![Screenshot](screenshots/guide/guideWeek2.png)
-
+<img src="screenshots/guide/guideWeek2.png" width="49%" height="100%"> &nbsp; &nbsp;<img src="screenshots/guide/guideDragAndDrop.png" width="49%" height="100%">
