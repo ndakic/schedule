@@ -60,4 +60,4 @@ Eclipse:
 
 ### guide
 
-<img src="screenshots/guide/guideWeek2.png" width="49%" height="100%"> &nbsp; &nbsp;<img src="screenshots/guide/guideDragAndDrop.png" width="49%" height="100%">
+<img src="screenshots/guide/guideWeek2.png" width="48%" height="100%"> &nbsp; &nbsp;<img src="screenshots/guide/guideDragAndDrop.png" width="48%" height="100%">
