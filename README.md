@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/nikoladakic/schedule.svg?branch=master)](https://travis-ci.org/nikoladakic/schedule)
+[![Build Status](https://travis-ci.org/ndakic/schedule.svg?branch=master)](https://travis-ci.org/ndakic/schedule)
 
 # Human Computer Interaction
 
